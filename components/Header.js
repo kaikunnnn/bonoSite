@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 import { createUseStyles } from 'react-jss'
@@ -9,10 +10,17 @@ const Header = (props) => {
       <div className={classes['Header']}>
         <div className={classes['Frame2']}>
           <span className={classes['text']}>
-            <span>MENU</span>
+            <Link href="/">
+             <span>HOME</span>
+            </Link>
           </span>
           <span className={classes['text2']}>
-            <span>Login</span>
+            <Link href="/signup">
+                 <span>SignUp</span>
+            </Link>
+            <Link href="/login">
+                 <span>Login</span>
+            </Link>
           </span>
         </div>
       </div>

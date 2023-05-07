@@ -31,6 +31,7 @@ export default function Home({articles}) {
         />
       </div>
 
+      {/* Article List */}
       <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
         {articles.map((article) => (
           <a
