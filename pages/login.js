@@ -1,3 +1,4 @@
+import Header from '@/components/Header'
 import React, { useState } from 'react'
 
 const LoginPage = () => {
@@ -14,6 +15,8 @@ const LoginPage = () => {
   }
 
   return (
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <Header/>
     <div className="flex flex-col items-center justify-center min-h-screen">
       <h1 className="text-3xl font-bold mb-8">Login Page</h1>
       <form onSubmit={handleSubmit} className="w-full max-w-md">
@@ -55,6 +58,7 @@ const LoginPage = () => {
         </div>
       </form>
     </div>
+    </main>
   )
 }
 
