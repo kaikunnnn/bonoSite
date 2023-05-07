@@ -2,11 +2,12 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import axios from 'axios'
 import Header from '@/components/Header';
+import { supabase } from '@/supabaseClient';
 
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   const articleData = (await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/articles`)).data.data;
-  console.log(articleData);
+
   return {
     props: {
       articles: articleData,
@@ -16,7 +17,8 @@ export async function getStaticProps() {
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({articles}) {
+export default function Home({articles,lessons}) {
+  // console.log({lessons});
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Header />
@@ -57,3 +59,4 @@ export default function Home({articles}) {
     </main>
   )
 }
+
