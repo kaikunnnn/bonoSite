@@ -7,6 +7,8 @@ export default function AuthSupabase (){
   const session = useSession()
   const supabase = useSupabaseClient()
 
+   
+
   return (
     <div className="container" style={{ padding: '50px 0 100px 0',width:'32%', margin:'auto' }}>
       {!session ? (
