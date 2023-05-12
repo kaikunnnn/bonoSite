@@ -5,14 +5,16 @@ import { SessionContextProvider } from '@supabase/auth-helpers-react'
 import { useState } from 'react'
 
 function MyApp({ Component, pageProps }) {
+
   const [supabaseClient] = useState(() => createBrowserSupabaseClient())
 
   return (
-    <SessionContextProvider
-     supabaseClient={supabaseClient}
-     initialSession={pageProps.initialSession}>
-       <Component {...pageProps} />
-    </SessionContextProvider>
+    
+      <SessionContextProvider
+      supabaseClient={supabaseClient}
+      initialSession={pageProps.initialSession}>
+          <Component {...pageProps} />
+      </SessionContextProvider>
   )
 }
 export default MyApp
