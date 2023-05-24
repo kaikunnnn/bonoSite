@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../client'
+// import { supabase } from '../client'
 import { useRouter } from 'next/router'
+import { useSupabaseClient } from '@supabase/auth-helpers-react';
 
 export default function Profile() {
+  const supabase = useSupabaseClient();
   const [profile, setProfile] = useState(null)
   const router = useRouter()
   useEffect(() => {
     fetchProfile()
   }, [])
   async function update() {
-    const { user, error } = await supabase.auth.update({ 
+    const { user, error } = await supabase.auth.updateUser({ 
       data: {
         city: "New York"
       } 
@@ -17,17 +19,17 @@ export default function Profile() {
     console.log('user:', user);
   }
   async function fetchProfile() {
-    const profileData = await supabase.auth.user()
+    const {data: { user: profileData }} = await supabase.auth.getUser()
     console.log("profileData: ", profileData)
     if (!profileData) {
-      router.push('/sign-in')
+      router.push('/login')
     } else {
       setProfile(profileData)
     }
   }
   async function signOut() {
     await supabase.auth.signOut()
-    router.push('/sign-in')
+    router.push('/login')
   }
   if (!profile) return null
   return (
