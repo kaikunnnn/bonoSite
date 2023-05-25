@@ -1,4 +1,5 @@
-import { supabase } from '../client'
+import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
+
 
 export default function Protected({ user }) {
   console.log({ user })
@@ -9,12 +10,14 @@ export default function Protected({ user }) {
   )
 }
 
-export async function getServerSideProps({ req }) {
-  const { user } = await supabase.auth.api.getUserByCookie(req)
+export async function getServerSideProps(context) {
+  const { req } = context;
+  const supabase = createServerSupabaseClient({req})
+  const {data: { session }} = await supabase.auth.getSession();
 
-  if (!user) {
-    return { props: {}, redirect: { destination: '/sign-in' } }
+  if (!session) {
+    return { props: {}, redirect: { destination: '/login' } }
   }
 
-  return { props: { user } }
+  return { props: { user: session.user } }
 }
