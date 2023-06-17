@@ -235,6 +235,16 @@ input[disabled] {
   opacity: 50%;
 }
 
+/* FontStyle */
+h2{
+  font-weight: bold;
+  font-size: 24px;
+}
+h3{
+  font-weight: bold;
+  font-size: 20px;
+}
+
 /* Button */
 
 button,
@@ -432,3 +442,4 @@ button.primary,
   margin-bottom: 10px;
   text-decoration: none;
 }
+
