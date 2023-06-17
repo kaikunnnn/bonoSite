@@ -4,6 +4,10 @@ import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 export default function Account({ session }) {
   const supabase = useSupabaseClient()
   const user = useUser()
+
+   // データの確認 
+   console.log('user:', user);
+
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState(null)
   const [website, setWebsite] = useState(null)
@@ -39,6 +43,7 @@ export default function Account({ session }) {
       setLoading(false)
     }
   }
+
 
   async function updateProfile({ username, website, avatar_url }) {
     try {

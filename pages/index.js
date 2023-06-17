@@ -43,6 +43,7 @@ export default function Home({article}) {
        {article.map(article =>(
         <ArticleCard key={article.sys.id} article={article}/>
        ))}
+
       </div>
     </main>
   )
