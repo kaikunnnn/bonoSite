@@ -5,8 +5,11 @@ import { SessionContextProvider } from '@supabase/auth-helpers-react'
 import { useEffect, useState } from 'react'
 
 // Firebase
-import db from "firebase.js"
+import { db } from '../firebase'
 import {doc, onSnapshot, collection, getDocs} from "firebase/firestore"
+
+// Component
+import Auth from '../components/element/Auth'
 
 function MyApp({ Component, pageProps }) {
 
@@ -29,6 +32,8 @@ function MyApp({ Component, pageProps }) {
       setPosts(post.docs.map(
         (doc) => ({...doc.data()})
       ))
+    },(error) =>{
+      console.error("Snapshot Error: ", error);
     })
 
   }, [])
@@ -39,6 +44,10 @@ function MyApp({ Component, pageProps }) {
       <SessionContextProvider
       supabaseClient={supabaseClient}
       initialSession={pageProps.initialSession}>
+        {/* Make Auth Function from firebase */}
+        <Auth />
+        
+        {/* Display the data from firebase */}
         <div>{posts.map((post) => (
           <div key={post.title}>
             <h1>{post.title}</h1>

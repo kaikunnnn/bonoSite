@@ -1,10 +1,12 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Header from '@/components/Header';
-import { supabase } from '@/supabaseClient';
 import { createClient } from 'contentful';
 import ArticleCard from '@/components/ArticleCard';
 
+
+
+// Get the contentful data
 export async function getStaticProps() {
   const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
@@ -23,7 +25,6 @@ export async function getStaticProps() {
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({article}) {
-  console.log(article);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Header />
