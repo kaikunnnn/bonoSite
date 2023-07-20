@@ -2,7 +2,7 @@ import {db, auth} from "../firebase";
 import getStripe from "./initializeStripe";
 
 
-export async function createCheckoutSession() {
+export async function createCheckoutSession(planId) {
     const stripe = await getStripe();
 
     try {
@@ -16,7 +16,7 @@ export async function createCheckoutSession() {
             .doc(uid)
             .collection("checkout_sessions")
             .add({
-                price: "price_1LzDKnKUVUnt8Gtyly1TOV95",
+                price: planId,
                 success_url: window.location.origin,
                 cancel_url: window.location.origin,
             });

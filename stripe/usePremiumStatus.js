@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
-import isUserPremium from "./isUserPremium";
+import getUserPlan from "./getUserPlan";
 
 export default function usePremiumStatus(user) {
-  const [premiumStatus, setPremiumStatus] = useState(false);
+  const [plan, setPlan] = useState(null);
 
   useEffect(() => {
     if (user) {
-      const checkPremiumStatus = async function () {
-        setPremiumStatus(await isUserPremium());
+      const checkUserPlan = async function () {
+        setPlan(await getUserPlan());
       };
-      checkPremiumStatus();
+      checkUserPlan();
     }
   }, [user]);
 
-  return premiumStatus;
+  return plan;
 }

@@ -1,9 +1,9 @@
 import { auth } from "../firebase";
 
-export default async function isUserPremium(){
-    if (!auth.currentUser) return false;
+export default async function getUserPlan(){
+    if (!auth.currentUser) return null;
     await auth.currentUser.getIdToken(true);
     const decodedToken = await auth.currentUser.getIdTokenResult();
 
-    return decodedToken?.claims?.stripeRole ? true : false;
+    return decodedToken?.claims?.stripeRole || null;
 }
