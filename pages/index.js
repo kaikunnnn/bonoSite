@@ -1,52 +1,45 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import Header from '@/components/layout/Header';
-import { createClient } from 'contentful';
-import ArticleCard from '@/components/ArticleCard';
-
-
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import { createClient } from "contentful";
+import Header from "@/components/layout/Header";
+import ArticleCard from "@/components/EpisodeCard";
+import EyecatchPodcast from "@/components/layout/EyecatchPodcast";
+import EpisodeCard from "@/components/EpisodeCard";
+import TitleSection from "@/components/element/TitleSection";
 
 // Get the contentful data
 export async function getStaticProps() {
   const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
-  })
+  });
 
-  const res = await client.getEntries({content_type: 'article'})
+  const res = await client.getEntries({ content_type: "article" });
 
-  return{
-    props:{
-      article: res.items
-    }
-  }
+  return {
+    props: {
+      article: res.items,
+    },
+  };
 }
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({article}) {
+export default function Home({ article }) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="min-h-screen flex-col">
       <Header />
-      <div className="p-48 relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="HomeEyecatch w-full flex justify-center pt-20 mb-12 bg-bgColor-primary ">
+        <EyecatchPodcast />
       </div>
 
       {/* Article List from Contentful*/}
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-       {article.map(article =>(
-        <ArticleCard key={article.sys.id} article={article}/>
-       ))}
-
+      <div className="m-auto w-7/12 grid text-center lg:mb-0  lg:text-left">
+        <TitleSection/>
+        {article.map((article) => (
+          <EpisodeCard key={article.sys.id} article={article} />
+        ))}
       </div>
     </main>
-  )
+  );
 }
-

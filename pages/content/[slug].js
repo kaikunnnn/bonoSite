@@ -1,68 +1,73 @@
-import { createClient } from 'contentful'
-import Image from 'next/image'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import styles from './slug.module.css'
-
-
+import Image from "next/image";
+import { createClient } from "contentful";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Header from "@/components/layout/Header";
+import EyecatchEpisode from "@/components/layout/EyecatchEpisode";
 
 const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
-  })
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+});
 
 // Generate Paths - 一旦全てのPathを呼び出す
 export const getStaticPaths = async () => {
-    const res = await client.getEntries({ 
-      content_type: "article" 
-    })
-  
-    const paths = res.items.map(item => {
-      return {
-        params: { slug: item.fields.slug }
-      }
-    })
-  
+  const res = await client.getEntries({
+    content_type: "article",
+  });
+
+  const paths = res.items.map((item) => {
     return {
-      paths,
-      fallback: false
-    }
-}
+      params: { slug: item.fields.slug },
+      
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
 
 // Genarate Props - 該当するPathの情報だけ呼び出す
 export const getStaticProps = async ({ params }) => {
-    const { items } = await client.getEntries({
-      content_type: 'article',
+
+  const { items } = await client.getEntries({
+    content_type: "article",
     //   getStaticPathで呼び出したデータがあるので、params.slugを使うと、現在のページのslugとなる
-      'fields.slug': params.slug
-    })
-  
-    return {
-      props: { article: items[0] }
-    }
-  
+    "fields.slug": params.slug,
+  });
+
+  // 関連記事のデータを取得（ここでは例としてすべての記事を取得しています。実際には適切なクエリを定義する必要があります。）
+  const relatedArticles = await client.getEntries({
+    content_type: "article",
+    limit: 3,  // 例：3つの関連記事を取得
+    "fields.slug[ne]": params.slug,  // 現在の記事を除外
+  });
+
+
+  return {
+    props: { 
+      article: items[0],
+      relatedArticles: relatedArticles.items,  // 関連記事のデータを渡す
+    },
+  };
+};
+
+export default function ContentDetail({ article, relatedArticles }) {
+  // articleが存在することをチェック
+  if (!article) {
+    return <div>Article not found</div>;
   }
 
-export default function ContentDetail({article}){
-    const {featuredImage,title,timetoFinish,mainText  } = article.fields
-    return(
-        <div className={styles.detailArticle}>
-            <div className='banner'>
-                <Image 
-                src={'https://' + featuredImage.fields.file.url}
-                width={featuredImage.fields.file.details.image.width}
-                height={featuredImage.fields.file.details.image.height}
-                />
-            </div>
-            <h2>{title}</h2>
-            <div className='info'>
-                <p>{timetoFinish}mins to cook</p>
-            </div>
-            <div className='mainText'>
-                {documentToReactComponents(mainText)}
-            </div>
-        </div>
+  const { featuredImage, title, timetoFinish, mainText } = article.fields;
 
-        
-        
-    )
+  return (
+    <div className="">
+      <Header />
+      <EyecatchEpisode article={article} />
+      {relatedArticles.map((relatedArticles) => (
+        <EpisodeCard key={relatedArticles.sys.id} article={relatedArticles} />
+      ))}
+    </div>
+  );
 }

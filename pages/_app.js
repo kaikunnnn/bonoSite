@@ -12,50 +12,17 @@ import {doc, onSnapshot, collection, getDocs} from "firebase/firestore"
 import Auth from '../components/element/Auth'
 
 function MyApp({ Component, pageProps }) {
-
-  const [supabaseClient] = useState(() => createBrowserSupabaseClient())
-
-  // Output firebase's data
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    // get data from firebase database
-    const postData = collection(db, "posts");
-    getDocs(postData).then((snapShot) => {
-      setPosts(snapShot.docs.map(
-        (doc) => ({...doc.data()})
-      ))
-    })
-
-    // Get the data on real time
-    onSnapshot(postData, (post) => {
-      setPosts(post.docs.map(
-        (doc) => ({...doc.data()})
-      ))
-    },(error) =>{
-      console.error("Snapshot Error: ", error);
-    })
-
-  }, [])
-
-
   return (
     
-      <SessionContextProvider
-      supabaseClient={supabaseClient}
-      initialSession={pageProps.initialSession}>
-        {/* Make Auth Function from firebase */}
-        <Auth />
+      // <SessionContextProvider>
+      //   {/* Make Auth Function from firebase */}
+      //   <Auth />
         
-        {/* Display the data from firebase */}
-        <div>{posts.map((post) => (
-          <div key={post.title}>
-            <h1>{post.title}</h1>
-            <p>{post.text}</p>
-          </div>
-        ))}</div>
+        <div className=' bg-bgColor-secondary '>
           <Component {...pageProps} />
-      </SessionContextProvider>
+        </div>
+          
+      // </SessionContextProvider>
 
       
   )
