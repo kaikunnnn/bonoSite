@@ -1,30 +1,21 @@
-import '@/styles/globals.css'
-
-import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import { SessionContextProvider } from '@supabase/auth-helpers-react'
-import { useEffect, useState } from 'react'
-
-// Firebase
-import { db } from '../firebase'
-import {doc, onSnapshot, collection, getDocs} from "firebase/firestore"
-
-// Component
-import Auth from '../components/element/Auth'
+import SEO from "@/components/SEO";
+import "@/styles/globals.css";
+import "@/styles/bg-category.css";
 
 function MyApp({ Component, pageProps }) {
-  return (
-    
-      // <SessionContextProvider>
-      //   {/* Make Auth Function from firebase */}
-      //   <Auth />
-        
-        <div className=' bg-bgColor-secondary '>
-          <Component {...pageProps} />
-        </div>
-          
-      // </SessionContextProvider>
-
-      
-  )
+  return (<>
+    <SEO 
+    title="荻窪で個人開発する1人デザイナーの日常 | BONOブログ" 
+    description="テストのディスクリプション" 
+    imgUrl="https:kaikun.bo-no.blog/ogp-bonoblog.jpg"
+    ogTitle="BONO BLOG"
+    ogDescription="UI/UXの動画コンテンツコミュニティ「BONO」を運営するカイクンの個人ブログです。"
+    ogWidth='1200'
+    ogHeight="600">
+    </SEO>
+    <div className="max-h-full bg-Top bg-cover text-slate-900 bg-no-repeat">
+      <Component {...pageProps} />
+    </div>
+ </>);
 }
-export default MyApp
+export default MyApp;

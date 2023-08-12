@@ -3,6 +3,43 @@ import { createClient } from "contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Header from "@/components/layout/Header";
 import EyecatchEpisode from "@/components/layout/EyecatchEpisode";
+import SEO from "@/components/SEO";
+
+
+
+export default function ContentDetail({ article, relatedArticles }) {
+  // articleが存在することをチェック
+  if (!article) {
+    return <div>Article not found</div>;
+  }
+
+  const { featuredImage, title, timetoFinish, mainText } = article.fields;
+
+  return (<>
+    <SEO 
+            title={title} 
+            // description={props.description} imgUrl={`${props.emoji.url}`}
+            
+            ogTitle={`${title} | BONO BLOG`}
+            // ogDescription={props.description} 
+            // ogWidth='160'
+            // ogHeight="160"
+            >
+    </SEO>
+    <div className="">
+      <Header />
+      <div className="ContentSection m-auto py-12 w-10/12">
+        <EyecatchEpisode article={article} /> 
+      </div>
+      <div className="RelatedSection">
+        {relatedArticles.map((relatedArticles) => (
+          <EpisodeCard key={relatedArticles.sys.id} article={relatedArticles} />
+        ))}
+      </div>
+    </div>
+  </>);
+}
+
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -44,7 +81,6 @@ export const getStaticProps = async ({ params }) => {
     "fields.slug[ne]": params.slug,  // 現在の記事を除外
   });
 
-
   return {
     props: { 
       article: items[0],
@@ -52,22 +88,3 @@ export const getStaticProps = async ({ params }) => {
     },
   };
 };
-
-export default function ContentDetail({ article, relatedArticles }) {
-  // articleが存在することをチェック
-  if (!article) {
-    return <div>Article not found</div>;
-  }
-
-  const { featuredImage, title, timetoFinish, mainText } = article.fields;
-
-  return (
-    <div className="">
-      <Header />
-      <EyecatchEpisode article={article} />
-      {relatedArticles.map((relatedArticles) => (
-        <EpisodeCard key={relatedArticles.sys.id} article={relatedArticles} />
-      ))}
-    </div>
-  );
-}

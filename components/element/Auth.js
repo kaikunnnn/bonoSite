@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Auth.module.css"
-import SignInButton from "./SignInButton";
+import GoogleSignInButton from "../buttons/GoogleSignInButton";
 import {useAuthState} from "react-firebase-hooks/auth";
 import { auth } from "../../firebase";
 import UserInfo from "./UserInfo";
@@ -41,12 +41,11 @@ function Auth() {
                   <h2>Welcome, Premium Growth user!</h2>
                 )
               )}
-              <SignOutButton />
+              <GoogleSignOutButton />
             </>
           ) : (
             <>
-              <h1 className={style.h1}>Login / Sign Up</h1>
-              <SignInButton />
+              <GoogleSignInButton />
             </>
           )}
       </div>
