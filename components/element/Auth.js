@@ -4,7 +4,7 @@ import GoogleSignInButton from "../buttons/GoogleSignInButton";
 import {useAuthState} from "react-firebase-hooks/auth";
 import { auth } from "../../firebase";
 import UserInfo from "./UserInfo";
-import SignOutButton from "./SignOutButton";
+import SignOutButton from "../buttons/SignOutButton";
 
 // stripe firebase account auth
 import { createCheckoutSession } from '../../stripe/createCheckoutSession';
@@ -41,7 +41,7 @@ function Auth() {
                   <h2>Welcome, Premium Growth user!</h2>
                 )
               )}
-              <GoogleSignOutButton />
+              <SignOutButton />
             </>
           ) : (
             <>
@@ -49,29 +49,6 @@ function Auth() {
             </>
           )}
       </div>
-
-        // <div>
-        //   {user?(
-        //     <>
-        //         <UserInfo />
-        //         {!userIsPremium ? (
-        //           <button onClick={async () => await createCheckoutSession()}>
-        //              Upgrade to premium!
-        //            </button>
-        //         ) : (
-        //           /* ユーザーがプレミアム会員ならプレミアム会員メッセージを表示 */
-        //           <h2>Have a cookie 🍪 Premium customer!</h2>
-        //         )}
-        //         <SignOutButton />
-        //     </>
-        //   ) : (
-        //     <>
-        //         <h1 className={style.h1}>Login / Sign Up</h1>
-        //         <SignInButton />
-        //     </>
-        //   )}
-            
-        // </div>
         
     )
 }
