@@ -13,17 +13,16 @@ const Header = (props) => {
   return (
     <>
       <div className="Header w-full fixed py-8 h-16 px-6 justify-between items-center gap-96 inline-flex">
-        <div className="LogoBono w-28 h-8 relative">
+        <div className="LogoBono w-20 md:w-28 h-8 relative">
           <Link href="/">
             <Image src="/bono/logo.svg" width={88} height={32} alt="BONO"/>
-
           </Link>
         </div>
 
         {/* Distribute by user - ユーザーごとに出しわけ */}
         {user ? (
           <>
-           <div className="Actionblock h-5 justify-between items-center gap-2.5 flex">
+           <div className="Actionblock  justify-between items-center gap-2.5 flex">
               <Link href="/profile">
                 <div className=" text-right text-black text-base font-normal">
                   マイページ
@@ -34,7 +33,7 @@ const Header = (props) => {
 
         ) : (
           <>
-          <div className="Actionblock h-5 justify-between items-center gap-2.5 flex">
+          <div className="Actionblock justify-between items-center gap-2.5 flex">
             <Link href="/login">
               <span>ログイン</span>
             </Link>

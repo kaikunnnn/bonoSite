@@ -28,7 +28,7 @@ export default function ContentDetail({ article, relatedArticles }) {
     </SEO>
     <div className="">
       <Header />
-      <div className="ContentSection m-auto py-12 w-10/12">
+      <div className="ContentSection m-auto py-12 w-11/12 md:w-10/12">
         <EyecatchEpisode article={article} /> 
       </div>
       <div className="RelatedSection">

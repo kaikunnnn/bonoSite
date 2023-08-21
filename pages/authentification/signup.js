@@ -3,7 +3,7 @@ import Auth from "@/components/element/Auth";
 import Header from "@/components/layout/Header";
 
 
-import { auth } from "../firebase";
+import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from 'next/router'; // Next.jsのuseRouterをインポートします
 import { useEffect } from "react"; // useEffectも必要です
@@ -12,7 +12,7 @@ import React, { useState } from "react";
 
 
 
-const LoginPage = () => {
+const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,7 +47,7 @@ const handleLoginLogic = (email, password) => {
     });
 };
 
-  const handleLogin = (e) => {
+  const handleSignUp = (e) => {
     e.preventDefault();
 
     // メールアドレスとパスワードの空チェック
@@ -65,8 +65,16 @@ const handleLoginLogic = (email, password) => {
         setPasswordError(""); // エラーをクリア
       }
   
-    // ログイン処理
-    handleLoginLogic(email, password);
+    // 新規登録処理
+    auth.createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        var user = userCredential.user;
+        // 他の処理（リダイレクト）
+        router.push(`/`)
+      })
+      .catch((error) => {
+        setGeneralError("新規登録に失敗しました。再度お試しください。")
+      })
   };
 
   return (
@@ -80,7 +88,7 @@ const handleLoginLogic = (email, password) => {
             <div className="Left w-96 h-96 justify-center items-center gap-2.5 inline-flex">
               <div className="Wrapper flex-col justify-start items-start gap-10 inline-flex">
                 <div className="Title text-black text-3xl font-bold leading-10 tracking-wide">
-                  BONOラジをはじめよう
+                  新規登録
                 </div>
                 <div className="WrapperLogin self-stretch  flex-col justify-start items-start gap-6 flex">
                   <div className="BlockFormlogin self-stretch flex-col justify-start items-start gap-5 flex">
@@ -133,9 +141,9 @@ const handleLoginLogic = (email, password) => {
                       {generalError && <div className="error-message">{generalError}</div>}
                     </p>
                     {/* Button */}
-                    <div onClick={handleLogin} className="Button cursor-pointer self-stretch p-4 bg-blue-500 rounded-lg border-1 border-neutral-200 justify-center items-center gap-2.5 inline-flex">
-                      <div className=" text-white text-sm font-bold leading-snug tracking-wide">
-                        ログイン
+                    <div onClick={handleSignUp} className="Button cursor-pointer self-stretch p-4 bg-blue-500 rounded-lg border-1 border-neutral-200 justify-center items-center gap-2.5 inline-flex">
+                      <div className="text-white text-sm font-bold leading-snug tracking-wide">
+                        新規登録
                       </div>
                     </div>
                   </div>
@@ -165,4 +173,4 @@ const handleLoginLogic = (email, password) => {
   );
 };
 
-export default LoginPage;
+export default SignUp;
