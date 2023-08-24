@@ -4,6 +4,8 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Header from "@/components/layout/Header";
 import EyecatchEpisode from "@/components/layout/EyecatchEpisode";
 import SEO from "@/components/SEO";
+import { getArticles, getArticleBySlug } from '@/libs/newt';
+
 
 
 
@@ -55,7 +57,6 @@ export const getStaticPaths = async () => {
   const paths = res.items.map((item) => {
     return {
       params: { slug: item.fields.slug },
-      
     };
   });
 
