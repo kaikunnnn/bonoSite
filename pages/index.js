@@ -63,13 +63,7 @@ export default function Home({ article,newtArticles }) {
       <div className="HomeEyecatch w-full flex justify-center pt-20 mb-12">
         <TopHero />
       </div>
-      {
-        newtArticles.map(article => (
-          <div key={article._id}>
-            <Link href={`/articles/${article.slug}`}>{article.title}</Link>
-          </div>
-        ))
-      }
+      
 
       {/* Article List from Contentful*/}
       <div className="Article m-auto w-7/12 grid text-center lg:mb-0  lg:text-left">
@@ -80,9 +74,11 @@ export default function Home({ article,newtArticles }) {
           initial="hidden"
           animate="show"
         >
-          {article.map((article) => (
-            <EpisodeCard key={article.sys.id} article={article} />
-          ))}
+          {
+            newtArticles.map(article => (
+                <EpisodeCard key={article._id} article={article} />
+            ))
+          }
         </motion.ul>
       </div>
       <FooterBlock />

@@ -18,31 +18,29 @@ const item = {
 };
 
 export default function EpisodeCard({ article }) {
-  console.log(article.fields);
-  const { title, slug, emoji, category } = article.fields;
-  const { createdAt } = article.sys;
+  console.log(article);
 
   return (
     <>
-      <Link href={"/content/" + slug} className="hover:opacity-80">
+      <Link href={`/content/${article.slug}`} className="hover:opacity-80">
         <motion.li
           variants={item}
           className="hover:bg-gray-100 bg-white rounded-2xl p-3 md:p-3 pr-3 md:pr-6  min-h-full shadow-sm list-none	"
-          key={slug}
+          key={article.slug}
         >
           <div className="flex content-between items-center gap-3 md:gap-8">
-            <div className={`flex items-center justify-center content bg-${category} w-4/12 md:w-4/12 md:h-32 h-16 py-10  rounded-xl`}>
+            <div className={`flex items-center justify-center content bg-${article.tags?.slug} w-4/12 md:w-4/12 md:h-32 h-16 py-10  rounded-xl`}>
               <img
                 className="md:w-16 md:h-16 w-8 h-8"
-                src={`https:${emoji.fields.file.url}` }
+                src={article.emoji?.src}
               ></img>
             </div>
             <div className="w-8/12 flex flex-col gap-1 md:gap-2">
               <h4 className="text-lg md:text-base text-slate-900 font-bold text-left	">
-                {title}
+                {article.title}
               </h4>
               <time dateTime="" className="text-xs text-left	 text-gray-400">
-                {createdAt}
+               {article.tags?._sys.createdAt}
               </time>
             </div>
           </div>

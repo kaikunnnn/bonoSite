@@ -34,7 +34,7 @@ const Header = (props) => {
         ) : (
           <>
           <div className="Actionblock justify-between items-center gap-2.5 flex">
-            <Link href="/login">
+            <Link href="authentification/login">
               <span>ログイン</span>
             </Link>
           </div>
