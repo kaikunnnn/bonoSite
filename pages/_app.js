@@ -1,63 +1,21 @@
-import '@/styles/globals.css'
-
-import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import { SessionContextProvider } from '@supabase/auth-helpers-react'
-import { useEffect, useState } from 'react'
-
-// Firebase
-import { db } from '../firebase'
-import {doc, onSnapshot, collection, getDocs} from "firebase/firestore"
-
-// Component
-import Auth from '../components/element/Auth'
+import SEO from "@/components/SEO";
+import "@/styles/globals.css";
+import "@/styles/bg-category.css";
 
 function MyApp({ Component, pageProps }) {
-
-  const [supabaseClient] = useState(() => createBrowserSupabaseClient())
-
-  // Output firebase's data
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    // get data from firebase database
-    const postData = collection(db, "posts");
-    getDocs(postData).then((snapShot) => {
-      setPosts(snapShot.docs.map(
-        (doc) => ({...doc.data()})
-      ))
-    })
-
-    // Get the data on real time
-    onSnapshot(postData, (post) => {
-      setPosts(post.docs.map(
-        (doc) => ({...doc.data()})
-      ))
-    },(error) =>{
-      console.error("Snapshot Error: ", error);
-    })
-
-  }, [])
-
-
-  return (
-    
-      <SessionContextProvider
-      supabaseClient={supabaseClient}
-      initialSession={pageProps.initialSession}>
-        {/* Make Auth Function from firebase */}
-        <Auth />
-        
-        {/* Display the data from firebase */}
-        <div>{posts.map((post) => (
-          <div key={post.title}>
-            <h1>{post.title}</h1>
-            <p>{post.text}</p>
-          </div>
-        ))}</div>
-          <Component {...pageProps} />
-      </SessionContextProvider>
-
-      
-  )
+  return (<>
+    <SEO 
+    title="荻窪で個人開発する1人デザイナーの日常 | BONOブログ" 
+    description="テストのディスクリプション" 
+    imgUrl="https:kaikun.bo-no.blog/ogp-bonoblog.jpg"
+    ogTitle="BONO BLOG"
+    ogDescription="UI/UXの動画コンテンツコミュニティ「BONO」を運営するカイクンの個人ブログです。"
+    ogWidth='1200'
+    ogHeight="600">
+    </SEO>
+    <div className="max-h-full bg-Top bg-cover text-slate-900 bg-no-repeat">
+      <Component {...pageProps} />
+    </div>
+ </>);
 }
-export default MyApp
+export default MyApp;

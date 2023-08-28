@@ -1,52 +1,87 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import Header from '@/components/Header';
-import { createClient } from 'contentful';
-import ArticleCard from '@/components/ArticleCard';
+import { Inter } from "next/font/google";
+import { createClient } from "contentful";
+import { motion, Variants  } from "framer-motion"
 
+// Newt
+import { getArticles } from "@/libs/newt";
 
+// Components
+import Header from "@/components/layout/Header";
+import ArticleCard from "@/components/EpisodeCard";
+import EpisodeCard from "@/components/EpisodeCard";
+import TitleSection from "@/components/element/TitleSection";
+import SunTop from "@/components/element/SunTop";
+import FooterBlock from "@/components/layout/Footer";
+import TopHero from "@/components/element/TopHero";
+import Link from "next/link";
+
+// Framer Motion
+const ullist = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+        staggerChildren: 0.48,
+        delay:0.24,
+    },
+  },
+}
 
 // Get the contentful data
 export async function getStaticProps() {
   const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
-  })
+  });
 
-  const res = await client.getEntries({content_type: 'article'})
+  const res = await client.getEntries({ content_type: "article" });
 
-  return{
-    props:{
-      article: res.items
-    }
-  }
+  // Fetch articles from Newt
+  const articles = await getArticles();
+  console.log('Newt Articles:', articles); // コンソールに出力
+
+
+  return {
+    props: {
+      article: res.items,
+      newtArticles: articles, 
+    },
+  };
 }
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({article}) {
+export default function Home({ article,newtArticles }) {
+  console.log('Newt Articles in Component:', newtArticles); // コンポーネント内での出力
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="max-h-full bg-Top bg-cover text-slate-900 bg-no-repeat">
+      
       <Header />
-      <div className="p-48 relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <SunTop />
+      <div className="HomeEyecatch w-full flex justify-center pt-20 mb-12">
+        <TopHero />
       </div>
+      
 
       {/* Article List from Contentful*/}
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-       {article.map(article =>(
-        <ArticleCard key={article.sys.id} article={article}/>
-       ))}
-
+      <div className="Article m-auto w-7/12 grid text-center lg:mb-0  lg:text-left">
+        <TitleSection />
+        <motion.ul
+          className="flex-col flex gap-3"
+          variants={ullist}
+          initial="hidden"
+          animate="show"
+        >
+          {
+            newtArticles.map(article => (
+                <EpisodeCard key={article._id} article={article} />
+            ))
+          }
+        </motion.ul>
       </div>
+      <FooterBlock />
     </main>
-  )
+  );
 }
-

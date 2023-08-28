@@ -1,68 +1,51 @@
-import { createClient } from 'contentful'
-import Image from 'next/image'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import styles from './slug.module.css'
+import Header from "@/components/layout/Header";
+import EyecatchEpisode from "@/components/layout/EyecatchEpisode";
+import SEO from "@/components/SEO";
+
+// Newt
+import { getArticles, getArticleBySlug } from '@/libs/newt';
 
 
 
-const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
-  })
-
-// Generate Paths - 一旦全てのPathを呼び出す
-export const getStaticPaths = async () => {
-    const res = await client.getEntries({ 
-      content_type: "article" 
-    })
-  
-    const paths = res.items.map(item => {
-      return {
-        params: { slug: item.fields.slug }
-      }
-    })
-  
-    return {
-      paths,
-      fallback: false
-    }
+// [article]のパスを生成する
+export async function getStaticPaths() {
+  const articles = await getArticles();
+  const paths = articles.map((article) => ({
+    params: { slug: article.slug },
+  }));
+  return { paths, fallback: false };
 }
 
-// Genarate Props - 該当するPathの情報だけ呼び出す
-export const getStaticProps = async ({ params }) => {
-    const { items } = await client.getEntries({
-      content_type: 'article',
-    //   getStaticPathで呼び出したデータがあるので、params.slugを使うと、現在のページのslugとなる
-      'fields.slug': params.slug
-    })
-  
-    return {
-      props: { article: items[0] }
-    }
-  
+// データから情報を取ってくる
+export async function getStaticProps({ params }) {
+  const article = await getArticleBySlug(params.slug);
+  return { props: { article } };
+}
+
+export default function ContentDetail({ article }) {
+  // articleが存在することをチェック
+  if (!article) {
+    return <div>Article not found</div>;
   }
 
-export default function ContentDetail({article}){
-    const {featuredImage,title,timetoFinish,mainText  } = article.fields
-    return(
-        <div className={styles.detailArticle}>
-            <div className='banner'>
-                <Image 
-                src={'https://' + featuredImage.fields.file.url}
-                width={featuredImage.fields.file.details.image.width}
-                height={featuredImage.fields.file.details.image.height}
-                />
-            </div>
-            <h2>{title}</h2>
-            <div className='info'>
-                <p>{timetoFinish}mins to cook</p>
-            </div>
-            <div className='mainText'>
-                {documentToReactComponents(mainText)}
-            </div>
-        </div>
+  console.log(article);
 
-        
-        
-    )
+  return (<>
+    <SEO 
+            title={article.title} 
+            // description={props.description} imgUrl={`${props.emoji.url}`}
+            
+            ogTitle={`${article.title} | BONO BLOG`}
+            // ogDescription={props.description} 
+            // ogWidth='160'
+            // ogHeight="160"
+            >
+    </SEO>
+    <div className="">
+      <Header />
+      <div className="ContentSection m-auto py-12 w-11/12 md:w-10/12">
+        <EyecatchEpisode article={article} /> 
+      </div>
+    </div>
+  </>);
 }
