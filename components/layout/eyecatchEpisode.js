@@ -34,18 +34,44 @@ const EyecatchEpisode = ({ article }) => {
           </div>
 
           <div className="m-12"></div>
+          
+          {/* Video Block */}
+              {/* <div>
+                {article.video ? (
+                  <>
+                  <div>
+                    <div dangerouslySetInnerHTML={{ __html: article.video.html }}></div>
+                  </div>
+                  </>
+                  ) : (
+                    <></>
+                )}
+              </div> */}
           {/* Audio Block */}
-          <div>
-            {article.video ? (
-              <>
-              <div>
-                <div dangerouslySetInnerHTML={{ __html: article.video.html }}></div>
+              {/* {audio ? (
+                <div className="Podcastplayer w-full p-4 bg-white rounded-xl shadow-sm border border-gray-900 border-opacity-10 flex-col justify-start items-start gap-4 inline-flex">
+                <div className="Detailblock w-full justify-start items-center gap-4 inline-flex">
+                  <img className="Image1 w-20 h-20 rounded-lg" src="https://via.placeholder.com/88x88" />
+                  <div className="DivContent w-full grow shrink basis-0 flex-col justify-start items-start gap-2 inline-flex">
+                    <div className="Bono2023 text-black text-opacity-70 text-base font-semibold leading-normal">ヘルシーなモチベが生まれる場をデザインしたいBONOの2023年。失敗とやること。</div>
+                    <div className="Detailinfo justify-start items-start gap-1.5 inline-flex">
+                      <div className=" text-pink-500 text-xs font-semibold leading-none">BONOラジオ</div>
+                      <div className=" text-zinc-500 text-xs font-bold leading-none">2021.12.20</div>
+                    </div>
+                  </div>
+                </div>
+                  <audio controls className="BlockAudio w-full flex-col justify-start items-start gap-2.5 flex">
+                      <source
+                        src={audio}
+                        type="audio/ogg"
+                      />
+                      <source src="path_to_your_audio_file.mp3" type="audio/mpeg" />
+                      Your browser does not support the audio element.
+                  </audio>
               </div>
-              </>
-              ) : (
-                <></>
-            )}
-          </div>         
+                ) : (
+                  <></>
+              )}    */}
 
           <div className="m-12"></div>
 

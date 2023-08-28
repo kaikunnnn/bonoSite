@@ -26,7 +26,7 @@ function TopHero() {
         HOPE.
       </h1>
       <p className="text-xs md:text-sm tracking-wider text-gray-400">
-      荻窪で個人開発する1人デザイナーの日常
+      東京で個人開発するデザイナーの日常
       </p>
     </motion.div>
   );
