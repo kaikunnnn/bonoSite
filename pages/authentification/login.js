@@ -80,7 +80,7 @@ const handleLoginLogic = (email, password) => {
             <div className="Left w-96 h-96 justify-center items-center gap-2.5 inline-flex">
               <div className="Wrapper flex-col justify-start items-start gap-10 inline-flex">
                 <div className="Title text-black text-3xl font-bold leading-10 tracking-wide">
-                  BONOラジをはじめよう
+                  見たな...実験中だぞ....
                 </div>
                 <div className="WrapperLogin self-stretch  flex-col justify-start items-start gap-6 flex">
                   <div className="BlockFormlogin self-stretch flex-col justify-start items-start gap-5 flex">
