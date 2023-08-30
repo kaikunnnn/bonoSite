@@ -7,7 +7,6 @@ import { getArticles } from "@/libs/newt";
 
 // Components
 import Header from "@/components/layout/Header";
-import ArticleCard from "@/components/EpisodeCard";
 import EpisodeCard from "@/components/EpisodeCard";
 import TitleSection from "@/components/element/TitleSection";
 import SunTop from "@/components/element/SunTop";
