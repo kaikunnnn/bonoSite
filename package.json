@@ -21,7 +21,7 @@
     "dayjs": "^1.11.9",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
-    "firebase": "^8.6.8",
+    "firebase": "^10.3.0",
     "framer-motion": "^10.15.1",
     "newt-client-js": "^3.2.6",
     "next": "13.3.0",

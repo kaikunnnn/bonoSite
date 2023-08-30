@@ -10,10 +10,11 @@ function GoogleSignInButton() {
   const router = useRouter();
 
   const SignInWithGoogle = () => {
-
+    console.log("auth object:", auth);  // <- ここでauthオブジェクトを確認
+    console.log("provider object:", provider);  // <- ここでproviderオブジェクトを確認
     console.log("useEffect triggered!"); // useEffectがトリガーされたときにログを表示
   
-    firebase.auth().signInWithPopup(provider)
+    auth.signInWithPopup(provider)
       .then(async (result) => {
         console.log("User data:", result.user); // ユーザーデータをログに表示
         const user = result.user;
