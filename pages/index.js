@@ -30,12 +30,6 @@ const ullist = {
 
 // Get the contentful data
 export async function getStaticProps() {
-  const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
-  });
-
-  const res = await client.getEntries({ content_type: "article" });
 
   // Fetch articles from Newt
   const articles = await getArticles();
@@ -44,7 +38,6 @@ export async function getStaticProps() {
 
   return {
     props: {
-      article: res.items,
       newtArticles: articles, 
     },
   };
