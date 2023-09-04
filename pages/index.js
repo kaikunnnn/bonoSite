@@ -1,5 +1,4 @@
 import { Inter } from "next/font/google";
-import { createClient } from "contentful";
 import { motion, Variants  } from "framer-motion"
 
 // Newt
@@ -10,7 +9,6 @@ import Header from "@/components/layout/Header";
 import EpisodeCard from "@/components/EpisodeCard";
 import TitleSection from "@/components/element/TitleSection";
 import SunTop from "@/components/element/SunTop";
-import FooterBlock from "@/components/layout/Footer";
 import TopHero from "@/components/element/TopHero";
 import Link from "next/link";
 
@@ -73,7 +71,6 @@ export default function Home({ article,newtArticles }) {
           }
         </motion.ul>
       </div>
-      <FooterBlock />
     </main>
   );
 }

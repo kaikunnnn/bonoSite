@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import dayjs from "dayjs";
 import { motion, Variants } from "framer-motion";
 
 // Framer Motion Style
@@ -39,9 +39,13 @@ export default function EpisodeCard({ article }) {
               <h4 className="text-lg md:text-base text-slate-900 font-bold text-left	">
                 {article.title}
               </h4>
-              <time dateTime="" className="text-xs text-left	 text-gray-400">
-               {article.tags?._sys.createdAt}
-              </time>
+              <div className="flex gap-3">
+                <span className="text-xs text-left text-gray-400">{article.tags.name}</span>
+                <time dateTime="" className="text-xs text-left	 text-gray-400">
+                {dayjs(article.tags._sys.createdAt).format("YYYY年MM月DD日")}
+                </time>
+              </div>
+              
             </div>
           </div>
         </motion.li>
