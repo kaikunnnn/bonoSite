@@ -50,10 +50,10 @@ export default function Home({ article,newtArticles }) {
       
       <Header />
       <SunTop />
+
       <div className="HomeEyecatch w-full flex justify-center pt-20 mb-12">
         <TopHero />
       </div>
-      
 
       {/* Article List from Contentful*/}
       <div className="Article m-auto w-7/12 grid text-center lg:mb-0  lg:text-left">

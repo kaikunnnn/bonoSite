@@ -31,16 +31,16 @@ export default function ContentDetail({ article }) {
   console.log(article);
 
   return (<>
-    <SEO 
+   <SEO 
             title={article.title} 
-            // description={props.description} imgUrl={`${props.emoji.url}`}
-            
+            description={article.body} 
+            imgUrl={`${article.emoji.src}`}
             ogTitle={`${article.title} | BONO BLOG`}
-            // ogDescription={props.description} 
-            // ogWidth='160'
-            // ogHeight="160"
-            >
-    </SEO>
+            ogDescription={article.body} 
+            ogWidth='160'
+            ogHeight="160">
+        </SEO>
+
     <div className="">
       <Header />
       <div className="ContentSection m-auto py-12 w-11/12 md:w-10/12">

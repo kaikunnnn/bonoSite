@@ -72,7 +72,10 @@ const handleLoginLogic = (email, password) => {
   return (
     <main className="min-h-screen flex-col bg-bgColor-secondary ">
       <Header />
-
+      <SEO
+        title="ログイン | 荻窪で個人開発する1人デザイナーの日常"
+        ogTitle="ログイン | 荻窪で個人開発する1人デザイナーの日常"
+      ></SEO>
       <div className="Wrapper w-full justify-start items-start md:inline-flex">
         {/* Left */}
         <div className="Left w-full md:w-1/2 h-max justify-center items-center gap-2.5 inline-flex">
