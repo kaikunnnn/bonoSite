@@ -31,8 +31,6 @@ export async function getStaticProps() {
 
   // Fetch articles from Newt
   const articles = await getArticles();
-  console.log('Newt Articles:', articles); // コンソールに出力
-
 
   return {
     props: {

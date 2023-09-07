@@ -9,7 +9,8 @@ function SunTop() {
       animate={{ opacity: 1,y: 0}} 
       transition={{ ease: "easeOut", duration: 2, delay:1 }}
       className="z-0 fixed  -bottom-48 -right-16" >
-      <Image  src="/sun.svg" alt="sun image" width={260} height={260} objectFit="contain" />
+      <Image  src="/sun.svg" alt="sun image" width={260} height={260} className="responsive" />
+
     </motion.div>
     
   );

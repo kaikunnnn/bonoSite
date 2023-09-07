@@ -28,7 +28,6 @@ export default function ContentDetail({ article }) {
     return <div>Article not found</div>;
   }
 
-  console.log(article);
 
   return (<>
    <SEO 

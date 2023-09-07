@@ -18,7 +18,6 @@ const item = {
 };
 
 export default function EpisodeCard({ article }) {
-  console.log(article);
 
   return (
     <>
