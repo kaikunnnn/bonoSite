@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'; // Next.jsのuseRouterをインポー�
 import { useEffect } from "react"; // useEffectも必要です
 
 import React, { useState } from "react";
+import SEO from "@/components/SEO";
 
 
 
