@@ -54,7 +54,7 @@ export default function Home({ article,newtArticles }) {
       </div>
 
       {/* Article List from Contentful*/}
-      <div className="Article m-auto w-7/12 grid text-center lg:mb-0  lg:text-left">
+      <div className="Article m-auto w-11/12 md:w-7/12 grid text-center lg:mb-0  lg:text-left">
         <TitleSection />
         <motion.ul
           className="flex-col flex gap-3"

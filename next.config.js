@@ -8,5 +8,6 @@ module.exports = nextConfig
 module.exports = {
   images: {
     domains: ['images.ctfassets.net'],
+    domains: ['bono.assets.newt.so'],
   },
 }

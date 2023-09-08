@@ -1,6 +1,7 @@
 import Link from "next/link";
 import dayjs from "dayjs";
 import { motion, Variants } from "framer-motion";
+import Image from "next/image";
 
 // Framer Motion Style
 const item = {
@@ -28,11 +29,8 @@ export default function EpisodeCard({ article }) {
           key={article.slug}
         >
           <div className="flex content-between items-center gap-3 md:gap-8">
-            <div className={`flex items-center justify-center content bg-${article.tags?.slug} w-4/12 md:w-4/12 md:h-32 h-16 py-10  rounded-xl`}>
-              <img
-                className="md:w-16 md:h-16 w-8 h-8"
-                src={article.emoji?.src}
-              ></img>
+            <div className={`flex items-center justify-center content bg-${article.tags?.slug} w-4/12 md:w-4/12 h-full md:h-32 py-10  rounded-xl`}>
+              <Image className="md:w-16 md:h-16 w-8 h-8" src={article.emoji?.src} width={48} height={48} alt="emoji Image" />
             </div>
             <div className="w-8/12 flex flex-col gap-1 md:gap-2">
               <h4 className="text-lg md:text-base text-slate-900 font-bold text-left	">

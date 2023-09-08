@@ -1,11 +1,12 @@
+import SEO from "@/components/SEO";
 import Header from "@/components/layout/Header";
 
 function PrivacyPolicy() {
   return (
     <>
       <SEO
-        title="Privacy Policy | 荻窪で個人開発する1人デザイナーの日常"
-        ogTitle="Privacy Policy | 荻窪で個人開発する1人デザイナーの日常"
+        title="Privacy Policy | 東京で個人開発する1人デザイナーの日常"
+        ogTitle="Privacy Policy | 東京で個人開発する1人デザイナーの日常"
       ></SEO>
       <main className="max-h-full bg-Top bg-cover text-slate-900 bg-no-repeat">
         <Header />
@@ -27,7 +28,7 @@ function PrivacyPolicy() {
           <div className="pt-8"></div>
           <h3>外部リンクについて</h3>
           <p>
-            当サイトは、外部のリンクを含む場合がありますが、外部サイトにおける個人情報の保護については、当サイトは責任を負いかねます。外部サイトへのリンクをクリックされた場合は、リンク先サイトのプライバシーポリシーを確認してください。
+            当サイトは、外部のリンクを含む場合がありますが、外部サイトにおける個人情報の保護については、当サイトは責任を負いかねます。外部サイトへのリンクをクリックする際は、リンク先サイトのプライバシーポリシーを確認してください。
           </p>
         </div>
       </main>
