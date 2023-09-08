@@ -12,10 +12,10 @@ function SEO({title,description,imgUrl,ogTitle,ogDescription,ogWidth,ogHeight}) 
       <meta property="og:site_name" content="BONO BLOG" />
       <meta property="og:description" content={ogDescription} />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content={imgUrl} />
+      <meta property="og:image" content="https://kaikun.bo-no.design/ogp-bonoblog.jpg" />
       <meta property="og:image:width" content={ogWidth} />
       <meta property="og:image:height" content={ogHeight}/>
-      <link rel="icon" href="https://kaikun.bo-no.design/favicon.ico" sizes="any"></link>
+      <link rel="icon" href="/favicon.ico" sizes="any"></link>
     </Head>
   )
 }
