@@ -44,6 +44,17 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home({ article,newtArticles }) {
   console.log('Newt Articles in Component:', newtArticles); // コンポーネント内での出力
   return (
+  <>
+    <SEO 
+      title="BONOブログ 東京で個人開発する1人デザイナーの日常" 
+      description="UIとUXのデザインスキルが身に付く動画コンテンツサービス「BONO」を運営するカイクンの個人ブログです。" 
+      imgUrl="https:kaikun.bo-no.blog/ogp-bonoblog.jpg"
+      ogTitle="BONOブログ 東京で個人開発する1人デザイナーの日常"
+      ogDescription="UIとUXのデザインスキルが身に付く動画コンテンツサービス「BONO」を運営するカイクンの個人ブログです。"
+      ogWidth='1200'
+      ogHeight="600">
+    </SEO>
+  
     <main className="max-h-full bg-Top bg-cover text-slate-900 bg-no-repeat">
       
       <Header />
@@ -70,5 +81,5 @@ export default function Home({ article,newtArticles }) {
         </motion.ul>
       </div>
     </main>
-  );
+  </> );
 }
