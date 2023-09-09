@@ -11,6 +11,7 @@ import TitleSection from "@/components/element/TitleSection";
 import SunTop from "@/components/element/SunTop";
 import TopHero from "@/components/element/TopHero";
 import Link from "next/link";
+import SEO from "@/components/SEO";
 
 // Framer Motion
 const ullist = {
@@ -45,7 +46,7 @@ export default function Home({ article,newtArticles }) {
   console.log('Newt Articles in Component:', newtArticles); // コンポーネント内での出力
   return (
   <>
-    <SEO 
+    <SEO
       title="BONOブログ 東京で個人開発する1人デザイナーの日常" 
       description="UIとUXのデザインスキルが身に付く動画コンテンツサービス「BONO」を運営するカイクンの個人ブログです。" 
       imgUrl="https:kaikun.bo-no.blog/ogp-bonoblog.jpg"
