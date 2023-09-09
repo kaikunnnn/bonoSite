@@ -7,6 +7,7 @@ function PrivacyPolicy() {
       <SEO
         title="Privacy Policy | 東京で個人開発する1人デザイナーの日常"
         ogTitle="Privacy Policy | 東京で個人開発する1人デザイナーの日常"
+        description=""
       ></SEO>
       <main className="max-h-full bg-Top bg-cover text-slate-900 bg-no-repeat">
         <Header />
