@@ -24,11 +24,7 @@ export async function getStaticProps({ params }) {
 }
 
 export default function ContentDetail({ article }) {
-  // articleが存在することをチェック
-  if (!article) {
-    return <div>Article not found</div>;
-  }
-
+  
    // Description: HTMLをプレーンテキストに変換
    const [articleDescription, setArticleDescription] = useState(""); // ステートを作成
 
@@ -42,6 +38,11 @@ export default function ContentDetail({ article }) {
 
       setArticleDescription(textContent);  // ステートを更新
     }, [article]);  // 依存配列にarticleを追加
+
+    // articleが存在することをチェック
+  if (!article) {
+    return <div>Article not found</div>;
+  }
  
 
   return (<>
