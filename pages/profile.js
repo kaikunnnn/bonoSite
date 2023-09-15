@@ -9,6 +9,7 @@ import SignOutButton from "../components/buttons/SignOutButton";
 import { createCheckoutSession } from '../stripe/createCheckoutSession';
 import usePremiumStatus from "../stripe/usePremiumStatus";
 import Header from "@/components/layout/Header";
+import List from "@/components/element/object/list";
 
 
 // Product ID
@@ -23,10 +24,11 @@ function Profile() {
     return(
       <main className="max-h-full bg-Top bg-cover text-slate-900 bg-no-repeat">
         <Header />
-        <div className="Profile">
+        <div className="Profile m-auto w-8/12 md:w-4/12 grid text-center lg:mb-0  lg:text-left">
           {user ? (
               <>
                 <UserInfo />
+                <div className="mt-8"></div>
                 {userSubscriptionPlan === null ? (
                   <>
                     <button onClick={async () => await createCheckoutSession(product_standard_onemonth)}>
@@ -38,9 +40,21 @@ function Profile() {
                   </>
                 ) : (
                   userSubscriptionPlan === 'premium_standard' ? (
-                    <h2>Welcome, Premium Standard user!</h2>
+                    <>
+                      <h2>Welcome, Premium Standard user!</h2>
+                    </>
                   ) : (
-                    <h2>Welcome, Premium Growth user!</h2>
+                    <div>
+                      <h2>Welcome, Premium Growth user!</h2>
+                      <div className="mt-4"></div>
+                      <List
+                        label="プランの変更"
+                        content="ボタン→Change Password"
+                        buttonLabel="変更"
+                        buttonLink="/"
+                      ></List>
+                      <div className="mt-8"></div>
+                    </div>
                   )
                 )}
                 <SignOutButton />

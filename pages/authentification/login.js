@@ -1,5 +1,4 @@
 import GoogleSignInButton from "@/components/buttons/GoogleSignInButton";
-import Auth from "@/components/element/Auth";
 import Header from "@/components/layout/Header";
 
 
