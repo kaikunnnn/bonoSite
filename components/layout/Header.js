@@ -20,7 +20,7 @@ const Header = (props) => {
         </div>
 
         {/* Distribute by user - ユーザーごとに出しわけ */}
-        {user ? (
+        {/* {user ? (
           <>
            <div className="Actionblock  justify-between items-center gap-2.5 flex">
               <Link href="/profile">
@@ -39,7 +39,7 @@ const Header = (props) => {
             </Link>
           </div>
         </>
-        )}
+        )} */}
         
       </div>
     </>
