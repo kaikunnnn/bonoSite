@@ -7,9 +7,11 @@ import SignOutButton from "../components/buttons/SignOutButton";
 
 // stripe firebase account auth
 import { createCheckoutSession } from '../stripe/createCheckoutSession';
+import { createPotalLink } from "@/stripe/createPotalLink";
 import usePremiumStatus from "../stripe/usePremiumStatus";
 import Header from "@/components/layout/Header";
 import List from "@/components/element/object/list";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 
 
 // Product ID
@@ -28,30 +30,82 @@ function Profile() {
           {user ? (
               <>
                 <UserInfo />
-                <div className="mt-8"></div>
+                  <div className="mb-8"></div>
+                  <div className="divider border-b w-full"></div>
+                  <div className="mb-8"></div>
+
+                {/* サブスクリプションでの表示分岐 - 登録/サブスク状況 */}
                 {userSubscriptionPlan === null ? (
                   <>
-                    <button onClick={async () => await createCheckoutSession(product_standard_onemonth)}>
-                      Upgrade to Premium Standard!
-                    </button>
-                    <button onClick={async () => await createCheckoutSession(product_growth_onemonth)}>
-                      Upgrade to Premium Growth!
-                    </button>
+                    <div className="UpGrade-Growth">
+                       <List
+                        label="スタンダードプランへ変更"
+                        content="スタンダードプランへの登録はこちらから"
+                        buttonLink={""}
+                        buttonLabel="アップグレード"
+                        buttonOnClick={async () => await createCheckoutSession(product_standard_onemonth)}
+                      ></List>
+                    </div>
+                    <div className="mb-8"></div>
+                    <div className="UpGrade-Growth">
+                       <List
+                        label="グロースプランへ変更"
+                        content="グロースプランへの登録はこちらから"
+                        buttonLink={""}
+                        buttonLabel="アップグレード"
+                        buttonOnClick={async () => await createCheckoutSession(product_growth_onemonth)}
+                      ></List>
+                    </div>
+                    <div className="mb-8"></div>
+                    
                   </>
                 ) : (
                   userSubscriptionPlan === 'premium_standard' ? (
                     <>
-                      <h2>Welcome, Premium Standard user!</h2>
+                      <h2>Welcome, Premium <b>Standard user!</b></h2>
+                      <div className="mb-8"></div>
+                      <div className="divider border-b w-full"></div>
+                      <div className="mb-8"></div>
+                      <List
+                        label="プラン変更 『グロースプラン』"
+                        content="グロースプランへの登録はこちらから"
+                        buttonLink={""}
+                        buttonLabel="アップグレード"
+                        buttonOnClick={async () => await createCheckoutSession(product_growth_onemonth)}
+                      ></List>
+                      <div className="mb-8"></div>
+                      <div className="divider border-b w-full"></div>
+                      <div className="mb-8"></div>
+                      <List
+                        label="メンバーの解約"
+                        content="サブスクリプションの解約はこちらから"
+                        buttonLink={"https://billing.stripe.com/p/login/test_5kAaGv5La2cv2wo144"}
+                        buttonLabel="解約へ"
+                        buttonOnClick={""} 
+                      ></List>
+                      <div className="mb-8"></div>
+                      <div className="divider border-b w-full"></div>
+                      <div className="mb-8"></div>
                     </>
                   ) : (
                     <div>
-                      <h2>Welcome, Premium Growth user!</h2>
+                      <h2>Welcome, 『グロースプラン』</h2>
                       <div className="mt-4"></div>
                       <List
-                        label="プランの変更"
+                        label="プランの変更 スタンダードプラン"
                         content="ボタン→Change Password"
+                        buttonLink={""}
                         buttonLabel="変更"
-                        buttonLink="/"
+                        buttonOnClick={async () => await createCheckoutSession(product_standard_onemonth)}
+                      ></List>
+                      <div className="mb-8"></div>
+                      <div className="divider border-b w-full"></div>
+                      <div className="mb-8"></div>
+                      <List
+                        label="メンバーの解約"
+                        content="サブスクリプションの解約はこちらから"
+                        buttonLink={"https://billing.stripe.com/p/login/test_5kAaGv5La2cv2wo144"}
+                        buttonLabel="解約へ"
                       ></List>
                       <div className="mt-8"></div>
                     </div>
