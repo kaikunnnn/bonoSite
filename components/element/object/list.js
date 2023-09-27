@@ -1,6 +1,6 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 
-function List({label,content,buttonLabel,buttonLink}) {
+function List({label,content,buttonLabel,buttonLink,buttonOnClick}) {
   return (<>
   <div class="list-block">
           <div className="Left">
@@ -10,7 +10,7 @@ function List({label,content,buttonLabel,buttonLink}) {
             </div>
           </div>
           <div className="Right">
-            <PrimaryButton content={buttonLabel} link={buttonLink}></PrimaryButton>
+            <PrimaryButton onClick={buttonOnClick} content={buttonLabel} link={buttonLink}></PrimaryButton>
           </div>
         </div>
   </>
