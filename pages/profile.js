@@ -2,15 +2,17 @@ import React from "react";
 import GoogleSignInButton from "../components/buttons/GoogleSignInButton";
 import {useAuthState} from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
-import UserInfo from "../components/element/UserInfo";
-import SignOutButton from "../components/buttons/SignOutButton";
+
 
 // stripe firebase account auth
 import { createCheckoutSession } from '../stripe/createCheckoutSession';
-import { createPotalLink } from "@/stripe/createPotalLink";
 import usePremiumStatus from "../stripe/usePremiumStatus";
+
+// Component
 import Header from "@/components/layout/Header";
 import List from "@/components/element/object/list";
+import UserInfo from "../components/element/UserInfo";
+import SignOutButton from "../components/buttons/SignOutButton";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 
 

@@ -43,7 +43,6 @@ export async function getStaticProps() {
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ article,newtArticles }) {
-  console.log('Newt Articles in Component:', newtArticles); // コンポーネント内での出力
   return (
   <>
     <SEO
