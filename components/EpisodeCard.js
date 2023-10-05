@@ -19,7 +19,7 @@ const item = {
 };
 
 export default function EpisodeCard({ article }) {
-
+  console.log(article);
   return (
     <>
       <Link href={`/content/${article.slug}`} className="hover:opacity-80">

@@ -3,11 +3,29 @@ import dayjs from "dayjs";
 import React from "react";
 import Blockbonolink from "./BonoLinks/BonoLink";
 
+// firebase auth account
+import {useAuthState} from "react-firebase-hooks/auth";
+import { auth } from "../../firebase";
+
+// stripe firebase account auth
+import usePremiumStatus from "../../stripe/usePremiumStatus";
+
+// Product ID
+const product_standard_onemonth = "price_1LzDKnKUVUnt8Gtyly1TOV95"
+const product_growth_onemonth = "price_1LzDOvKUVUnt8GtyqgCtgDMQ"
+
+
 const EyecatchEpisode = ({ article }) => {
+  
   // articleが存在することをチェック
   if (!article) {
     return <div>Article not found</div>;
   }
+
+
+  // 現在ログインしているユーザーの情報を取得
+  const [user] = useAuthState(auth)
+  const userSubscriptionPlan = usePremiumStatus(user);
 
   return (
     <>
@@ -28,7 +46,7 @@ const EyecatchEpisode = ({ article }) => {
               dateTime={article.tags._sys.createdAt}
               className="text-center text-gray-500 font-semibold text-base"
             >
-              {dayjs(article.tags._sys.createdAt).format("YYYY年MM月DD日")}
+              {dayjs(article._sys.createdAt).format("YYYY年MM月DD日")}
             </time>
           </div>
 
@@ -77,14 +95,28 @@ const EyecatchEpisode = ({ article }) => {
           <hr className="w-2/12 m-auto border-gray-400" />
           <div className="m-12"></div>
 
-
-          <div className="
-          prose 
-          prose-h1:text-3xl
-          prose-lg 
-          prose-p:leading-loose
-          md:prose-xl 
-          m-auto " dangerouslySetInnerHTML={{ __html: article.body }} />
+          {/* Article Body */}
+          <div className="Article Body
+            prose 
+            prose-h1:text-3xl
+            prose-lg 
+            prose-p:leading-loose
+            md:prose-xl 
+            m-auto " dangerouslySetInnerHTML={{ __html: article.body }} 
+          />
+          {/* Switch Article Body */}
+          {userSubscriptionPlan === null ? (
+                    <>
+                      メンバーになるとこれ以上読めるよ！
+                    </>
+                  ) : (
+                    <>
+                      <div>
+                        読める人はメンバーだよ！
+                      </div>
+                    </>
+              )}
+         
           <div className="pt-12 pb-12">
             <hr className="w-full border-gray-300" />
             <p className="text-center pt-12 pb-12 font-medium ">
