@@ -17,15 +17,16 @@ const product_growth_onemonth = "price_1LzDOvKUVUnt8GtyqgCtgDMQ"
 
 const EyecatchEpisode = ({ article }) => {
   
+  // 現在ログインしているユーザーの情報を取得
+  const [user] = useAuthState(auth)
+  const userSubscriptionPlan = usePremiumStatus(user);
+  
   // articleが存在することをチェック
   if (!article) {
     return <div>Article not found</div>;
   }
 
 
-  // 現在ログインしているユーザーの情報を取得
-  const [user] = useAuthState(auth)
-  const userSubscriptionPlan = usePremiumStatus(user);
 
   return (
     <>
