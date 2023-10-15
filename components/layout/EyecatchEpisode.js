@@ -9,6 +9,7 @@ import { auth } from "../../firebase";
 
 // stripe firebase account auth
 import usePremiumStatus from "../../stripe/usePremiumStatus";
+import MemberContent from "./MemberContent";
 
 // Product ID
 const product_standard_onemonth = "price_1LzDKnKUVUnt8Gtyly1TOV95"
@@ -105,19 +106,9 @@ const EyecatchEpisode = ({ article }) => {
             md:prose-xl 
             m-auto " dangerouslySetInnerHTML={{ __html: article.body }} 
           />
-          {/* Switch Article Body
-          {userSubscriptionPlan === null ? (
-                    <>
-                      メンバーになるとこれ以上読めるよ！
-                    </>
-                  ) : (
-                    <>
-                      <div>
-                        読める人はメンバーだよ！
-                      </div>
-                    </>
-              )}
-          */}
+
+          <MemberContent article={article} />
+         
           <div className="pt-12 pb-12">
             <hr className="w-full border-gray-300" />
             <p className="text-center pt-12 pb-12 font-medium ">
