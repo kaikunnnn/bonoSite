@@ -27,7 +27,7 @@ const ullist = {
   },
 }
 
-// Get the contentful data
+// Get the content data
 export async function getStaticProps() {
 
   // Fetch articles from Newt

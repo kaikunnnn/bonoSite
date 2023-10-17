@@ -2,7 +2,7 @@
 import React from 'react';
 import HeadingSeries from './HeadingSeries';
 
-const ContentLists = () => {
+const ContentLists = ({props}) => {
   return (
    <>
    <div className="Contentlists w-96 h-96 flex-col justify-start items-start gap-12 inline-flex">

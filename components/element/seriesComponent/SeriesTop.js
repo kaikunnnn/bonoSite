@@ -1,19 +1,29 @@
 // pages/series.js
 import React from 'react';
 
-const SeriesTop = () => {
+const SeriesTop = ({props}) => {
   return (
     <div className="TopSeriesExplain w-full flex-col justify-start items-start gap-8 inline-flex">
         <div className="Frame625516 self-stretch flex-col justify-center items-start gap-6 flex">
-            <div className="BookHazimetenouiinformationarchitecture w-28 h-44 p-4 bg-white rounded-tl rounded-tr-xl rounded-bl rounded-br-xl shadow" />
+            <div className="BookHazimetenouiinformationarchitecture " >
+                <img className="w-28 h-44 bg-white rounded-tl rounded-tr-xl rounded-bl rounded-br-xl shadow" 
+                    src={props.coverbook.src}>
+                </img>
+            </div>
             <div className="Aboutseries flex-col justify-start items-start gap-4 flex">
             <div className="Frame625180 px-2.5 py-1.5 bg-blue-200 rounded-full justify-start items-start gap-2.5 inline-flex">
-                <div className=" text-blue-900 text-sm font-bold font-['Noto Sans JP'] leading-snug tracking-widest">情報設計</div>
+                <div className=" text-blue-900 text-sm font-bold font-['Noto Sans JP'] leading-snug tracking-widest">
+                    <span>{props.category.name}</span>
+                </div>
             </div>
             <div className="Frame625179 flex-col justify-start items-start flex">
-                <div className="Ui text-black text-4xl font-bold font-['Noto Sans JP'] leading-10">UI要件定義書の作り方</div>
+                <div className="Ui text-black text-4xl font-bold font-['Noto Sans JP'] leading-10">
+                    <h2>{props.title}</h2>
+                </div>
             </div>
-            <div className="Metadescription self-stretch text-black text-base font-normal font-['Noto Sans JP'] leading-relaxed tracking-widest">MetaDescriptionに来る文章がここに入る予定です。未経験→デザイナー転職をしたメンバーから逆算して設計した学習コンテンツです。</div>
+            <div className="Metadescription self-stretch text-black text-base font-normal font-['Noto Sans JP'] leading-relaxed tracking-widest">
+                <p>{props.whythis}</p>    
+            </div>
             <div className="Frame625520 justify-start items-start gap-11 inline-flex">
                 <div className="Frame625406 justify-center items-center gap-4 flex">
                 <div className="Frame625413 px-2 py-1 rounded-md border border-white justify-center items-center gap-2.5 flex">
