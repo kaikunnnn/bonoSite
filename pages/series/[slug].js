@@ -1,15 +1,18 @@
 // pages/series.js
 import SEO from '@/components/SEO';
 import About from '@/components/element/seriesComponent/About';
-import ContentLists from '@/components/element/seriesComponent/ContentLists';
 import SeriesTop from '@/components/element/seriesComponent/SeriesTop';
 import React from 'react';
 
 // Newt
-import { getSeries, getSeriesBySlug } from '@/libs/newt';
-import { useEffect, useState } from "react";
+import { getSeries, getSeriesBySlug,getArticles} from '@/libs/newt';
 
-// [article]のパスを生成する
+// Component
+import HeadingSeries from '@/components/element/seriesComponent/HeadingSeries';
+import SectionTitle from '@/components/element/seriesComponent/SectionTitle';
+import ContentItem from '@/components/element/seriesComponent/ContentItem';
+
+// [series]のパスを生成する
 export async function getStaticPaths() {
   const serieses = await getSeries();
   const paths = serieses.map((series) => ({
@@ -20,11 +23,21 @@ export async function getStaticPaths() {
 
 // データから情報を取ってくる
 export async function getStaticProps({ params }) {
+  // Fetch Series
   const series = await getSeriesBySlug(params.slug);
-  return { props: { series } };
+  // Fetch articles from Newt
+  const articles = await getArticles();
+
+  return { 
+    props: { 
+      series ,
+      newtArticles: articles, 
+    } 
+  };
 }
 
-export default function SeriesDetail({ series }) {
+
+export default function SeriesDetail({ series,newtArticles }) {
   return (
     <>
       <SEO
@@ -43,7 +56,18 @@ export default function SeriesDetail({ series }) {
 
           <div className='ContentSection'>
             <About props={series}/>
-            <ContentLists props={series}/>
+            <div className="Contentlists w-full flex-col justify-start items-start gap-12 inline-flex">
+                <HeadingSeries props={"内容"}/>
+                <div className="Contentsection flex-col justify-start items-start gap-12 flex">
+                    {/* <SectionTitle  props={series}/> */}
+
+                    {
+                      newtArticles.map(article => (
+                          <ContentItem key={article._id} props={article} />
+                      ))
+                    }
+                </div>
+            </div>
           </div>
         </div>
       </main>
