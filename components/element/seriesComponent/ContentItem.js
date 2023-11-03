@@ -1,12 +1,12 @@
 // pages/series.js
+import Link from "next/link";
 import React from "react";
 
-const ContentItem = ({ props }) => {
-    console.log(props);
+const ContentItem = ({ props,path }) => {
   return (
     <>
       {/* Content Item */}
-      <div className="ContentItem self-stretch h-32 flex-col justify-start items-start gap-7 flex text-left">
+      <Link  href={`/series/${path}/${props.slug}`} className="ContentItem self-stretch h-32 flex-col justify-start items-start gap-7 flex text-left">
         <div className="Frame625166 self-stretch justify-between items-center inline-flex">
           <div className="Frame625165 justify-start items-center gap-16 flex">
             <div className="TableitemHead justify-start items-center gap-8 flex">
@@ -20,8 +20,7 @@ const ContentItem = ({ props }) => {
               </div>
               <div className="Frame625523 flex-col justify-center items-start gap-3 inline-flex">
                 <div className="Ui w-96 text-black text-base font-bold font-['Noto Sans'] leading-relaxed tracking-wide">
-                  <h4>そもそも「UIの要件定義書」とはなんなのか？</h4>
-                  {props.aboutthisseries}
+                  <h4>{props.title}</h4>
                 </div>
                 <div className="Frame625524 justify-start items-center gap-8 inline-flex">
                   <div className="Free text-black text-opacity-70 text-sm font-bold font-['Noto Sans'] leading-snug tracking-wide">
@@ -42,7 +41,7 @@ const ContentItem = ({ props }) => {
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 };

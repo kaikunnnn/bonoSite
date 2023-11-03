@@ -79,7 +79,7 @@ export const getContents = async () => {
   try {
     const { items } = await client.getContents({
       appUid: 'contentArticle',
-      modelUid: 'articles',
+      modelUid: 'article',
       query: {
         select: [],
       },
@@ -95,7 +95,7 @@ export const getContentsBySlug = async (slug) => {
     try {
       const article = await client.getFirstContent({
         appUid: 'contentArticle',
-        modelUid: 'articles',
+        modelUid: 'article',
         query: {
           slug,
           select: [],
