@@ -2,7 +2,7 @@ import PrimaryButton from "@/components/buttons/PrimaryButton";
 
 function List({label,content,buttonLabel,buttonLink,buttonOnClick}) {
   return (<>
-  <div class="list-block">
+  <div class="list-block flex justify-between	 w-full">
           <div className="Left">
             <div className="Title text-xl font-bold">{label}</div>
             <div className="text-md">

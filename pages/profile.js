@@ -7,6 +7,7 @@ import { auth } from "../firebase";
 // stripe firebase account auth
 import { createCheckoutSession } from '../stripe/createCheckoutSession';
 import usePremiumStatus from "../stripe/usePremiumStatus";
+import { PLANID, PLANNAME } from "@/stripe/planId";
 
 // Component
 import Header from "@/components/layout/Header";
@@ -15,12 +16,8 @@ import UserInfo from "../components/element/UserInfo";
 import SignOutButton from "../components/buttons/SignOutButton";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 
-
-// Product ID
-const product_standard_onemonth = "price_1LzDKnKUVUnt8Gtyly1TOV95"
-const product_growth_onemonth = "price_1LzDOvKUVUnt8GtyqgCtgDMQ"
-
 function Profile() {
+
   // 現在ログインしているユーザーの情報を取得
     const [user] = useAuthState(auth)
     const userSubscriptionPlan = usePremiumStatus(user);
@@ -28,7 +25,7 @@ function Profile() {
     return(
       <main className="max-h-full bg-Top bg-cover text-slate-900 bg-no-repeat">
         <Header />
-        <div className="Profile m-auto w-8/12 md:w-4/12 grid text-center lg:mb-0  lg:text-left">
+        <div className="Profile m-auto w-12/12 md:w-4/12 grid text-center lg:mb-0  lg:text-left">
           {user ? (
               <>
                 <UserInfo />
@@ -40,12 +37,13 @@ function Profile() {
                 {userSubscriptionPlan === null ? (
                   <>
                     <div className="UpGrade-Growth">
+                    <h2>あなたは<b>メンバーではありません</b></h2>
                        <List
                         label="スタンダードプランへ変更"
                         content="スタンダードプランへの登録はこちらから"
                         buttonLink={""}
                         buttonLabel="アップグレード"
-                        buttonOnClick={async () => await createCheckoutSession(product_standard_onemonth)}
+                        buttonOnClick={async () => await createCheckoutSession(PLANID.standard.onemonth)}
                       ></List>
                     </div>
                     <div className="mb-8"></div>
@@ -55,16 +53,16 @@ function Profile() {
                         content="グロースプランへの登録はこちらから"
                         buttonLink={""}
                         buttonLabel="アップグレード"
-                        buttonOnClick={async () => await createCheckoutSession(product_growth_onemonth)}
+                        buttonOnClick={async () => await createCheckoutSession(PLANID.growth.onemonth)}
                       ></List>
                     </div>
                     <div className="mb-8"></div>
                     
                   </>
                 ) : (
-                  userSubscriptionPlan === 'premium_standard' ? (
+                  userSubscriptionPlan === PLANNAME.premium_standard ? (
                     <>
-                      <h2>Welcome, Premium <b>Standard user!</b></h2>
+                      <h2>あなたは<b>スタンダードプラン</b>です</h2>
                       <div className="mb-8"></div>
                       <div className="divider border-b w-full"></div>
                       <div className="mb-8"></div>
@@ -73,7 +71,7 @@ function Profile() {
                         content="グロースプランへの登録はこちらから"
                         buttonLink={""}
                         buttonLabel="アップグレード"
-                        buttonOnClick={async () => await createCheckoutSession(product_growth_onemonth)}
+                        buttonOnClick={async () => await createCheckoutSession(PLANID.growth.onemonth)}
                       ></List>
                       <div className="mb-8"></div>
                       <div className="divider border-b w-full"></div>
@@ -91,14 +89,14 @@ function Profile() {
                     </>
                   ) : (
                     <div>
-                      <h2>Welcome, 『グロースプラン』</h2>
+                      <h2>あなたは<b>グロースプラン</b>です</h2>
                       <div className="mt-4"></div>
                       <List
                         label="プランの変更 スタンダードプラン"
                         content="ボタン→Change Password"
                         buttonLink={""}
                         buttonLabel="変更"
-                        buttonOnClick={async () => await createCheckoutSession(product_standard_onemonth)}
+                        buttonOnClick={async () => await createCheckoutSession(PLANID.standard.onemonth)}
                       ></List>
                       <div className="mb-8"></div>
                       <div className="divider border-b w-full"></div>
