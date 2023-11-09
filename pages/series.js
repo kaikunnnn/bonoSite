@@ -11,6 +11,7 @@ import EpisodeCard from "@/components/EpisodeCard";
 import TitleSection from "@/components/element/TitleSection";
 import SunTop from "@/components/element/SunTop";
 import SEO from "@/components/SEO";
+import SeriesCard from "@/components/SeriesCard";
 
 // Framer Motion
 const ullist = {
@@ -63,23 +64,40 @@ export default function Home({ article,newtArticles,series,newtSeries }) {
       <Header />
       <SunTop />
 
-
+     {/* Article List from Contentful*/}
+     <div className="Article m-auto w-11/12 md:w-7/12 grid text-center lg:mb-0  lg:text-left">
+          <TitleSection />
+          <motion.ul
+            className="flex-col flex gap-3"
+            variants={ullist}
+            initial="hidden"
+            animate="show"
+          >
+            {
+              newtSeries.map(series => (
+                <SeriesCard key={series._id} props={series}  />
+              ))
+            }
+          </motion.ul>
+        </div>
+      
       {/* Article List from Contentful*/}
-      <div className="Article m-auto w-11/12 md:w-7/12 grid text-center lg:mb-0  lg:text-left">
-        <TitleSection />
-        <motion.ul
-          className="flex-col flex gap-3"
-          variants={ullist}
-          initial="hidden"
-          animate="show"
-        >
-          {
-            newtArticles.map(article => (
-                <EpisodeCard key={article._id} article={article} />
-            ))
-          }
-        </motion.ul>
-      </div>
+        <div className="Article m-auto w-11/12 md:w-7/12 grid text-center lg:mb-0  lg:text-left">
+          <TitleSection />
+          <motion.ul
+            className="flex-col flex gap-3"
+            variants={ullist}
+            initial="hidden"
+            animate="show"
+          >
+            {
+              newtArticles.map(article => (
+                  <EpisodeCard key={article._id} article={article} />
+              ))
+            }
+          </motion.ul>
+        </div>
+
     </main>
   </> );
 }

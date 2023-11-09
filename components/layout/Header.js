@@ -1,14 +1,21 @@
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+
 // firebase auth account
 import {useAuthState} from "react-firebase-hooks/auth";
 import { auth } from "../../firebase";
+
+// stripe firebase account auth
+import usePremiumStatus from "../../stripe/usePremiumStatus";
+import { PLANNAME } from "@/stripe/planId";
+
 
 
 const Header = (props) => {
    // 現在ログインしているユーザーの情報を取得
    const [user] = useAuthState(auth)
+   const userSubscriptionPlan = usePremiumStatus(user);
    
   return (
     <>
@@ -20,10 +27,30 @@ const Header = (props) => {
         </div>
 
         {/* Distribute by user - ユーザーごとに出しわけ */}
-        {/* {user ? (
+        {user ? (
           <>
            <div className="Actionblock  justify-between items-center gap-2.5 flex">
-              <Link href="/profile">
+              {/* サブスクリプションでの表示分岐 - 登録/サブスク状況 */}
+              {userSubscriptionPlan === null ? (
+                  <>
+                    <div>
+                      <p><b>NOTAメンバー</b></p>                     
+                    </div>
+                  </>
+                ) : (
+                  userSubscriptionPlan === PLANNAME.premium_standard ? (
+                    <>
+                    <div>
+                      <p><b>スタンダードプラン</b></p>                     
+                    </div>
+                    </>
+                  ) : (
+                    <div>
+                      <p><b>グロースプラン</b></p>                     
+                    </div>
+                  )
+                )}
+                <Link href="/profile">
                 <div className=" text-right text-black text-base font-normal">
                   マイページ
                 </div>
@@ -32,14 +59,9 @@ const Header = (props) => {
           </>
 
         ) : (
-          <>
-          <div className="Actionblock justify-between items-center gap-2.5 flex">
-            <Link href="/authentification/login">
-              <span>ログイン</span>
-            </Link>
-          </div>
+          <><div></div>
         </>
-        )} */}
+        )}
         
       </div>
     </>

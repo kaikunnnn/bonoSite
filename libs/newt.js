@@ -40,12 +40,12 @@ export const getArticleBySlug = async (slug) => {
     }
 };
 
-// シリーズコンテンツ from NEWT "contnet"
+// 『シリーズコンテンツ』 from NEWT "contnet"
 export const getSeries = async () => {
   try {
     const { items } = await client.getContents({
-      appUid: 'content',
-      modelUid: 'contentArticle',
+      appUid: 'contentArticle',
+      modelUid: 'series',
       query: {
         select: [],
       },
@@ -60,8 +60,42 @@ export const getSeries = async () => {
 export const getSeriesBySlug = async (slug) => {
     try {
       const article = await client.getFirstContent({
-        appUid: 'content',
-        modelUid: 'contentArticle',
+        appUid: 'contentArticle',
+        modelUid: 'series',
+        query: {
+          slug,
+          select: [],
+        },
+      });
+      return article;
+    } catch (err) {
+      console.error('Error fetching article by slug:', err);
+      return null;
+    }
+};
+
+// 『コンテンツ』 from NEWT "contnet"
+export const getContents = async () => {
+  try {
+    const { items } = await client.getContents({
+      appUid: 'contentArticle',
+      modelUid: 'article',
+      query: {
+        select: [],
+      },
+    })
+    return items
+  } catch (err) {
+    console.error("Error fetching articles:", err);
+    return [];
+  }
+}
+
+export const getContentsBySlug = async (slug) => {
+    try {
+      const article = await client.getFirstContent({
+        appUid: 'contentArticle',
+        modelUid: 'article',
         query: {
           slug,
           select: [],
