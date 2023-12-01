@@ -11,6 +11,8 @@ import { getSeries, getSeriesBySlug, getContents} from '@/libs/newt';
 import HeadingSeries from '@/components/element/seriesComponent/HeadingSeries';
 import ContentItem from '@/components/element/seriesComponent/ContentItem';
 import ContentTitle from '@/components/element/seriesComponent/ContentTitle';
+import Header from '@/components/layout/Header';
+import SunTop from '@/components/element/SunTop';
 
 // [series]のパスを生成する
 export async function getStaticPaths() {
@@ -40,15 +42,13 @@ export async function getStaticProps({ params }) {
 
 
 export default function SeriesDetail({ series,newtContents }) {
-  console.log(newtContents);
+  console.log(newtContents.seriesoreder);
   // 現在のページのslugと一致するコンテンツをフィルタリング
   const filteredContents = newtContents.filter(content => {
     return content.series && content.series._id === series._id; });
 
-
-  // "customOrder"によってコンテンツをソート
-  const sortedContents = filteredContents.sort((a, b) => b._sys.customOrder - a._sys.customOrder);
-
+  // "series.seriesorder"によってコンテンツをソート
+  const sortedContents = filteredContents.sort((a, b) => a.seriesorder - b.seriesorder);
   return (
     <>
       <SEO
@@ -62,6 +62,8 @@ export default function SeriesDetail({ series,newtContents }) {
       >
       </SEO>
       <main className="max-h-full bg-Top bg-cover text-slate-900 bg-no-repeat">
+      <Header />
+      <SunTop />
         <div className="Article m-auto w-11/12 md:w-7/12 grid text-center lg:mb-0  lg:text-left">
           <SeriesTop props={series}/>
 
@@ -69,22 +71,10 @@ export default function SeriesDetail({ series,newtContents }) {
             <About props={series}/>
             <div className="Contentlists w-full flex-col justify-start items-start gap-12 inline-flex">
                 <HeadingSeries props={"内容"}/>
-                {/* <div className="Contentsection flex-col justify-start items-start gap-12 flex">
-                    {/* <SectionTitle  props={series}/> 
-
-                    {
-                      newtContents.map(content => (
-                          <ContentItem key={content._id} props={content} path={series.slug} />
-                      ))
-                    }
-                </div> */}
-
-
                 
                 <div className="Contentsection flex-col justify-start items-start gap-12 flex">
                   {
                     sortedContents.map(content => {
-                      console.log(content["title-or-not"]); // この値をチェック
                       if (content && content.hasOwnProperty("title-or-not")) { // contentがnullやundefinedでない、かつ"title-or-not"プロパティを持つ場合
                         if (content["title-or-not"]) {
                           // title-or-notがtrueの場合の表示

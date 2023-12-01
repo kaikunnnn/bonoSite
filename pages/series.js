@@ -73,11 +73,13 @@ export default function Home({ article,newtArticles,series,newtSeries }) {
             initial="hidden"
             animate="show"
           >
+          <div className="flex flex-row space-x-4">
             {
               newtSeries.map(series => (
                 <SeriesCard key={series._id} props={series}  />
               ))
             }
+          </div>
           </motion.ul>
         </div>
       

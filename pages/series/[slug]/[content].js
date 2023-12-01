@@ -2,11 +2,18 @@
 import SEO from "@/components/SEO";
 import React from "react";
 
+// Stripe, Firebase and Plan 
+import {useAuthState} from "react-firebase-hooks/auth";
+import { auth } from "../../../firebase";
+import usePremiumStatus from "../../../stripe/usePremiumStatus";
+import { PLANNAME } from "@/stripe/planId";
+
 // Newt
-import { getContents,getSeries,getContentsBySlug,getSeriesBySlug } from "@/libs/newt";
+import { getContents,getSeries,getContentsBySlug } from "@/libs/newt";
 import VideoEmbed from "@/components/element/object/videoEmbed";
 import ListMovie from "@/components/element/item/ListMovie";
 import Header from "@/components/layout/Header";
+import Link from "next/link";
 
 export async function getStaticPaths() {
   // すべてのデータを取得する
@@ -39,15 +46,17 @@ export async function getStaticProps({ params }) {
     return { notFound: true };
   }
 
-  
-
   // コンテンツデータを pageProps としてページコンポーネントに渡す
   return { props: { content: contentData } };
   
 }
 
+
 export default function SeriesDetail({ content }) {
-  console.log(content);
+  // Get Current User Date 
+  const [user] = useAuthState(auth)
+  const userSubscriptionPlan = usePremiumStatus(user);
+
   return (
     <>
       <SEO
@@ -100,7 +109,22 @@ export default function SeriesDetail({ content }) {
 
           {/* Movie */}
           <div className="Movie shadow flex-col justify-start items-start gap-6 inline-flex">
-            <VideoEmbed className="w-full" videoUrl={"https://vimeo.com/808945583?share=copy"}/>
+            
+            {/* 非会員の場合 */}
+            {userSubscriptionPlan === null ? (
+              <div>
+                <div><Link href="/plan">メンバープランになるとフルで視聴できます</Link></div>
+                <VideoEmbed className="w-full" videoUrl={"https://vimeo.com/808945583?share=copy"}/>
+              </div>
+            ) : (
+              // スタンダードプランの時
+              userSubscriptionPlan === PLANNAME.premium_standard ? (
+                <VideoEmbed className="w-full" videoUrl={"https://vimeo.com/808945583?share=copy"}/>
+              ) : (
+                // グロースプランの時
+                <VideoEmbed className="w-full" videoUrl={"https://vimeo.com/808945583?share=copy"}/>
+              )
+            )}
           </div>
 
           {/* Content */}

@@ -19,10 +19,12 @@ const PLANID = {
 
   const PLICE = {
     standard: {
-        onemonth: "5980",
+        name:"スタンダード",
+        onemonth: "5,980",
         threemonth: "12,800", 
     },
     growth: {
+        name:"グロース",
         onemonth: "9,999",
         threemonth: "32,980", // 
     },

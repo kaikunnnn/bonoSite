@@ -3,6 +3,16 @@ import Link from "next/link";
 import React from "react";
 
 const ContentItem = ({ props,path }) => {
+  
+  // コンテンツタグの出しわけ
+  let displayText = "無料";
+
+  if (props.contentiscommunity) {
+    displayText = "コミュニティ限定";
+  } else if (props.contentispremium) {
+    displayText = "プレミアム限定";
+  }
+
   return (
     <>
       {/* Content Item */}
@@ -24,7 +34,7 @@ const ContentItem = ({ props,path }) => {
                 </div>
                 <div className="Frame625524 justify-start items-center gap-8 inline-flex">
                   <div className="Free text-black text-opacity-70 text-sm font-bold font-['Noto Sans'] leading-snug tracking-wide">
-                    <p>FREE</p>
+                    <p>{displayText}</p>
                   </div>
                   <div className="32 text-black text-opacity-70 text-sm font-normal font-['Noto Sans'] leading-snug tracking-wide">
                     <p>12:32</p>

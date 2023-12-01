@@ -2,6 +2,8 @@ import Link from "next/link";
 import dayjs from "dayjs";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
+import { CardTitle, CardDescription, CardContent, CardFooter, Card  } from "./ui/card";
+import { Button } from "./ui/button";
 
 // Framer Motion Style
 const item = {
@@ -19,34 +21,46 @@ const item = {
 };
 
 export default function SeriesCard({ props }) {
-  console.log(props);
   return (
     <>
-      <Link href={`/series/${props.slug}`} className="hover:opacity-80">
-        <motion.li
+    <Link href={`/series/${props.slug}`} className="hover:opacity-80 bg-white flex-1">
+      <motion.li
           variants={item}
-          className="hover:bg-gray-100 bg-white rounded-2xl p-3 md:p-3 pr-3 md:pr-6  min-h-full shadow-sm list-none	"
+          className=""
           key={props.slug}
         >
-          <div className="flex content-between items-center gap-3 md:gap-8">
-            <div className={`flex items-center justify-center content w-4/12 md:w-4/12 h-full md:h-32 py-10  rounded-xl`}>
-              <Image className="md:w-16 md:h-16 w-8 h-8" src={props.coverbook?.src} width={48} height={112} alt="emoji Image" />
+        <Card>
+          <CardContent className="mt-1">
+          <div className="flex justify-center items-center">
+              <img
+                alt="series cover image"
+                className="object-cover w-auto h-full rounded-md"
+                height="60"
+                src={props.coverbook?.src}
+                style={{
+                  aspectRatio: "52/80",
+                  objectFit: "cover",
+                }}
+                width="40"
+              />
             </div>
-            <div className="w-8/12 flex flex-col gap-1 md:gap-2">
-              <h4 className="text-lg md:text-base text-slate-900 font-bold text-left	">
-                {props.title}
-              </h4>
-              <div className="flex gap-3">
-                <span className="text-xs text-left text-gray-400">{props.category.name}</span>
-                <time dateTime="" className="text-xs text-left	 text-gray-400">
+              
+              <CardTitle className="text-lg font-semibold mt-1">{props.title}</CardTitle>
+              <CardDescription className="text-base text-gray-500 dark:text-gray-400 mt-1">
+                Description for the card.
+                {props.category.name}
+              </CardDescription>
+              <time dateTime="" className="text-xs text-left	 text-gray-400">
                 {dayjs(props._sys.raw.createdAt).format("YYYY年MM月DD日")}
                 </time>
-              </div>
-              
-            </div>
-          </div>
-        </motion.li>
-      </Link>
+            </CardContent>
+            <CardFooter className="mt-2">
+              <Button variant="default">Click Me</Button>
+            </CardFooter>
+        </Card>
+      </motion.li>
+    </Link>
+    
     </>
   );
 }
