@@ -1599,6 +1599,22 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
+"@memberstack/dom@1.9.31":
+  version "1.9.31"
+  resolved "https://registry.yarnpkg.com/@memberstack/dom/-/dom-1.9.31.tgz#9669eba40eaa91262f36e15c19a45995a920140c"
+  integrity sha512-tlFrWKP0hjR1PhmeYmz3OdudAjeZZg8Pkw1JTdtBBC/4WaV+TKK8n9I+4O0MzHz5RvlzE2pHl97rWRHvzeDPhA==
+  dependencies:
+    axios "^0.27.2"
+    jose "^4.8.1"
+    js-cookie "^3.0.1"
+
+"@memberstack/react@^2.0.29":
+  version "2.0.29"
+  resolved "https://registry.yarnpkg.com/@memberstack/react/-/react-2.0.29.tgz#aa8cfaecc8a676db2bbacab2c0b0f595cb94bf73"
+  integrity sha512-hTNA26xqQ0+Q0GCobAjT9LJdsdm3tRBbxF0+dyuyThqBEHxk7udiKBDatBn91nOYyR8ZttIVUhXL5Nn+OyQ3jg==
+  dependencies:
+    "@memberstack/dom" "1.9.31"
+
 "@next/env@13.3.0":
   version "13.3.0"
   resolved "https://registry.npmjs.org/@next/env/-/env-13.3.0.tgz"
@@ -2172,6 +2188,14 @@ axios@^0.26.1:
   integrity sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA==
   dependencies:
     follow-redirects "^1.14.8"
+
+axios@^0.27.2:
+  version "0.27.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
+  integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
+  dependencies:
+    follow-redirects "^1.14.9"
+    form-data "^4.0.0"
 
 axios@^1.3.5, axios@^1.4.0:
   version "1.4.0"
@@ -3175,6 +3199,11 @@ follow-redirects@^1.14.8, follow-redirects@^1.15.0:
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz"
   integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
 
+follow-redirects@^1.14.9:
+  version "1.15.4"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.4.tgz#cdc7d308bf6493126b17ea2191ea0ccf3e535adf"
+  integrity sha512-Cr4D/5wlrb0z9dgERpUL3LrmPKVDsETIJhaCMeDfuFYcqa5bldGV6wBsAN6X/vxlXQtFBMrXdXxdL8CbDTGniw==
+
 for-each@^0.3.3:
   version "0.3.3"
   resolved "https://registry.npmjs.org/for-each/-/for-each-0.3.3.tgz"
@@ -3753,6 +3782,16 @@ jose@^4.14.0:
   version "4.14.4"
   resolved "https://registry.npmjs.org/jose/-/jose-4.14.4.tgz"
   integrity sha512-j8GhLiKmUAh+dsFXlX1aJCbt5KMibuKb+d7j1JaOJG6s2UjX1PQlW+OKB/sD4a/5ZYF4RcmYmLSndOoU3Lt/3g==
+
+jose@^4.8.1:
+  version "4.15.4"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-4.15.4.tgz#02a9a763803e3872cf55f29ecef0dfdcc218cc03"
+  integrity sha512-W+oqK4H+r5sITxfxpSU+MMdr/YSWGvgZMQDIsNoBDGGy4i7GBPTtvFKibQzW06n3U3TqHjhvBJsirShsEJ6eeQ==
+
+js-cookie@^3.0.1:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-3.0.5.tgz#0b7e2fd0c01552c58ba86e0841f94dc2557dcdbc"
+  integrity sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
