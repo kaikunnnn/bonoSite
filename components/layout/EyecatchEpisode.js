@@ -38,9 +38,16 @@ const EyecatchEpisode = ({ article }) => {
             src={article.emoji.src}>
           </img>
           <div className="m-5"></div>
-          <h1 className="!leading-normal text-4xl md:text-5xl text-center font-bold md:w-10/12 m-auto ">
-            {article.title}
-          </h1>
+          <div className="TitleBlock md:w-10/12 m-auto ">
+            <h1 className="!leading-normal text-4xl md:text-5xl text-center font-bold ">
+              {article.title}
+            </h1>
+            <div className="m-4"></div>
+            <h4 className="text-lg text-center leading-relaxed text-gray-500">
+              {article.description}
+            </h4>
+          </div>
+          
           <div className="m-4"></div>
           <div className="flex m-auto justify-center gap-2">
             <p  className="text-center text-gray-500 font-semibold text-base">{article.tags.name} | </p>
