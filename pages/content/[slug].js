@@ -1,6 +1,7 @@
 import Header from "@/components/layout/Header";
 import EyecatchEpisode from "@/components/layout/EyecatchEpisode";
 import SEO from "@/components/SEO";
+import Head from 'next/head';
 
 // Newt
 import { getArticles, getArticleBySlug } from '@/libs/newt';
