@@ -43,16 +43,22 @@ export default function ContentDetail({ article }) {
   if (!article) {
     return <div>Article not found</div>;
   }
- 
+ console.log(article.description);
 
   return (<>
+   <Head>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={`${article.title} | BONO BLOG`}/>
+    <meta name="twitter:description" content={article.description} />
+    <meta name="twitter:image" content={article.emoji.src} />
+   </Head>
    <SEO 
             title={`${article.title} | BONO BLOG`}
-            description={articleDescription}
+            description={article.description}
             imgUrl={`${article.emoji.src}`}
             ogTitle={`${article.title} | BONO BLOG`}
             ogImage={article.emoji.src}
-            ogDescription={articleDescription}
+            ogDescription={article.description}
             ogWidth='160'
             ogHeight="160">
         </SEO>
