@@ -44,16 +44,26 @@ function Profile() {
     .catc
     }, [])
 
-    if (!member) return null;
+    // これを出すとログインしてないと全て表示されないこと
+    // if (!member) return null;
 
     
-    return(
+    return(<>
       <main className="max-h-full bg-Top bg-cover text-slate-900 bg-no-repeat">
         <Header />
 
         <div className="Profile m-auto w-12/12 md:w-4/12 grid text-center lg:mb-0  lg:text-left">
-          {/* Memberstack */}
-          <MemberstackProtected>
+        {!member ? (
+          <>
+          <div className="not-logged-in">
+            <p>ログインが必要です。</p>
+            <GoogleSignInButton />
+            <PrimaryButton link="/authentification/login" content='ログイン'/>
+          </div>
+        </>
+        ) : (
+          <>
+           <MemberstackProtected>
             <p>メンバースタックにログインしてますか〜</p>
                 <UserInfo />
                   <div className="mb-8"></div>
@@ -62,101 +72,91 @@ function Profile() {
                   <Button onClick={handleLogout}>ログアウト</Button>
 
             </MemberstackProtected>
-
-
-
-
-
-
-
-
-
-
-
-
-                {/* サブスクリプションでの表示分岐 - 登録/サブスク状況 */}
-                <div className="NOPLAN">
-                    <div className="UpGrade-Growth">
-                    <h2>あなたは<b>メンバーではありません</b></h2>
-                       <List
-                        label="スタンダードプランへ変更"
-                        content="スタンダードプランへの登録はこちらから"
-                        buttonLink={""}
-                        buttonLabel="追加"
-                        buttonOnClick={async () => await createCheckoutSession(PLANID.standard.onemonth)}
-                      ></List>
-                    </div>
-                    <div className="mb-8"></div>
-                    <div className="UpGrade-Growth">
-                       <List
-                        label="グロースプランへ変更"
-                        content="グロースプランへの登録はこちらから"
-                        buttonLink={""}
-                        buttonLabel="追加"
-                        buttonOnClick={async () => await createCheckoutSession(PLANID.growth.onemonth)}
-                      ></List>
-                    </div>
-                    <div className="mb-8"></div>
-                    
-                </div>
-                
-                <div className="Standard PLAN">
-                      <h2>あなたは<b>スタンダードプラン</b>です</h2>
-                      <div className="mb-8"></div>
-                      <div className="divider border-b w-full"></div>
-                      <div className="mb-8"></div>
-                      <List
-                        label="プラン変更 『グロースプラン』"
-                        content="グロースプランへの更新はこちらから"
-                        buttonLink={""}
-                        buttonLabel="アップグレード"
-                        buttonOnClick={async () => await updateSubscriptionPlan(PLANID.growth.onemonth)}
-                      ></List>
-                      <div className="mb-8"></div>
-                      <div className="divider border-b w-full"></div>
-                      <div className="mb-8"></div>
-                      <List
-                        label="メンバーの解約"
-                        content="サブスクリプションの解約はこちらから"
-                        buttonLink={"https://billing.stripe.com/p/login/test_5kAaGv5La2cv2wo144"}
-                        buttonLabel="解約へ"
-                        buttonOnClick={""} 
-                      ></List>
-                      <div className="mb-8"></div>
-                      <div className="divider border-b w-full"></div>
-                      <div className="mb-8"></div>
-                  </div>
-
-                  <div className="Growth Plan">
-                    <div>
-                      <h2>あなたは<b>グロースプラン</b>です</h2>
-                      <div className="mt-4"></div>
-                      <List
-                        label="プランの変更 スタンダードプラン"
-                        content="ボタン→Change Password"
-                        buttonLink={""}
-                        buttonLabel="変更"
-                        buttonOnClick={async () => await updateSubscriptionPlan(PLANID.standard.onemonth)}
-                      ></List>
-                      <div className="mb-8"></div>
-                      <div className="divider border-b w-full"></div>
-                      <div className="mb-8"></div>
-                      <List
-                        label="メンバーの解約"
-                        content="サブスクリプションの解約はこちらから"
-                        buttonLink={"https://billing.stripe.com/p/login/test_5kAaGv5La2cv2wo144"}
-                        buttonLabel="解約へ"
-                      ></List>
-                      <div className="mt-8"></div>
-                    </div>
-                  </div>
-              
-                <SignOutButton />
+             /* サブスクリプションでの表示分岐 - 登録/サブスク状況 */
+             <div className="NOPLAN">
+             <div className="UpGrade-Growth">
+             <h2>あなたは<b>メンバーではありません</b></h2>
+                <List
+                 label="スタンダードプランへ変更"
+                 content="スタンダードプランへの登録はこちらから"
+                 buttonLink={""}
+                 buttonLabel="追加"
+                 buttonOnClick={async () => await createCheckoutSession(PLANID.standard.onemonth)}
+               ></List>
+             </div>
+             <div className="mb-8"></div>
+             <div className="UpGrade-Growth">
+                <List
+                 label="グロースプランへ変更"
+                 content="グロースプランへの登録はこちらから"
+                 buttonLink={""}
+                 buttonLabel="追加"
+                 buttonOnClick={async () => await createCheckoutSession(PLANID.growth.onemonth)}
+               ></List>
+             </div>
+             <div className="mb-8"></div>
              
-        </div>
+         </div>
+         
+         <div className="Standard PLAN">
+               <h2>あなたは<b>スタンダードプラン</b>です</h2>
+               <div className="mb-8"></div>
+               <div className="divider border-b w-full"></div>
+               <div className="mb-8"></div>
+               <List
+                 label="プラン変更 『グロースプラン』"
+                 content="グロースプランへの更新はこちらから"
+                 buttonLink={""}
+                 buttonLabel="アップグレード"
+                 buttonOnClick={async () => await updateSubscriptionPlan(PLANID.growth.onemonth)}
+               ></List>
+               <div className="mb-8"></div>
+               <div className="divider border-b w-full"></div>
+               <div className="mb-8"></div>
+               <List
+                 label="メンバーの解約"
+                 content="サブスクリプションの解約はこちらから"
+                 buttonLink={"https://billing.stripe.com/p/login/test_5kAaGv5La2cv2wo144"}
+                 buttonLabel="解約へ"
+                 buttonOnClick={""} 
+               ></List>
+               <div className="mb-8"></div>
+               <div className="divider border-b w-full"></div>
+               <div className="mb-8"></div>
+           </div>
+
+           <div className="Growth Plan">
+             <div>
+               <h2>あなたは<b>グロースプラン</b>です</h2>
+               <div className="mt-4"></div>
+               <List
+                 label="プランの変更 スタンダードプラン"
+                 content="ボタン→Change Password"
+                 buttonLink={""}
+                 buttonLabel="変更"
+                 buttonOnClick={async () => await updateSubscriptionPlan(PLANID.standard.onemonth)}
+               ></List>
+               <div className="mb-8"></div>
+               <div className="divider border-b w-full"></div>
+               <div className="mb-8"></div>
+               <List
+                 label="メンバーの解約"
+                 content="サブスクリプションの解約はこちらから"
+                 buttonLink={"https://billing.stripe.com/p/login/test_5kAaGv5La2cv2wo144"}
+                 buttonLabel="解約へ"
+               ></List>
+               <div className="mt-8"></div>
+             </div>
+           </div>
+       
+         <SignOutButton />
+         </>
+
+        )}          
+        </div> {/* This closing div tag seems to be what was missing */}
       </main>
         
-    )
+      </>)
 }
 
 export default Profile
