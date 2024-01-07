@@ -5,7 +5,9 @@ import List from "./object/list";
 import { useMemberstack,
   useCustomerPortal, 
   MemberstackProtected, 
+  useAuth,
   SignInModal  } from "@memberstack/react";
+import { Button } from "../ui/button";
 
 function UserInfo() {
   // Memberstack - Get Member Status
@@ -15,33 +17,29 @@ function UserInfo() {
     priceIds: ["prc_-1-v3-8o1b0wco","prc_-3-v3-471h0wzu","prc_-1-v3-o11f0wgv","prc_-3-v3-9j1d0wxw"],
   });
   
-
   React.useEffect(() => {
     memberstack.getCurrentMember()
   .then(({ data: member }) => setMember(member))
   .catc
   }, [])
 
-  if (!member) return null;
+  // SignOut Function
+  const { signOut } = useAuth();
+  const handleLogout = () => {
+    signOut();
+    // ログアウト後の処理をここに記述できます（例：ホームページへのリダイレクトなど）
+  };
+ 
+  
   
   return (
     <div>
-      <h2>プロフィール</h2>
-      <p>{member.auth.email}</p>
+      <h4>プロフィール</h4>
       <div data-ms-content="members">
-        <div class="title-blcok">
-          <div class="textblock-left">
-            <div class="heading-h5">アカウント設定</div>
-            <div class="margin-8 hide"></div>
-          </div>
-          <a href="#" class="buttonsecondaryghost medium hide w-inline-block">
-            <div class="body-medium white">変更する</div>
-          </a>
-        </div>
         <div class="mt-4"></div>
         <List
             label="メールアドレス"
-            content={member.auth.email}
+            content={member && member.auth.email}
             buttonLabel="変更"
             buttonLink="/"
         ></List>
@@ -53,9 +51,14 @@ function UserInfo() {
             buttonLink="/"
         ></List>
       </div>
+
       <MemberstackProtected onUnauthorized={<SignInModal />}>
         <button onClick={openPortal}>Open Portal</button>
       </MemberstackProtected>
+
+      <Button onClick={handleLogout}>ログアウト</Button>
+
+      
     </div>
   );
 }

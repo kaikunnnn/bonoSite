@@ -23,12 +23,7 @@ import { Button } from "@/components/ui/button";
 
 
 function Profile() {
-  // SignOut Function
-  const { signOut } = useAuth();
-  const handleLogout = () => {
-    signOut();
-    // ログアウト後の処理をここに記述できます（例：ホームページへのリダイレクトなど）
-  };
+  
 
   // 現在ログインしているユーザーの情報を取得
     const [user] = useAuthState(auth)
@@ -63,91 +58,51 @@ function Profile() {
         </>
         ) : (
           <>
-           <MemberstackProtected>
-            <p>メンバースタックにログインしてますか〜</p>
-                <UserInfo />
+            <h2>マイページ</h2>
+            <UserInfo />
                   <div className="mb-8"></div>
                   <div className="divider border-b w-full"></div>
                   <div className="mb-8"></div>
-                  <Button onClick={handleLogout}>ログアウト</Button>
 
-            </MemberstackProtected>
              /* サブスクリプションでの表示分岐 - 登録/サブスク状況 */
-             <div className="NOPLAN">
-             <div className="UpGrade-Growth">
-             <h2>あなたは<b>メンバーではありません</b></h2>
-                <List
-                 label="スタンダードプランへ変更"
-                 content="スタンダードプランへの登録はこちらから"
-                 buttonLink={""}
-                 buttonLabel="追加"
-                 buttonOnClick={async () => await createCheckoutSession(PLANID.standard.onemonth)}
-               ></List>
-             </div>
-             <div className="mb-8"></div>
-             <div className="UpGrade-Growth">
-                <List
-                 label="グロースプランへ変更"
-                 content="グロースプランへの登録はこちらから"
-                 buttonLink={""}
-                 buttonLabel="追加"
-                 buttonOnClick={async () => await createCheckoutSession(PLANID.growth.onemonth)}
-               ></List>
-             </div>
-             <div className="mb-8"></div>
-             
-         </div>
+             <MemberstackProtected
+                allow={{
+                  plans: ["pln_--iu4u0fzy","prc_-1-v3-8o1b0wco","prc_-3-v3-471h0wzu","prc_-1-v3-o11f0wgv","prc_-3-v3-9j1d0wxw"], // ここにアクセスを許可するプランのIDを指定します
+                  // permissions: ["view:workout"] // ここにアクセスを許可するパーミッションを指定します
+                }}
+                onUnauthorized={
+                  <div>
+                    <h3> あなたは<b>メンバーではありません</b></h3>
+                    <div className="UpGrade-Growth">
+                        <div className="mb-8"></div>
+                        <List
+                            label="スタンダードプランへ変更"
+                            content="スタンダードプランへの登録はこちらから"
+                            buttonLink={""}
+                            buttonLabel="追加"
+                            buttonOnClick={async () => await createCheckoutSession(PLANID.standard.onemonth)}
+                          ></List>
+                          <div className="mb-8"></div>
+                          <List
+                            label="グロースプランへ変更"
+                            content="グロースプランへの登録はこちらから"
+                            buttonLink={""}
+                            buttonLabel="追加"
+                            buttonOnClick={async () => await createCheckoutSession(PLANID.growth.onemonth)}
+                          ></List>
+                    </div>
+                  </div>
+                } 
+              >
+                <div>
+                  <h3>Only the BONO Memeber</h3>
+                  <div>
+                    <p>Plan Name</p>
+                    <p></p>
+                  </div>
+                </div> 
+              </MemberstackProtected>
          
-         <div className="Standard PLAN">
-               <h2>あなたは<b>スタンダードプラン</b>です</h2>
-               <div className="mb-8"></div>
-               <div className="divider border-b w-full"></div>
-               <div className="mb-8"></div>
-               <List
-                 label="プラン変更 『グロースプラン』"
-                 content="グロースプランへの更新はこちらから"
-                 buttonLink={""}
-                 buttonLabel="アップグレード"
-                 buttonOnClick={async () => await updateSubscriptionPlan(PLANID.growth.onemonth)}
-               ></List>
-               <div className="mb-8"></div>
-               <div className="divider border-b w-full"></div>
-               <div className="mb-8"></div>
-               <List
-                 label="メンバーの解約"
-                 content="サブスクリプションの解約はこちらから"
-                 buttonLink={"https://billing.stripe.com/p/login/test_5kAaGv5La2cv2wo144"}
-                 buttonLabel="解約へ"
-                 buttonOnClick={""} 
-               ></List>
-               <div className="mb-8"></div>
-               <div className="divider border-b w-full"></div>
-               <div className="mb-8"></div>
-           </div>
-
-           <div className="Growth Plan">
-             <div>
-               <h2>あなたは<b>グロースプラン</b>です</h2>
-               <div className="mt-4"></div>
-               <List
-                 label="プランの変更 スタンダードプラン"
-                 content="ボタン→Change Password"
-                 buttonLink={""}
-                 buttonLabel="変更"
-                 buttonOnClick={async () => await updateSubscriptionPlan(PLANID.standard.onemonth)}
-               ></List>
-               <div className="mb-8"></div>
-               <div className="divider border-b w-full"></div>
-               <div className="mb-8"></div>
-               <List
-                 label="メンバーの解約"
-                 content="サブスクリプションの解約はこちらから"
-                 buttonLink={"https://billing.stripe.com/p/login/test_5kAaGv5La2cv2wo144"}
-                 buttonLabel="解約へ"
-               ></List>
-               <div className="mt-8"></div>
-             </div>
-           </div>
        
          <SignOutButton />
          </>
