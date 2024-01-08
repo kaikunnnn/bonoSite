@@ -59,6 +59,7 @@ function Profile() {
           <>
             <h2>マイページ</h2>
             <UserInfo />
+            <button onClick={openPortal}>Open Portal</button>
                   <div className="mb-8"></div>
                   <div className="divider border-b w-full"></div>
                   <div className="mb-8"></div>
@@ -97,12 +98,13 @@ function Profile() {
                   <div>
                     <p>Plan Name</p>
                     <p></p>
-                    <button onClick={openPortal}>Open Portal</button>
+                  <button onClick={openPortal}>Open Portal</button>
                   </div>
                 </div> 
               </MemberstackProtected>
          
        
+         <SignOutButton />
          </>
 
         )}          
