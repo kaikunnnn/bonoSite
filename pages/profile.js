@@ -1,10 +1,9 @@
 import React from "react";
-import GoogleSignInButton from "../components/buttons/GoogleSignInButton";
 import {useAuthState} from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 
 // Memberstack
-import { useMemberstack,MemberstackProtected,useAuth} from "@memberstack/react";
+import { useMemberstack,MemberstackProtected,useCustomerPortal} from "@memberstack/react";
 
 // stripe firebase account auth
 import { createCheckoutSession } from '../stripe/createCheckoutSession';
@@ -39,8 +38,9 @@ function Profile() {
     .catc
     }, [])
 
-    // これを出すとログインしてないと全て表示されないこと
-    // if (!member) return null;
+    const openPortal = useCustomerPortal({
+      priceIds: ["prc_-3-v3-9j1d0wxw","prc_-1-v3-8o1b0wco","prc_-3-v3-471h0wzu","prc_-1-v3-o11f0wgv"],
+    });
 
     
     return(<>
@@ -52,7 +52,6 @@ function Profile() {
           <>
           <div className="not-logged-in">
             <p>ログインが必要です。</p>
-            <GoogleSignInButton />
             <PrimaryButton link="/authentification/login" content='ログイン'/>
           </div>
         </>
@@ -98,12 +97,12 @@ function Profile() {
                   <div>
                     <p>Plan Name</p>
                     <p></p>
+                    <button onClick={openPortal}>Open Portal</button>
                   </div>
                 </div> 
               </MemberstackProtected>
          
        
-         <SignOutButton />
          </>
 
         )}          

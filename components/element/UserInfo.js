@@ -3,19 +3,15 @@ import List from "./object/list";
 
 // Memberstack
 import { useMemberstack,
-  useCustomerPortal, 
-  MemberstackProtected, 
   useAuth,
   SignInModal  } from "@memberstack/react";
 import { Button } from "../ui/button";
+import SignOutButton from "../buttons/SignOutButton";
 
 function UserInfo() {
   // Memberstack - Get Member Status
   const memberstack = useMemberstack();
   const [member, setMember] = React.useState(null);
-  const openPortal = useCustomerPortal({
-    priceIds: ["prc_-1-v3-8o1b0wco","prc_-3-v3-471h0wzu","prc_-1-v3-o11f0wgv","prc_-3-v3-9j1d0wxw"],
-  });
   
   React.useEffect(() => {
     memberstack.getCurrentMember()
@@ -52,11 +48,9 @@ function UserInfo() {
         ></List>
       </div>
 
-      <MemberstackProtected onUnauthorized={<SignInModal />}>
-        <button onClick={openPortal}>Open Portal</button>
-      </MemberstackProtected>
 
       <Button onClick={handleLogout}>ログアウト</Button>
+      <SignOutButton />
 
       
     </div>
