@@ -64,7 +64,6 @@ function Profile() {
                   <div className="divider border-b w-full"></div>
                   <div className="mb-8"></div>
 
-             /* サブスクリプションでの表示分岐 - 登録/サブスク状況 */
              <MemberstackProtected
                 allow={{
                   plans: ["pln_--iu4u0fzy","prc_-1-v3-8o1b0wco","prc_-3-v3-471h0wzu","prc_-1-v3-o11f0wgv","prc_-3-v3-9j1d0wxw"], // ここにアクセスを許可するプランのIDを指定します
