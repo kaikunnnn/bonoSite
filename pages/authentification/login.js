@@ -1,13 +1,22 @@
-import Header from "@/components/layout/Header";
 import React, { useState } from "react";
+
+// Component
 import SEO from "@/components/SEO";
+import Header from "@/components/layout/Header";
 import GoogleSignInButton from "@/components/buttons/GoogleSignInButton";
 // Memberstack
 import { SignInModal } from "@memberstack/react";
-
+import memberstackDOM from "@memberstack/dom";
+const memberstack = memberstackDOM.init({
+  publicKey: process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY,
+});
 
 
 const MemberstackTest = () => {
+
+  const openLoginModal = () => {
+    memberstackDOM.openModal("LOGIN");
+  };
 
   const [showModal, setShowModal] = useState(false);
 
@@ -110,6 +119,10 @@ const MemberstackTest = () => {
                     </div>
                   </button>
                   {showModal && <SignInModal />}
+                  {/* Dom */}
+                  <div>
+                    <button onClick={openLoginModal}>ログイン</button>
+                  </div>
                 </div>
               </div>
             </div>

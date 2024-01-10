@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.17.0",
+    "@memberstack/dom": "^1.9.33",
     "@memberstack/react": "^2.0.29",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-slot": "^1.0.2",
