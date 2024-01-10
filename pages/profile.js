@@ -3,7 +3,8 @@ import {useAuthState} from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 
 // Memberstack
-import { useMemberstack,MemberstackProtected,useCustomerPortal} from "@memberstack/react";
+import { useMemberstack,MemberstackProtected,useCustomerPortal,SignInModal} from "@memberstack/react";
+
 
 // stripe firebase account auth
 import { createCheckoutSession } from '../stripe/createCheckoutSession';
@@ -59,7 +60,9 @@ function Profile() {
           <>
             <h2>マイページ</h2>
             <UserInfo />
-            <button onClick={openPortal}>Open Portal</button>
+            <MemberstackProtected onUnauthorized={<SignInModal />}>
+              <button onClick={openPortal}>Open Portal</button>
+            </MemberstackProtected>
                   <div className="mb-8"></div>
                   <div className="divider border-b w-full"></div>
                   <div className="mb-8"></div>

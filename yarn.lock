@@ -1608,6 +1608,15 @@
     jose "^4.8.1"
     js-cookie "^3.0.1"
 
+"@memberstack/dom@^1.9.33":
+  version "1.9.33"
+  resolved "https://registry.yarnpkg.com/@memberstack/dom/-/dom-1.9.33.tgz#b9526b3f4cf7e132625fe7122c7262a50c0d15e5"
+  integrity sha512-1f1JiCZMh6IQ3sr29WlrWoX4hmUtawiESVB3nzi1rFmr2S7rYd8q6ZhFwUJ5ABNCTmI5PIYXXdXqOAp0wHfI4g==
+  dependencies:
+    axios "^0.27.2"
+    jose "^4.8.1"
+    js-cookie "^3.0.1"
+
 "@memberstack/react@^2.0.29":
   version "2.0.29"
   resolved "https://registry.yarnpkg.com/@memberstack/react/-/react-2.0.29.tgz#aa8cfaecc8a676db2bbacab2c0b0f595cb94bf73"
