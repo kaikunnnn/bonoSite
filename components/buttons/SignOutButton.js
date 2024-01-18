@@ -3,6 +3,7 @@ import style from "./SignInButton.module.css";
 import {auth, provider} from "../../firebase";
 import { useRouter } from "next/router";
 
+// Firebaseの仕組みを使ったもので必要ない
 function SignOutButton() {
     const router = useRouter();
     const handleSignOut = () => {

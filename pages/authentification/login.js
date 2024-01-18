@@ -7,22 +7,18 @@ import GoogleSignInButton from "@/components/buttons/GoogleSignInButton";
 // Memberstack
 import { SignInModal } from "@memberstack/react";
 import memberstackDOM from "@memberstack/dom";
+import { Button } from "@/components/ui/button";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 const memberstack = memberstackDOM.init({
   publicKey: process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY,
 });
 
-
 const MemberstackTest = () => {
 
   const openLoginModal = () => {
-    memberstackDOM.openModal("LOGIN");
+    memberstack.openModal("LOGIN");
   };
 
-  const [showModal, setShowModal] = useState(false);
-
-  const handleButtonClick = () => {
-    setShowModal(true);
-  };
   
   return (
     <main className="min-h-screen flex-col bg-bgColor-secondary ">
@@ -112,16 +108,10 @@ const MemberstackTest = () => {
                     {/* <Auth /> */}
                     <GoogleSignInButton />
                   </div>
-                  {/* Login UI from memberstack */}
-                  <button onClick={handleButtonClick} className="Button cursor-pointer self-stretch p-4 bg-blue-500 rounded-lg border-1 border-neutral-200 justify-center items-center gap-2.5 inline-flex">
-                    <div className=" text-white text-sm font-bold leading-snug tracking-wide">
-                      モーダルを開く
-                    </div>
-                  </button>
-                  {showModal && <SignInModal />}
+                  
                   {/* Dom */}
                   <div>
-                    <button onClick={openLoginModal}>ログイン</button>
+                    <Button  content="ログイン" onClick={openLoginModal}>ログイン</Button>
                   </div>
                 </div>
               </div>

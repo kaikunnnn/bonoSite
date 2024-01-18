@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {useAuthState} from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 
@@ -29,6 +29,13 @@ function Profile() {
     const [user] = useAuthState(auth)
     const userSubscriptionPlan = usePremiumStatus(user);
 
+    // Memberstack - LoginModal
+    const [showModal, setShowModal] = useState(false);
+
+    const handleButtonClick = () => {
+      setShowModal(true);
+    };
+
     // Memberstack - Get Member Status
     const memberstack = useMemberstack();
     const [member, setMember] = React.useState(null);
@@ -39,9 +46,27 @@ function Profile() {
     .catc
     }, [])
 
-    const openPortal = useCustomerPortal({
-      priceIds: ["prc_-3-v3-9j1d0wxw","prc_-1-v3-8o1b0wco","prc_-3-v3-471h0wzu","prc_-1-v3-o11f0wgv"],
-    });
+    const openPortal = async () => {
+      try {
+        const res = await fetch('/api/memberstack', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            action: 'launchStripeCustomerPortal',
+            priceIds: ["prc_-3-v3-9j1d0wxw","prc_-1-v3-8o1b0wco","prc_-3-v3-471h0wzu","prc_-1-v3-o11f0wgv"], // ここに必要なプランのIDを指定します
+          }),
+        });
+    
+        const data = await res.json();
+    
+        // ここでdataを使用して顧客ポータルを開きます
+        window.location.href = data.url;
+      } catch (error) {
+        console.error('Error opening portal:', error);
+      }
+    };
 
     
     return(<>
@@ -51,9 +76,15 @@ function Profile() {
         <div className="Profile m-auto w-12/12 md:w-4/12 grid text-center lg:mb-0  lg:text-left">
         {!member ? (
           <>
-          <div className="not-logged-in">
+          <div className="not-logged-in m-12">
             <p>ログインが必要です。</p>
-            <PrimaryButton link="/authentification/login" content='ログイン'/>
+            {/* Login UI from memberstack */}
+            <button onClick={handleButtonClick} className="Button cursor-pointer self-stretch p-4 bg-blue-500 rounded-lg border-1 border-neutral-200 justify-center items-center gap-2.5 inline-flex">
+                    <div className=" text-white text-sm font-bold leading-snug tracking-wide">
+                      ログイン
+                    </div>
+            </button>
+            {showModal && <SignInModal />}
           </div>
         </>
         ) : (
