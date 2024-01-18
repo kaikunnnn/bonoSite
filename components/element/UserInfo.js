@@ -50,7 +50,6 @@ function UserInfo() {
 
 
       <Button onClick={handleLogout}>ログアウト</Button>
-      <SignOutButton />
 
       
     </div>
