@@ -111,7 +111,7 @@ const MemberstackTest = () => {
                   
                   {/* Dom */}
                   <div>
-                    <Button  content="ログイン" onClick={openLoginModal}>ログイン</Button>
+                    <Button  content="ログイン" onClick={openLoginModal}>Member Stack Modal Login</Button>
                   </div>
                 </div>
               </div>
