@@ -1,9 +1,5 @@
 import React from 'react';
-import memberstackDOM from "@memberstack/dom";
 import { MemberstackProvider } from "@memberstack/react"
-const memberstack = memberstackDOM.init({
-  publicKey: process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY,
-});
 const config = { publicKey: process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY }
 
 

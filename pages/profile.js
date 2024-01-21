@@ -4,7 +4,10 @@ import { auth } from "../firebase";
 
 // Memberstack
 import { useMemberstack,MemberstackProtected,useCustomerPortal,SignInModal} from "@memberstack/react";
-
+import memberstackDOM from "@memberstack/dom";
+const memberstack = memberstackDOM.init({
+  publicKey:  process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY,
+});
 
 // stripe firebase account auth
 import { createCheckoutSession } from '../stripe/createCheckoutSession';
@@ -16,14 +19,14 @@ import Header from "@/components/layout/Header";
 import List from "@/components/element/object/list";
 import UserInfo from "../components/element/UserInfo";
 import SignOutButton from "../components/buttons/SignOutButton";
-import PrimaryButton from "@/components/buttons/PrimaryButton";
-import { updateSubscriptionPlan } from "@/stripe/updateSubscription";
-import { Button } from "@/components/ui/button";
 
 
 
 function Profile() {
-  
+  // Memberstack login
+  const modalLogin = () => {
+    memberstack.openModal("LOGIN");
+  }
 
   // 現在ログインしているユーザーの情報を取得
     const [user] = useAuthState(auth)
@@ -78,6 +81,9 @@ function Profile() {
           <>
           <div className="not-logged-in m-12">
             <p>ログインが必要です。</p>
+            <div className="m-10">
+               <button onClick={modalLogin}>ログイン</button>
+            </div>
             {/* Login UI from memberstack */}
             <button onClick={handleButtonClick} className="Button cursor-pointer self-stretch p-4 bg-blue-500 rounded-lg border-1 border-neutral-200 justify-center items-center gap-2.5 inline-flex">
                     <div className=" text-white text-sm font-bold leading-snug tracking-wide">
