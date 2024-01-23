@@ -24,7 +24,7 @@ import SignOutButton from "../components/buttons/SignOutButton";
 
 function Profile() {
   // Memberstack login
-  const modalLogin = () => {
+  const openLogin = () => {
     memberstack.openModal("LOGIN");
   }
 
@@ -82,7 +82,7 @@ function Profile() {
           <div className="not-logged-in m-12">
             <p>ログインが必要です。</p>
             <div className="m-10">
-               <button onClick={modalLogin}>ログイン</button>
+               <button onClick={openLogin}>ログイン</button>
             </div>
             {/* Login UI from memberstack */}
             <button onClick={handleButtonClick} className="Button cursor-pointer self-stretch p-4 bg-blue-500 rounded-lg border-1 border-neutral-200 justify-center items-center gap-2.5 inline-flex">
