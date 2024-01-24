@@ -1,6 +1,6 @@
-import Header from "@/components/layout/Header";
-import EyecatchEpisode from "@/components/layout/EyecatchEpisode";
-import SEO from "@/components/SEO";
+import Header from "@/components/common/layout/Navigation/Header";
+import EyecatchEpisode from "@/components/common/layout/EyecatchEpisode";
+import SEO from "@/components/common/layout/Navigation/SEO";
 import Head from 'next/head';
 
 // Newt

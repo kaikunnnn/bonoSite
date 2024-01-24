@@ -5,7 +5,7 @@ import { useState } from "react";
 
 // Firebase User Auth
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../firebase";
+import { auth } from "../../../firebase";
 
 // Stripe
 import { createCheckoutSession } from '@/stripe/createCheckoutSession';
@@ -14,7 +14,7 @@ import { PLICE,PLANID } from '@/stripe/planId';
 import { updateSubscription } from "@/stripe/updateSubscription";
 
 // firebase  Stripeカスタマーリンク
-import { functions } from '../../firebase';
+import { functions } from '../../../firebase';
 
 export async function goToBillingPortal() {
   const functionRef = functions.httpsCallable('createPortalLink');

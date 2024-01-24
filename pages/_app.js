@@ -5,7 +5,7 @@ const config = { publicKey: process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY }
 
 import "@/styles/globals.css";
 import "@/styles/bg-category.css";
-import FooterBlock from "@/components/layout/Footer";
+import FooterBlock from "@/components/common/layout/Navigation/Footer";
 
 
 function MyApp({ Component, pageProps }) {

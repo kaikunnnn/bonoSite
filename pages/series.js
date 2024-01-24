@@ -6,12 +6,12 @@ import { getArticles } from "@/libs/newt";
 import { getSeries } from "@/libs/newt";
 
 // Components
-import Header from "@/components/layout/Header";
-import EpisodeCard from "@/components/EpisodeCard";
-import TitleSection from "@/components/element/TitleSection";
-import SunTop from "@/components/element/SunTop";
-import SEO from "@/components/SEO";
-import SeriesCard from "@/components/SeriesCard";
+import Header from "@/components/common/layout/Navigation/Header";
+import EpisodeCard from "@/components/common/layout/EpisodeCard";
+import TitleSection from "@/components/common/layout/TitleSection";
+import SunTop from "@/components/common/layout/SunTop";
+import SEO from "@/components/common/layout/Navigation/SEO";
+import SeriesCard from "@/components/Series/layout/SeriesCard";
 
 // Framer Motion
 const ullist = {

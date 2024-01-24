@@ -1,18 +1,18 @@
 // pages/series.js
-import SEO from '@/components/SEO';
-import About from '@/components/element/seriesComponent/About';
-import SeriesTop from '@/components/element/seriesComponent/SeriesTop';
+import SEO from '@/components/common/layout/Navigation/SEO';
+import About from '@/components/Series/layout/About';
+import SeriesTop from '@/components/Series/SeriesTop';
 import React from 'react';
 
 // Newt
 import { getSeries, getSeriesBySlug, getContents} from '@/libs/newt';
 
 // Component
-import HeadingSeries from '@/components/element/seriesComponent/HeadingSeries';
-import ContentItem from '@/components/element/seriesComponent/ContentItem';
-import ContentTitle from '@/components/element/seriesComponent/ContentTitle';
-import Header from '@/components/layout/Header';
-import SunTop from '@/components/element/SunTop';
+import HeadingSeries from '@/components/Series/HeadingSeries';
+import ContentItem from '@/components/Series/ContentItem';
+import ContentTitle from '@/components/Series/ContentTitle';
+import Header from '@/components/common/layout/Navigation/Header';
+import SunTop from '@/components/common/layout/SunTop';
 
 // [series]のパスを生成する
 export async function getStaticPaths() {

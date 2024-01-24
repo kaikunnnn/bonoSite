@@ -15,11 +15,11 @@ import usePremiumStatus from "../stripe/usePremiumStatus";
 import { PLANID, PLANNAME } from "@/stripe/planId";
 
 // Component
-import Header from "@/components/layout/Header";
-import List from "@/components/element/object/list";
-import UserInfo from "../components/element/UserInfo";
-import SignOutButton from "../components/buttons/SignOutButton";
-import { Button } from "@/components/ui/button";
+import Header from "@/components/common/layout/Navigation/Header";
+import List from "@/components/common/layout/lists/list";
+import UserInfo from "../components/common/layout/Contents/UserInfo";
+import SignOutButton from "../components/common/ui/buttons/SignOutButton";
+import { Button } from "@/components/common/ui/button";
 
 
 
