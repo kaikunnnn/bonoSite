@@ -1,7 +1,7 @@
 import Header from "@/components/common/layout/Navigation/Header";
 import React, { useState } from "react";
 import SEO from "@/components/common/layout/Navigation/SEO";
-import GoogleSignInButton from "@/components/buttons/GoogleSignInButton";
+import GoogleSignInButton from "@/components/common/ui/buttons/auth/GoogleSignInButton.js";
 // Memberstack
 import { SignInModal } from "@memberstack/react";
 
