@@ -1,12 +1,12 @@
 import React from "react";
-import List from "./object/list";
+import List from "../lists/list";
 
 // Memberstack
 import { useMemberstack,
   useAuth,
   SignInModal  } from "@memberstack/react";
-import { Button } from "../ui/button";
-import SignOutButton from "../buttons/SignOutButton";
+import { Button } from "../../ui/button";
+import SignOutButton from "../../ui/buttons/SignOutButton";
 
 function UserInfo() {
   // Memberstack - Get Member Status

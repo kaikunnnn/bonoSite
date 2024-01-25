@@ -1,35 +1,37 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content:["./src/**/*.{js,ts,jsx,tsx}","./pages/**/*.{js,ts,jsx,tsx}","./components/**/*.{js,ts,jsx,tsx}"],
-  theme: { 
+  darkMode: ["class"],
+  content: [
+    './pages/**/*.{js,jsx}',
+    './components/**/*.{js,jsx}',
+    './app/**/*.{js,jsx}',
+    './src/**/*.{js,jsx}',
+  ],
+  prefix: "",
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
-      fontSize:{
-        'xxs': ['0.625rem', {
-        lineHeight: '0.75rem',
-      }],
-      '3xl': ['2rem', {
-        lineHeight: '2.75rem',
-      }],
-
-      'prose-xl': ['1.8rem', {
-        lineHeight: '2.4rem',
-      }],
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
       },
-      backgroundImage: {
-        'Top': "url('/top-image.svg')",
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
-      fontFamily:{
-        hind: ['Hind'],
-        notojp: ['Noto Sans JP'],
-      },
-      colors: {
-        theme: {
-          1000: '#FB5C35',
-          100: '#FFF2E3',
-        }
-      },
-  } },
-  plugins: [
-    require('@tailwindcss/typography'),
-      require("tailwindcss-animate")
-],
-};
+    },
+  },
+  plugins: [require("tailwindcss-animate")],
+}

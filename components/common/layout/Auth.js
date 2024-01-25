@@ -1,14 +1,14 @@
 import React from "react";
 import style from "./Auth.module.css"
-import GoogleSignInButton from "../buttons/GoogleSignInButton";
+import GoogleSignInButton from "../ui/buttons/auth/GoogleSignInButton";
 import {useAuthState} from "react-firebase-hooks/auth";
-import { auth } from "../../firebase";
-import UserInfo from "./UserInfo";
-import SignOutButton from "../buttons/SignOutButton";
+import { auth } from "../../../firebase";
+import UserInfo from "./Contents/UserInfo";
+import SignOutButton from "../ui/buttons/SignOutButton";
 
 // stripe firebase account auth
-import { createCheckoutSession } from '../../stripe/createCheckoutSession';
-import usePremiumStatus from "../../stripe/usePremiumStatus";
+import { createCheckoutSession } from '../../../stripe/createCheckoutSession';
+import usePremiumStatus from "../../../stripe/usePremiumStatus";
 
 
 // Product ID

@@ -1,6 +1,6 @@
 // pages/series.js
 import React from "react";
-import HeadingSeries from "./HeadingSeries";
+import HeadingSeries from "../HeadingSeries";
 
 const About = ({props}) => {
   return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "firebase/auth";
-import { auth, db, provider } from "../../../firebase";
+import { auth, db, provider } from "../../../../../firebase";
 import { useRouter } from "next/router";
 
 function EmailSignUp() {

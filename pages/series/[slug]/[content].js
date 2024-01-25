@@ -1,5 +1,5 @@
 // pages/series.js
-import SEO from "@/components/SEO";
+import SEO from "@/components/common/layout/Navigation/SEO";
 import React from "react";
 
 // Stripe, Firebase and Plan 
@@ -10,9 +10,9 @@ import { PLANNAME } from "@/stripe/planId";
 
 // Newt
 import { getContents,getSeries,getContentsBySlug } from "@/libs/newt";
-import VideoEmbed from "@/components/element/object/videoEmbed";
-import ListMovie from "@/components/element/item/ListMovie";
-import Header from "@/components/layout/Header";
+import VideoEmbed from "@/components/common/layout/Contents/videoEmbed";
+import ListMovie from "@/components/common/layout/lists/ListMovie";
+import Header from "@/components/common/layout/Navigation/Header";
 import Link from "next/link";
 
 export async function getStaticPaths() {

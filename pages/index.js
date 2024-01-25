@@ -5,13 +5,13 @@ import { motion, Variants  } from "framer-motion"
 import { getArticles } from "@/libs/newt";
 
 // Components
-import Header from "@/components/layout/Header";
-import EpisodeCard from "@/components/EpisodeCard";
-import TitleSection from "@/components/element/TitleSection";
-import SunTop from "@/components/element/SunTop";
-import TopHero from "@/components/element/TopHero";
+import Header from "@/components/common/layout/Navigation/Header";
+import EpisodeCard from "@/components/common/layout/EpisodeCard";
+import TitleSection from "@/components/common/layout/TitleSection";
+import SunTop from "@/components/common/layout/SunTop";
+import TopHero from "@/components/Top/TopHero";
 import Link from "next/link";
-import SEO from "@/components/SEO";
+import SEO from "@/components/common/layout/Navigation/SEO";
 
 // Framer Motion
 const ullist = {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // component
-import { PlanExplain } from "@/components/ui/plan";
-import Header from "@/components/layout/Header";
+import { PlanExplain } from "@/components/common/ui/plan";
+import Header from "@/components/common/layout/Navigation/Header";
 
 const Plan = () => {
 
