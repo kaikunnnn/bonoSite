@@ -1,7 +1,7 @@
 
 import Purpose from "@/components/About/layout/Purpose";
 import Story from "@/components/About/layout/Story";
-import Eyecatch from "@/components/About/layout/eyecatch";
+import Eyecatch from "@/components/About/layout/Eyecatch";
 import React, { useState } from "react";
 
 
