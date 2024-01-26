@@ -15,10 +15,11 @@ import usePremiumStatus from "../stripe/usePremiumStatus";
 import { PLANID, PLANNAME } from "@/stripe/planId";
 
 // Component
-import Header from "@/components/layout/Header";
-import List from "@/components/element/object/list";
-import UserInfo from "../components/element/UserInfo";
-import SignOutButton from "../components/buttons/SignOutButton";
+import Header from "@/components/common/layout/Navigation/Header";
+import List from "@/components/common/layout/lists/list";
+import UserInfo from "../components/common/layout/Contents/UserInfo";
+import SignOutButton from "../components/common/ui/buttons/SignOutButton";
+import { Button } from "@/components/common/ui/button";
 
 
 
@@ -82,7 +83,10 @@ function Profile() {
           <div className="not-logged-in m-12">
             <p>ログインが必要です。</p>
             <div className="m-10">
-               <button onClick={openLogin}>ログイン</button>
+
+               <button onClick={modalLogin}>ログイン</button>
+               <Button variant="secondary"　onClick={modalLogin} >ShadCN Button</Button>
+
             </div>
             {/* Login UI from memberstack */}
             <button onClick={handleButtonClick} className="Button cursor-pointer self-stretch p-4 bg-blue-500 rounded-lg border-1 border-neutral-200 justify-center items-center gap-2.5 inline-flex">

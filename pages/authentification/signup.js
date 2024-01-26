@@ -1,5 +1,5 @@
-import GoogleSignInButton from "@/components/buttons/GoogleSignInButton";
-import Header from "@/components/layout/Header";
+import GoogleSignInButton from "@/components/common/ui/buttons/auth/GoogleSignInButton";
+import Header from "@/components/common/layout/Navigation/Header";
 
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -7,8 +7,8 @@ import { useRouter } from "next/router"; // Next.jsのuseRouterをインポー�
 import { useEffect } from "react"; // useEffectも必要です
 
 import React, { useState } from "react";
-import SEO from "@/components/SEO";
-import EmailSignUp from "@/components/buttons/auth/EmailSignUp";
+import SEO from "@/components/common/layout/Navigation/SEO";
+import EmailSignUp from "@/components/common/ui/buttons/auth/EmailSignUp";
 
 const SignUp = () => {
   const [name, setName] = useState("");

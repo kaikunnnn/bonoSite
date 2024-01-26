@@ -37,3 +37,6 @@ h3{
   font-family: var(--custom-font-family);
   box-sizing: border-box;
 }
+.bg-Top{
+  background-image: url('/top-image.svg');
+}

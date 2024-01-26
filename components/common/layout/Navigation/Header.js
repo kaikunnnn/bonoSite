@@ -4,10 +4,10 @@ import React from "react";
 
 // firebase auth account
 import {useAuthState} from "react-firebase-hooks/auth";
-import { auth } from "../../firebase";
+import { auth } from "../../../../firebase";
 
 // stripe firebase account auth
-import usePremiumStatus from "../../stripe/usePremiumStatus";
+import usePremiumStatus from "../../../../stripe/usePremiumStatus";
 import { PLANNAME } from "@/stripe/planId";
 
 

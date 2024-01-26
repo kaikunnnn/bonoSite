@@ -2,8 +2,8 @@ import Link from "next/link";
 import dayjs from "dayjs";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
-import { CardTitle, CardDescription, CardContent, CardFooter, Card  } from "./ui/card";
-import { Button } from "./ui/button";
+import { CardTitle, CardDescription, CardContent, CardFooter, Card  } from "../../common/ui/card";
+import { Button } from "../../common/ui/button";
 
 // Framer Motion Style
 const item = {

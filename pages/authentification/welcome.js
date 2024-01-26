@@ -1,6 +1,6 @@
-import GoogleSignInButton from "@/components/buttons/GoogleSignInButton";
-import Auth from "@/components/element/Auth";
-import Header from "@/components/layout/Header";
+import GoogleSignInButton from "@/components/common/ui/buttons/auth/GoogleSignInButton";
+import Auth from "@/components/common/layout/Auth";
+import Header from "@/components/common/layout/Navigation/Header";
 
 
 import { auth } from "../../firebase";

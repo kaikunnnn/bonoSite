@@ -1,5 +1,5 @@
-import SEO from "@/components/SEO";
-import Header from "@/components/layout/Header";
+import SEO from "@/components/common/layout/Navigation/SEO";
+import Header from "@/components/common/layout/Navigation/Header";
 
 function License() {
   return (

@@ -1,4 +1,4 @@
-import PrimaryButton from "@/components/buttons/PrimaryButton";
+import PrimaryButton from "@/components/common/ui/buttons/PrimaryButton";
 
 function List({label,content,buttonLabel,buttonLink,buttonOnClick}) {
   return (<>
