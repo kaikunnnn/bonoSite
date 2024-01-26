@@ -1,10 +1,10 @@
 import React from 'react';
+import "@/styles/globals.css";
+import "@/styles/bg-category.css";
+
 import { MemberstackProvider } from "@memberstack/react"
 const config = { publicKey: process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY }
 
-
-import "@/styles/globals.css";
-import "@/styles/bg-category.css";
 import FooterBlock from "@/components/common/layout/Navigation/Footer";
 
 
