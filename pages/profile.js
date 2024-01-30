@@ -40,6 +40,19 @@ function Profile() {
       setShowModal(true);
     };
 
+    // Memberstack - CustomerPortal
+    const openCustomerPortal = async () => {
+      try {
+        await memberstack.launchStripeCustomerPortal({
+          priceIds: ['pm_1LzE3xKUVUnt8Gty1H1aX6KF','pm_1OGYOEKUVUnt8GtyKZik5T4s','pm_1LzE3xKUVUnt8Gty1H1aX6KF','pm_1LzFYuKUVUnt8GtyPagQdTrA'],
+          returnUrl: '/',
+          autoRedirect: true,
+        });
+      } catch (error) {
+        console.error('Error opening portal:', error);
+      }
+    };
+
     // Memberstack - Get Member Status
     const memberstack = useMemberstack();
     const [member, setMember] = React.useState(null);
