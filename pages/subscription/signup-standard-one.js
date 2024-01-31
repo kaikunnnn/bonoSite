@@ -2,7 +2,8 @@ import React from "react";
 import GoogleSignInButton from "@/components/common/ui/buttons/auth/GoogleSignInButton";
 import Header from "@/components/common/layout/Navigation/Header";
 import SEO from "@/components/common/layout/Navigation/SEO";
-import EmailSignUp from "@/components/common/ui/buttons/auth/EmailSignUp";
+import EmailSignUp from "@/components/common/ui/form/EmailSignUp";
+import OrDivider from "@/components/Plan/ui/OrDivider";
 
 const SignUp = () => {
   return (
@@ -18,19 +19,12 @@ const SignUp = () => {
           <div className="flex flex-col items-center justify-center min-h-screen">
             <div className="Left w-96 h-96 justify-center items-center gap-2.5 inline-flex">
               <div className="Wrapper flex-col justify-start items-start gap-10 inline-flex">
-                <div className="Title text-black text-3xl font-bold leading-10 tracking-wide">
+                <h1 className="Title text-black text-3xl font-bold leading-10 tracking-wide">
                   新規登録
-                </div>
+                </h1>
                 <div className="WrapperLogin self-stretch  flex-col justify-start items-start gap-6 flex">
                   <EmailSignUp/>
-                  {/* divider */}
-                  <div className="BlockDivider self-stretch justify-center items-center gap-2 inline-flex">
-                    <div className="Line1 grow shrink basis-0 h-px border border-neutral-300"></div>
-                    <div className="Or text-center text-black text-xs font-bold leading-tight tracking-wide">
-                      or
-                    </div>
-                    <div className="Line2 grow shrink basis-0 h-px border border-neutral-300"></div>
-                  </div>
+                  <OrDivider/>
                   {/* googlebutton */}
                   <div className="Googlebutton self-stretch justify-start items-center gap-2.5 inline-flex">
                     <GoogleSignInButton />

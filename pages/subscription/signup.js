@@ -8,7 +8,7 @@ import { useEffect } from "react"; // useEffectも必要です
 
 import React, { useState } from "react";
 import SEO from "@/components/common/layout/Navigation/SEO";
-import EmailSignUp from "@/components/common/ui/buttons/auth/EmailSignUp";
+import EmailSignUp from "@/components/common/ui/form/EmailSignUp";
 
 const SignUp = () => {
   const [name, setName] = useState("");

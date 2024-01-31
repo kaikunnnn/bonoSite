@@ -1,5 +1,6 @@
 import { Button } from "@/components/common/ui/button";
 import { PLANID, PLICE } from "@/stripe/planId";
+import Link from "next/link";
 import React from "react";
 
 const ListItem = ({ children }) => (
@@ -43,14 +44,14 @@ const PriceCardStandard = () => {
           </ul>
         </div>
         <div className="mt-6">
-          <Button
-            className="w-full font-bold"
-            onClick={async () =>
-              await createCheckoutSession(PLANID.standard.onemonth)
-            }
-          >
-            登録する
-          </Button>
+            <Link  href="/subscription/signup-standard-one">
+                <Button
+                variant="secondary"
+                className="w-full font-bold"
+                > 登録する
+                </Button>
+            </Link>
+         
         </div>
       </div>
     </div>
