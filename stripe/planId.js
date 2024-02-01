@@ -1,12 +1,12 @@
 // products.js
 const PLANID = {
     standard: {
-        onemonth: "price_1LzDKnKUVUnt8Gtyly1TOV95",
-        threemonth: "price_1H3t4PKUVUnt8Gtyr5ThreeMonthID", 
+        onemonth: "prc_-1-jp--kio0f81",
+        threemonth: "prc_-3-jp--874w0fwe", 
     },
     growth: {
-        onemonth: "price_1LzDOvKUVUnt8GtyqgCtgDMQ",
-        threemonth: "price_1H3t5PKUVUnt8Gtyr5ThreeMonthID", // 
+        onemonth: "prc_-1-jp--76u0f8q",
+        threemonth: "prc_-3--eyz0fts", // 
     },
   };
   

@@ -23,7 +23,7 @@ const SignUp = () => {
                   新規登録
                 </h1>
                 <div className="WrapperLogin self-stretch  flex-col justify-start items-start gap-6 flex">
-                  <EmailSignUp/>
+                  <EmailSignUp selectedPlanId="plan_S_1m"/>
                   <OrDivider/>
                   {/* googlebutton */}
                   <div className="Googlebutton self-stretch justify-start items-center gap-2.5 inline-flex">
