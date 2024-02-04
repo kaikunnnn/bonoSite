@@ -1,14 +1,14 @@
 // products.js
 const PLANID = {
-    standard: {
-        onemonth: "prc_-1-jp--kio0f81",
-        threemonth: "prc_-3-jp--874w0fwe", 
-    },
-    growth: {
-        onemonth: "prc_-1-jp--76u0f8q",
-        threemonth: "prc_-3--eyz0fts", // 
-    },
-  };
+  standard: {
+      onemonth: process.env.NEXT_PUBLIC_PLAN_S_1M_PRICE_ID,
+      threemonth: process.env.NEXT_PUBLIC_PLAN_S_3M_PRICE_ID, 
+  },
+  growth: {
+      onemonth: process.env.NEXT_PUBLIC_PLAN_G_1M_PRICE_ID,
+      threemonth: process.env.NEXT_PUBLIC_PLAN_G_3M_PRICE_ID, 
+  },
+};
   
   const PLANNAME = {
     // Firebaseに保存されている文字列

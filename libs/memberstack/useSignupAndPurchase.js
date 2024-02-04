@@ -22,6 +22,12 @@ const useSignupAndPurchase = () => {
       // ログを追加：selectedPlanの値を確認
         console.log("Selected Plan:", selectedPlan);
 
+        // ここにログイン処理を追加
+        await memberstack.loginMemberEmailPassword({
+            email: email,
+            password: password,
+        });
+
       // 選択されたプランに応じてStripeのプライスIDをマップ
       const priceIdMap = {
         plan_S_1m: PLANID.standard.onemonth, // Aプラン1ヶ月の価格ID
@@ -38,8 +44,8 @@ const useSignupAndPurchase = () => {
       // サインアップ成功後、Stripeのチェックアウトプロセスを開始
       await memberstack.purchasePlansWithCheckout({
         priceId: priceId,
-        cancelUrl: "/cancel", // キャンセル時のURL
-        successUrl: "/success", // 成功時のURL
+        cancelUrl: "/", // キャンセル時のURL
+        successUrl: "/profile", // 成功時のURL
         autoRedirect: true, // 自動リダイレクト設定
       });
     } catch (err) {
