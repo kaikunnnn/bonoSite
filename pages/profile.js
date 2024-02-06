@@ -6,7 +6,7 @@ import memberstackDOM from "@memberstack/dom";
 const memberstack = memberstackDOM.init({
   publicKey:  process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY,
 });
-
+import useMemberstackLogin from "@/libs/memberstack/useMemberstackLogin";
 
 // stripe firebase account auth
 import { createCheckoutSession } from '../stripe/createCheckoutSession';
@@ -27,9 +27,11 @@ function Profile() {
   const [isLoading, setIsLoading] = useState(true);
 
   // Memberstack login
-  const modalLogin = () => {
-    memberstack.openModal("LOGIN");
-  }
+  const { openLoginModal } = useMemberstackLogin();
+  const handleLoginButtonClick = () => {
+    console.log('Login button clicked.'); // ログインボタンがクリックされたことをログに出力
+    openLoginModal();
+  };
 
   // Memberstack - LoginModal
     const [showModal, setShowModal] = useState(false);
@@ -55,6 +57,8 @@ function Profile() {
         .catch(error => console.error('Error fetching member details:', error))
         .finally(() => setIsLoading(false)); // ローディング終了
     }, []);
+
+    
   
     if (isLoading) {
       return <div>ローディング中...</div>; // ローディング中の表示
@@ -67,9 +71,7 @@ function Profile() {
       [process.env.NEXT_PUBLIC_PLAN_G_3M_PRICE_ID]: "グロースプラン（3ヶ月）",
       // 他のプランIDとプラン名のマッピング
     };
-
-   
-
+  
     
     return(<>
       <main className="max-h-full bg-Top bg-cover text-slate-900 bg-no-repeat">
@@ -81,8 +83,7 @@ function Profile() {
           <div className="not-logged-in m-12">
             <p>ログインが必要です。</p>
             <div className="m-10">
-               <button onClick={modalLogin}>ログイン</button>
-               <Button variant="secondary" >ShadCN Button</Button>
+               <Button variant="secondary" onClick={handleLoginButtonClick}>Login - ShadCN Button</Button>
             </div>
             {/* Login UI from memberstack */}
             <button onClick={handleButtonClick} className="Button cursor-pointer self-stretch p-4 bg-blue-500 rounded-lg border-1 border-neutral-200 justify-center items-center gap-2.5 inline-flex">
@@ -117,8 +118,12 @@ function Profile() {
 
              <MemberstackProtected
                 allow={{
-                  plans: ["pln_--iu4u0fzy","prc_-1-v3-8o1b0wco","prc_-3-v3-471h0wzu","prc_-1-v3-o11f0wgv","prc_-3-v3-9j1d0wxw"], // ここにアクセスを許可するプランのIDを指定します
-                  // permissions: ["view:workout"] // ここにアクセスを許可するパーミッションを指定します
+                  plans: [
+                    "pln_-1-jp--jnn0fmm",
+                    process.env.NEXT_PUBLIC_PLAN_S_3M_PRICE_ID,
+                    process.env.NEXT_PUBLIC_PLAN_G_1M_PRICE_ID,
+                    process.env.NEXT_PUBLIC_PLAN_G_3M_PRICE_ID,
+                  ],
                 }}
                 onUnauthorized={
                   <div>
