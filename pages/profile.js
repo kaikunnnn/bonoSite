@@ -58,6 +58,47 @@ function Profile() {
         .finally(() => setIsLoading(false)); // ローディング終了
     }, []);
 
+    // Stripeの顧客ポータルを起動する関数
+    const launchStripePortal = async () => {
+      try {
+        await memberstack.launchStripeCustomerPortal({
+          priceIds: [process.env.NEXT_PUBLIC_PLAN_S_3M_PRICE_ID, process.env.NEXT_PUBLIC_PLAN_G_3M_PRICE_ID],
+          returnUrl: window.location.href, // 現在のページに戻る
+          autoRedirect: true, // 自動的にリダイレクト
+        });
+      } catch (error) {
+        console.error("Stripe Customer Portal launch error:", error);
+      }
+    };
+    const launchDirectPlanUpdate = async () => {
+      try {
+        await memberstack.launchStripeCustomerPortal({
+          configuration: {
+              subscription_update: {
+                default_allowed_updates: 'price', // プランの価格を直接アップデートできるように設定
+                // ここで特定のプロダクトや価格の指定を省略
+              },
+          },
+          returnUrl: window.location.href, // 現在のページに戻る
+          autoRedirect: true, // 自動的にリダイレクト
+        });
+      } catch (error) {
+        console.error("Stripe Customer Portal launch error:", error);
+      }
+    };
+    const launchBilling = async () => {
+      try {
+        await memberstack.launchStripeCustomerPortal({
+          configuration: {
+            invoice_history: {
+              enabled: true,
+            },
+          },
+        });
+      } catch (error) {
+        console.error("Billing Portal launch error:", error);
+      }
+    };
     
   
     if (isLoading) {
@@ -153,6 +194,9 @@ function Profile() {
                   <h3>Only the BONO Memeber</h3>
                   <div>
                     <p>Plan Name</p>
+                    <Button variant="default"onClick={launchStripePortal}>プランを管理</Button>
+                    <Button variant="default"onClick={launchDirectPlanUpdate}>スタンダードプラン３M更新</Button>
+                    <Button variant="default"onClick={launchBilling}>請求履歴のみ</Button>
                   </div>
                 </div> 
               </MemberstackProtected>
