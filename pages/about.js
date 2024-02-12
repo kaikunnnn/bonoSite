@@ -1,18 +1,26 @@
+import React from "react";
 
-import Purpose from "@/components/About/layout/Purpose";
+// Component
+import Hero from "@/components/About/layout/Hero";
 import Story from "@/components/About/layout/Story";
-import Eyecatch from "@/components/About/layout/Eyecatch";
-import React, { useState } from "react";
+import Stance from "@/components/About/layout/Stance";
+import Header from "@/components/common/layout/Navigation/Header";
 
 
 
-const About = () => {
+function About() {
 
   return (
     <>
-    <Eyecatch></Eyecatch>
-    <Purpose></Purpose>
-    <Story></Story>
+    <main className="max-h-full  text-slate-900">
+      <Header />
+      <div className="w-full">
+        <Hero></Hero>
+        <Story></Story>
+        <Stance></Stance>
+      </div>
+    </main>
+    
     </>
   );
 };
