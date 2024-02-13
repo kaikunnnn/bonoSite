@@ -36,7 +36,7 @@ export default function SeriesCard({ props }) {
                 alt="series cover image"
                 className="object-cover w-auto h-full rounded-md"
                 height="60"
-                src={props.coverbook?.src}
+                src={props.coverbook ? props.coverbook.src : 'デフォルトの画像URL'}
                 style={{
                   aspectRatio: "52/80",
                   objectFit: "cover",
