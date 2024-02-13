@@ -7,6 +7,8 @@ const memberstack = memberstackDOM.init({
   publicKey:  process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY,
 });
 import useMemberstackLogin from "@/libs/memberstack/useMemberstackLogin";
+import { planIdsString } from "@/libs/memberstack/planIds";
+
 
 // stripe firebase account auth
 import { createCheckoutSession } from '../stripe/createCheckoutSession';
@@ -71,17 +73,28 @@ function Profile() {
       }
     };
     const launchDirectPlanUpdate = async () => {
+      console.log("launchDirectPlanUpdate 関数が呼び出されました。");
       try {
+        console.log("launchStripeCustomerPortal を実行します。"); 
         await memberstack.launchStripeCustomerPortal({
           configuration: {
               subscription_update: {
-                default_allowed_updates: 'price', // プランの価格を直接アップデートできるように設定
-                // ここで特定のプロダクトや価格の指定を省略
+                enabled: true,
+                default_allowed_updates: ['price', 'promotion_code'],
+                products: [ // この部分を追加
+                  {
+                    product: "prod_XXXXXXXXXXXX", // 変更を許可する特定のプロダクトID
+                    prices: ["price_YYYYYYYYYYYY"], // このプロダクトに関連する特定の価格ID
+                  },
+                  // 必要に応じて他のプロダクトも同様に追加できます
+                ],
               },
           },
+          
           returnUrl: window.location.href, // 現在のページに戻る
           autoRedirect: true, // 自動的にリダイレクト
         });
+        console.log("launchStripeCustomerPortal 実行完了。");
       } catch (error) {
         console.error("Stripe Customer Portal launch error:", error);
       }
@@ -94,6 +107,7 @@ function Profile() {
               enabled: true,
             },
           },
+          priceIds: [process.env.NEXT_PUBLIC_PLAN_S_3M_PRICE_ID, process.env.NEXT_PUBLIC_PLAN_G_3M_PRICE_ID],
         });
       } catch (error) {
         console.error("Billing Portal launch error:", error);
@@ -159,12 +173,7 @@ function Profile() {
 
              <MemberstackProtected
                 allow={{
-                  plans: [
-                    "pln_-1-jp--jnn0fmm",
-                    process.env.NEXT_PUBLIC_PLAN_S_3M_PRICE_ID,
-                    process.env.NEXT_PUBLIC_PLAN_G_1M_PRICE_ID,
-                    process.env.NEXT_PUBLIC_PLAN_G_3M_PRICE_ID,
-                  ],
+                  plans: planIdsString.split(', ')
                 }}
                 onUnauthorized={
                   <div>

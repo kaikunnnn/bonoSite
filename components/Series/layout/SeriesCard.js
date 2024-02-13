@@ -36,7 +36,7 @@ export default function SeriesCard({ props }) {
                 alt="series cover image"
                 className="object-cover w-auto h-full rounded-md"
                 height="60"
-                src={props.coverbook?.src}
+                src={props.coverbook ? props.coverbook.src : 'デフォルトの画像URL'}
                 style={{
                   aspectRatio: "52/80",
                   objectFit: "cover",
@@ -48,7 +48,7 @@ export default function SeriesCard({ props }) {
               <CardTitle className="text-lg font-semibold mt-1">{props.title}</CardTitle>
               <CardDescription className="text-base text-gray-500 dark:text-gray-400 mt-1">
                 Description for the card.
-                {props.category.name}
+                {props.category?.name}
               </CardDescription>
               <time dateTime="" className="text-xs text-left	 text-gray-400">
                 {dayjs(props._sys.raw.createdAt).format("YYYY年MM月DD日")}

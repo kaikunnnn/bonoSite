@@ -1,28 +1,32 @@
-// pages/series.js
 import React from 'react';
 
-const SeriesTop = ({props}) => {
+// propsを直接デストラクチャリングして、各プロパティにデフォルト値を設定
+const SeriesTop = ({
+  coverbook = {},
+  category = {},
+  title = '',
+  whythis = ''
+}) => {
   return (
     <div className="TopSeriesExplain w-full flex-col justify-start items-start gap-8 inline-flex">
         <div className="Frame625516 self-stretch flex-col justify-center items-start gap-6 flex">
-            <div className="BookHazimetenouiinformationarchitecture " >
+            <div className="BookHazimetenouiinformationarchitecture">
                 <img className="w-28 h-44 bg-white rounded-tl rounded-tr-xl rounded-bl rounded-br-xl shadow" 
-                    src={props.coverbook.src}>
-                </img>
+                    src={coverbook.src || 'デフォルトの画像URL'} />
             </div>
             <div className="Aboutseries flex-col justify-start items-start gap-4 flex">
             <div className="Frame625180 px-2.5 py-1.5 bg-blue-200 rounded-full justify-start items-start gap-2.5 inline-flex">
-                <div className=" text-blue-900 text-sm font-bold font-['Noto Sans JP'] leading-snug tracking-widest">
-                    <span>{props.category.name}</span>
+                <div className="text-blue-900 text-sm font-bold font-['Noto Sans JP'] leading-snug tracking-widest">
+                    <span>{category.name || 'デフォルトカテゴリー'}</span>
                 </div>
             </div>
             <div className="Frame625179 flex-col justify-start items-start flex">
                 <div className="Ui text-black text-4xl font-bold font-['Noto Sans JP'] leading-10">
-                    <h2>{props.title}</h2>
+                    <h2>{title}</h2>
                 </div>
             </div>
             <div className="Metadescription self-stretch text-black text-base font-normal font-['Noto Sans JP'] leading-relaxed tracking-widest">
-                <p>{props.whythis}</p>    
+                <p>{whythis}</p>    
             </div>
             <div className="Frame625520 justify-start items-start gap-11 inline-flex">
                 <div className="Frame625406 justify-center items-center gap-4 flex">
@@ -58,7 +62,7 @@ const SeriesTop = ({props}) => {
             </div>
             <div className=" w-72 text-center text-blue-500 text-sm font-normal font-['Noto Sans'] leading-snug tracking-wide">メンバーシップについてはこちら</div>
         </div>
-        </div>
+    </div>
   );
 };
 

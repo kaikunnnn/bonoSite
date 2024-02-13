@@ -1,168 +1,39 @@
 import React from 'react';
 
 const Story = () => {
+    
+    const headerText = "BONOとは";
+    const h1Text = "自分自身のアイデアを\n構想し、設計し、構築し、人に届ける\nあなたにとっての\nクリエイションの夜明けを。";
+    const divText = "BONOの看板である「ロードマップ」を、まだ不完全ながらも強化した年と言えます。多くを行うよりも、まずはサービスとしての価値を一つ確固たるものにすることが正しいと判断しました。これ自体自分も正しいと感じています。\nしかし、自信を持って世に出せたという感覚はありません。個人的な問題かもしれませんが、「必要なものを揃える」という点に集中し、自分なりに本当に良いものを作り出す感覚が強まりました。この感覚はサービス開始初期からあり、”とにかく使えるものを作る”にフォーカスしていた結果だと思います。（その証拠に、Twitterで新しく作ったコンテンツを自分からシェアしていません。自信のなさの表れです）\n\n結果的には合理的に選んできたことに対し、『自分の気持ち』が伴わない結果になりました。数字は伸びるかもしれませんが、心は死んでいます。やる人がいなくなれば、サービスは止まります。どれだけ結果が出ていても止まってしまった瞬間、全てが終わりになります。これは合理的に見えて不合理な選択をしてきた結果だと考えています";
+    
+    const textStrokeStyle = {
+        WebkitTextStroke: "1px #F2FF5F", // 枠線の太さと色
+        color: "transparent", // 文字の中身を透明
+      };    
+    const bgStoryColor = {
+        backgroundColor: "#343E43", // 文字の中身を透明にするのではなく、背景色を設定
+    };
+
     return (
-        <div className="flex flex-col items-stretch">
-      <div className="bg-neutral-700 bg-opacity-60 flex w-full flex-col px-20 py-12 items-start max-md:max-w-full max-md:px-5">
-        <div className="text-white text-opacity-80 text-base leading-7 tracking-wider ml-40 mt-5 max-md:ml-2.5">
-          CHAPTE01
+        <div className="px-8 w-full bg-gray-800 flex-col font-black justify-start items-center inline-flex" style={bgStoryColor}>
+            <div className="text-white flex flex-col w-full md:max-w-[560px]  gap-8  mt-32 text-base font-bold leading-7 tracking-wider ">
+                <div className='flex gap-4 flex-col md:max-w-[560px] '>
+                    <div class="text-base font-bold leading-none tracking-[4px]" style={textStrokeStyle}>CONCEPT</div>
+                    <h1 className="text-white text-2xl lg:text-3xl font-medium leading-[2.8rem] lg:leading-[3.6rem] tracking-wide">
+                        {h1Text.split('\n').map((line, i) => <React.Fragment key={i}>{line}<br /></React.Fragment>)}
+                    </h1>
+                </div>
+                
+                <div class="text-white text-opacity-80 text-base font-medium leading-[38.40px] tracking-wide">
+                    {divText.split('\n').map((line, i) => <React.Fragment key={i}>{line}<br /></React.Fragment>)}
+                </div>
+
+                <div class="w-full justify-between items-end inline-flex">
+                    <img class="w-[47px] h-[47px] origin-top-left" src="https://via.placeholder.com/47x47" />
+                    <img class="w-[272px] h-[138px]" src="https://via.placeholder.com/272x138" />
+                 </div>
+            </div>
         </div>
-        <div className="text-white text-3xl font-bold leading-10 tracking-wider ml-40 max-md:ml-2.5">
-          夜明け前
-        </div>
-        <div className="text-white text-opacity-80 text-base font-bold leading-6 tracking-wider whitespace-nowrap ml-40 max-md:ml-2.5">
-          ここにチャプターのいい感じの説明がやってくる
-        </div>
-        <div className="text-white text-opacity-80 text-xs font-bold leading-3 ml-40 mt-12 max-md:ml-2.5 max-md:mt-10">
-          CHAPTE01
-        </div>
-        <div className="text-white text-xl font-bold leading-8 tracking-wider underline ml-40 mt-2 max-md:ml-2.5">
-          夜明け前
-        </div>
-        <div className="text-white text-opacity-60 text-sm leading-6 tracking-wider whitespace-nowrap ml-40 mt-2 max-md:ml-2.5">
-          ここにチャプターのいい感じの説明がやってくる
-        </div>
-        <div className="text-white text-opacity-80 text-xs font-bold leading-3 ml-40 mt-6 max-md:ml-2.5">
-          CHAPTE01
-        </div>
-        <div className="text-white text-xl font-bold leading-8 tracking-wider underline ml-40 mt-2 max-md:ml-2.5">
-          つくることでつながる
-        </div>
-        <div className="text-white text-opacity-60 text-sm leading-6 tracking-wider whitespace-nowrap ml-40 mt-2 max-md:ml-2.5">
-          ここにチャプターのいい感じの説明がやってくる
-        </div>
-        <div className="text-white text-opacity-80 text-xs font-bold leading-3 ml-40 mt-6 max-md:ml-2.5">
-          CHAPTE01
-        </div>
-        <div className="text-white text-xl font-bold leading-8 tracking-wider underline ml-40 mt-2 max-md:ml-2.5">
-          デザイナーになる日
-        </div>
-        <div className="text-white text-opacity-60 text-sm leading-6 tracking-wider whitespace-nowrap ml-40 mt-2 mb-5 max-md:ml-2.5">
-          ここにチャプターのいい感じの説明がやってくる
-        </div>
-      </div>
-      <div className="bg-neutral-800 bg-opacity-20 flex w-full flex-col px-20 py-12 items-start max-md:max-w-full max-md:px-5">
-        <div className="text-neutral-900 text-opacity-80 text-base leading-7 tracking-wider ml-40 mt-5 max-md:ml-2.5">
-          CHAPTE02
-        </div>
-        <div className="text-neutral-900 text-3xl font-bold leading-10 tracking-wider ml-40 max-md:ml-2.5">
-          つくる人になる
-        </div>
-        <div className="text-neutral-900 text-opacity-80 text-base font-bold leading-6 tracking-wider whitespace-nowrap ml-40 max-md:ml-2.5">
-          構想し、設計し、構築し、人に届ける
-        </div>
-        <div className="text-neutral-900 text-opacity-80 text-xs font-bold leading-3 ml-40 mt-12 max-md:ml-2.5 max-md:mt-10">
-          CHAPTE01
-        </div>
-        <div className="text-neutral-900 text-xl font-bold leading-8 tracking-wider underline ml-40 mt-2 max-md:ml-2.5">
-          アイデアを具体にする技術
-        </div>
-        <div className="text-neutral-900 text-opacity-60 text-sm leading-6 tracking-wider whitespace-nowrap ml-40 mt-2 max-md:ml-2.5">
-          ここにチャプターのいい感じの説明がやってくる
-        </div>
-        <div className="text-neutral-900 text-opacity-80 text-xs font-bold leading-3 ml-40 mt-6 max-md:ml-2.5">
-          CHAPTE01
-        </div>
-        <div className="text-neutral-900 text-xl font-bold leading-8 tracking-wider underline ml-40 mt-2 max-md:ml-2.5">
-          感情をデザインする
-        </div>
-        <div className="text-neutral-900 text-opacity-60 text-sm leading-6 tracking-wider whitespace-nowrap ml-40 mt-2 max-md:ml-2.5">
-          ここにチャプターのいい感じの説明がやってくる
-        </div>
-        <div className="text-neutral-900 text-opacity-80 text-xs font-bold leading-3 ml-40 mt-6 max-md:ml-2.5">
-          CHAPTE01
-        </div>
-        <div className="text-neutral-900 text-xl font-bold leading-8 tracking-wider underline ml-40 mt-2 max-md:ml-2.5">
-          ”デザイナー”に囚われない
-        </div>
-        <div className="text-neutral-900 text-opacity-60 text-sm leading-6 tracking-wider whitespace-nowrap ml-40 mt-2 max-md:ml-2.5">
-          ここにチャプターのいい感じの説明がやってくる
-        </div>
-        <div className="text-neutral-900 text-opacity-80 text-xs font-bold leading-3 ml-40 mt-6 max-md:ml-2.5">
-          CHAPTE01
-        </div>
-        <div className="text-neutral-900 text-xl font-bold leading-8 tracking-wider underline ml-40 mt-2 max-md:ml-2.5">
-          歯車は熱くならない
-        </div>
-        <div className="text-neutral-900 text-opacity-60 text-sm leading-6 tracking-wider whitespace-nowrap ml-40 mt-2 max-md:ml-2.5">
-          ここにチャプターのいい感じの説明がやってくる
-        </div>
-        <div className="text-neutral-900 text-opacity-80 text-xs font-bold leading-3 ml-40 mt-6 max-md:ml-2.5">
-          CHAPTE01
-        </div>
-        <div className="text-neutral-900 text-xl font-bold leading-8 tracking-wider underline ml-40 mt-2 max-md:ml-2.5">
-          とにかくつくる
-        </div>
-        <div className="text-neutral-900 text-opacity-60 text-sm leading-6 tracking-wider whitespace-nowrap ml-40 mt-2 max-md:ml-2.5">
-          ここにチャプターのいい感じの説明がやってくる
-        </div>
-        <div className="text-neutral-900 text-opacity-80 text-xs font-bold leading-3 ml-40 mt-6 max-md:ml-2.5">
-          CHAPTE01
-        </div>
-        <div className="text-neutral-900 text-xl font-bold leading-8 tracking-wider underline whitespace-nowrap ml-40 mt-2 max-md:ml-2.5">
-          クリエイションを武器に社会に貢献する
-        </div>
-        <div className="text-neutral-900 text-opacity-60 text-sm leading-6 tracking-wider ml-40 mt-2 mb-5 max-md:ml-2.5">
-          ここにチャプターのいい感じの説明がやってくる
-        </div>
-      </div>
-      <div className="bg-neutral-800 bg-opacity-10 flex w-full flex-col px-20 py-12 items-start max-md:max-w-full max-md:px-5">
-        <div className="text-neutral-900 text-opacity-80 text-base leading-7 tracking-wider ml-40 mt-5 max-md:ml-2.5">
-          CHAPTE03
-        </div>
-        <div className="text-neutral-900 text-3xl font-bold leading-10 tracking-wider ml-40 max-md:ml-2.5">
-          己の火を灯そう
-        </div>
-        <div className="text-neutral-900 text-opacity-80 text-base font-bold leading-6 tracking-wider whitespace-nowrap ml-40 max-md:ml-2.5">
-          ここにチャプターのいい感じの説明がやってくる
-        </div>
-        <div className="text-neutral-900 text-opacity-80 text-xs font-bold leading-3 ml-40 mt-12 max-md:ml-2.5 max-md:mt-10">
-          CHAPTE01
-        </div>
-        <div className="text-neutral-900 text-xl font-bold leading-8 tracking-wider underline ml-40 mt-2 max-md:ml-2.5">
-          実験場を持つ
-        </div>
-        <div className="text-neutral-900 text-opacity-60 text-sm leading-6 tracking-wider whitespace-nowrap ml-40 mt-2 max-md:ml-2.5">
-          ここにチャプターのいい感じの説明がやってくる
-        </div>
-        <div className="text-neutral-900 text-opacity-80 text-xs font-bold leading-3 ml-40 mt-6 max-md:ml-2.5">
-          CHAPTE01
-        </div>
-        <div className="text-neutral-900 text-xl font-bold leading-8 tracking-wider underline ml-40 mt-2 max-md:ml-2.5">
-          好奇心を耕す
-        </div>
-        <div className="text-neutral-900 text-opacity-60 text-sm leading-6 tracking-wider whitespace-nowrap ml-40 mt-2 max-md:ml-2.5">
-          ここにチャプターのいい感じの説明がやってくる
-        </div>
-        <div className="text-neutral-900 text-opacity-80 text-xs font-bold leading-3 ml-40 mt-6 max-md:ml-2.5">
-          CHAPTE01
-        </div>
-        <div className="text-neutral-900 text-xl font-bold leading-8 tracking-wider underline ml-40 mt-2 max-md:ml-2.5">
-          誰に貢献するか
-        </div>
-        <div className="text-neutral-900 text-opacity-60 text-sm leading-6 tracking-wider whitespace-nowrap ml-40 mt-2 max-md:ml-2.5">
-          ここにチャプターのいい感じの説明がやってくる
-        </div>
-        <div className="text-neutral-900 text-opacity-80 text-xs font-bold leading-3 ml-40 mt-6 max-md:ml-2.5">
-          CHAPTE01
-        </div>
-        <div className="text-neutral-900 text-xl font-bold leading-8 tracking-wider underline ml-40 mt-2 max-md:ml-2.5">
-          アイデアで人とつながる
-        </div>
-        <div className="text-neutral-900 text-opacity-60 text-sm leading-6 tracking-wider whitespace-nowrap ml-40 mt-2 max-md:ml-2.5">
-          ここにチャプターのいい感じの説明がやってくる
-        </div>
-        <div className="text-neutral-900 text-opacity-80 text-xs font-bold leading-3 ml-40 mt-6 max-md:ml-2.5">
-          END CHAPTER
-        </div>
-        <div className="text-neutral-900 text-xl font-bold leading-8 tracking-wider underline ml-40 mt-2 max-md:ml-2.5">
-          夜明け
-        </div>
-        <div className="text-neutral-900 text-opacity-60 text-sm leading-6 tracking-wider whitespace-nowrap ml-40 mt-2 mb-5 max-md:ml-2.5">
-          ここにチャプターのいい感じの説明がやってくる
-        </div>
-      </div>
-    </div>
     );
 }
 
