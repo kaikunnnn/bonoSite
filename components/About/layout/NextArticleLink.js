@@ -5,12 +5,17 @@ import ListStance from '../ui/stance/listStance';
 function NextArticleLink({ currentArticle, allArticles }) {
   // 次の記事を見つける関数
   function findNextArticle(currentArticle, allArticles) {
+    // currentArticle または currentArticle.series が null または undefined の場合、処理を中断
+    if (!currentArticle || !currentArticle.series) {
+      return null;
+    }
+
     const currentOrder = currentArticle.seriesorder;
     const currentSeries = currentArticle.series.slug; // 現在の記事のシリーズを取得
 
     // 同じシリーズ内で次の記事を見つける
     const nextArticle = allArticles
-      .filter(article => article.series.slug === currentSeries && article.seriesorder > currentOrder)
+      .filter(article => article.series && article.series.slug === currentSeries && article.seriesorder > currentOrder)
       .sort((a, b) => a.seriesorder - b.seriesorder)[0]; // seriesOrderが小さい順にソートして最初の要素を取得
 
     return nextArticle;
@@ -30,7 +35,7 @@ function NextArticleLink({ currentArticle, allArticles }) {
         className="m-auto w-full text-center"
         title={nextArticle.title} 
         url={`/about/${nextArticle.slug}`}
-    />
+      />
     </div>
   );
 }
