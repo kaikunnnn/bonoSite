@@ -26,7 +26,9 @@ function About({aboutContents}) {
       <div className="w-full">
         <Hero></Hero>
         <Story></Story>
-        <Stance aboutContents={aboutContents}></Stance>
+        <div id="stance">
+          <Stance aboutContents={aboutContents}></Stance>
+        </div>
       </div>
     </main>
     

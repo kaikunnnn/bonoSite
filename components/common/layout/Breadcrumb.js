@@ -1,22 +1,19 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
 
-const Breadcrumb = (props) => {
+const Breadcrumbs = ({ crumbs }) => {
   return (
-    <>
-      <div className="Breadcrumb w-52 h-11 py-3 justify-start items-start gap-2.5 inline-flex">
-        <div className=" text-zinc-500 text-sm font-normal leading-snug tracking-wide">
-          トップ
-        </div>
-        <div className=" text-zinc-500 text-sm font-normal leading-snug tracking-wide">
-          /
-        </div>
-        <div className=" text-zinc-500 text-sm font-normal leading-snug tracking-wide">
-          エピソードタイトル
-        </div>
-      </div>
-    </>
+    <nav aria-label="breadcrumb">
+      <ol className="flex leading-none divide-x divide-gray-200">
+        {crumbs.map((crumb, i) => (
+          <li key={i} className={`${i === 0 ? 'pr-2' : 'px-2'}`}>
+            <Link href={crumb.href}>
+              <p className='text-xxs md:text-xs underline text-gray-400 hover:no-underline'>{crumb.title}</p>
+            </Link>
+          </li>
+        ))}
+      </ol>
+    </nav>
   );
 };
 
-export default Breadcrumb;
+export default Breadcrumbs;

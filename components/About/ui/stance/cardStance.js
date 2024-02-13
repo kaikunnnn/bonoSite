@@ -7,7 +7,7 @@ function CardStance(props) {
   const { listItems } = props;
 
   return (
-    <div className='border mx-4 lg:max-w-[560px]  border-solid border-gray-900 bg-white'>
+    <div className='border  mx-4 md:m-auto lg:max-w-[560px]  border-solid border-gray-900 bg-white'>
         <TitleStance
             stanceNumber={props.stanceNumber}
             stanceTitle={props.stanceTitle}
@@ -18,6 +18,7 @@ function CardStance(props) {
         {listItems.map((item, index) => (
         <ListStance 
           key={index}
+          emoji={item.emoji}
           title={item.title} 
           description={item.description}
           url={item.url}

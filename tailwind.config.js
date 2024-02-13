@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      fontSize: {
+        'xxs': '.65rem', // 例として0.65remをxxsサイズとして定義
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -33,5 +36,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"),require('@tailwindcss/typography'),],
 }

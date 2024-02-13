@@ -48,7 +48,7 @@ const Stance = ({aboutContents}) => {
               mainTitle="あったらいいなをつくる人を増やす"
               chapterDescription="チャプターの説明"
               listItems={[
-                { title: 'リストアイテム1', description: '説明1', url: 'https://example.com/1' },
+                { title: 'リストアイテム1', emoji:'✌️', description: '説明1', url: 'https://example.com/1' },
                 { title: 'リストアイテム2', description: '説明2', url: 'https://example.com/2' },
                 // 他のリストアイテム...
               ]}
