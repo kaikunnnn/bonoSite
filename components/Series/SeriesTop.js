@@ -7,7 +7,7 @@ const SeriesTop = ({props}) => {
         <div className="Frame625516 self-stretch flex-col justify-center items-start gap-6 flex">
             <div className="BookHazimetenouiinformationarchitecture " >
                 <img className="w-28 h-44 bg-white rounded-tl rounded-tr-xl rounded-bl rounded-br-xl shadow" 
-                    src={props.coverbook.src}>
+                    src={props.coverbook?.src || 'デフォルトの画像URL'}>
                 </img>
             </div>
             <div className="Aboutseries flex-col justify-start items-start gap-4 flex">
