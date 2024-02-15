@@ -1,39 +1,48 @@
-// components/About/layout/NextArticleLink.js
 import Link from 'next/link';
 import ListStance from '../ui/stance/listStance';
 
 function NextArticleLink({ currentArticle, allArticles }) {
   // 次の記事を見つける関数
   function findNextArticle(currentArticle, allArticles) {
-    // currentArticle または currentArticle.series が null または undefined の場合、処理を中断
+    console.log('現在の記事:', currentArticle);
+
     if (!currentArticle || !currentArticle.series) {
+      console.log('現在の記事またはシリーズが無効です。');
       return null;
     }
 
     const currentOrder = currentArticle.seriesorder;
-    const currentSeries = currentArticle.series.slug; // 現在の記事のシリーズを取得
+    const currentSeriesSlug = currentArticle.series.slug;
+    console.log('現在のシリーズ順序:', currentOrder, '現在のシリーズスラッグ:', currentSeriesSlug);
 
-    // 同じシリーズ内で次の記事を見つける
-    const nextArticle = allArticles
-      .filter(article => article.series && article.series.slug === currentSeries && article.seriesorder > currentOrder)
+    // 現在の記事のseries.slugが同一の記事一覧を取得
+    const articlesInSameSeries = allArticles.filter(article => 
+      article.series && article.series.slug === currentSeriesSlug);
+    console.log('同一シリーズの記事一覧:', articlesInSameSeries);
+
+    // 取得した記事一覧の中で、現在の記事のseriesorderの次に大きい値を持つ記事を探す
+    const nextArticle = articlesInSameSeries
+      .filter(article => article.seriesorder > currentOrder)
       .sort((a, b) => a.seriesorder - b.seriesorder)[0]; // seriesOrderが小さい順にソートして最初の要素を取得
+    console.log('次の記事:', nextArticle);
 
     return nextArticle;
   }
 
-  // 次の記事を見つける
   const nextArticle = findNextArticle(currentArticle, allArticles);
 
-  // 次の記事がない場合は何も表示しない
-  if (!nextArticle) return null;
+  if (!nextArticle) {
+    console.log('次の記事はありません。');
+    return null;
+  }
 
-  // 次の記事へのリンクを表示
   return (
     <div className="next-article-link py-8">
-      <h2 className='text-center text-lg'>次の記事 ⬇️</h2>
+      <h2 className='text-base'>次のスタンス</h2>
       <ListStance
         className="m-auto w-full text-center"
         title={nextArticle.title} 
+        description={nextArticle.explain} 
         url={`/about/${nextArticle.slug}`}
       />
     </div>

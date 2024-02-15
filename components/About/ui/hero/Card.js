@@ -11,7 +11,7 @@ function CardInvitation() {
             fontFamily: 'Yellowtail',
       }
   return (
-    <div class=" bg-zinc-100 mt-2 lg:mt-20 border lg:w-[560px] border-black border-opacity-0 flex-col justify-start items-center inline-flex z-[2]">
+    <div class=" bg-zinc-100 mt-2 lg:mt-20 border lg:w-[560px] border-black border-opacity-0 flex-col justify-start items-center inline-flex z-[10]">
     <div class="self-stretch pt-4 pb-8 flex-col justify-start items-start gap-2 flex border-b 1px">
         <div class="self-stretch px-4 justify-between items-start inline-flex">
             <div class="text-neutral-900 text-opacity-80 text-[10px] font-bold font-['Hind'] leading-[11px]">INVITATION</div>

@@ -4,7 +4,7 @@ function ListStance(props) {
   const { title, description, url, isLast,emoji } = props;
 
   return (
-    <div class="py-6 lg:py-8 border-b w-full border-neutral-900 border-opacity-10 flex-col justify-start items-start gap-2 inline-flex" style={{ borderBottom: isLast ? 'none' : '1px solid #ddd' }}>
+    <div class="List py-6 lg:py-8 border-b w-full border-neutral-900 border-opacity-10 flex-col justify-start items-start gap-2 inline-flex" style={{ borderBottom: isLast ? 'none' : '1px solid #ddd' }}>
         <div class="text-neutral-900 text-opacity-80 text-xl lg:text-xxl font-bold font-['Hind'] leading-snug">
           {emoji}
           </div>

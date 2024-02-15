@@ -17,7 +17,7 @@ function StanceSectionTitle(props) {
         <p className='text-sm leading-6 '>BONOがサービスをつづける</p>
         <h2 className="H2 text-center text-white text-8xl lg:text-[128px] leading-tight lg:leading-snug font-bold tracking-wide" style={textStrokeStyle}>スタンス</h2>
       </div>
-      <div className="self-center text-base leading-8 max-w-[248px] lg:max-w-[320px] -mt-4">
+      <div className="self-center text-base text-center leading-8 max-w-[248px] lg:max-w-[320px] -mt-4">
         誰が、何を考えて、作っているの？
         <br />
         BONOは単純なスクール業のように就職できたらOKとは考えていません。

@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   // 特定のシリーズのみの記事を取得
   const allArticles = await getContents();
-  const articles = allArticles.filter(article => article.series?.slug === 'figma-basic');
+  const articles = allArticles.filter(article => article.series?.slug === 'about');
   let article = null;
 
   // paramsが存在する場合、特定の記事を取得
@@ -66,8 +66,7 @@ export default function ContentDetail({ article,Contents }) {
     return <div>Article not found</div>;
   }
 
-  console.log(article);
-  console.log(Contents);
+
 
   return (<>
    <Head>
@@ -87,14 +86,14 @@ export default function ContentDetail({ article,Contents }) {
     <div className="" style={{ backgroundColor: '#F3F2EE' }}>
       <Header />
       
-      <div className="ContentSection m-auto py-20 w-10/12 md:w-[560px]">
-        <Breadcrumbs crumbs={breadcrumbs} className="w-10/12 md:w-[560px]" />
-        <ArticleAbout article={article} className="w-10/12 md:w-[560px]" />
+      <div className="ContentSection m-auto py-20 w-10/12 md:w-[600px]">
+        <Breadcrumbs crumbs={breadcrumbs} className="w-10/12 " />
+        <ArticleAbout article={article} className="w-10/12 " />
         <hr className="w-full border-gray-300 mt-24 mb-0" />
         <NextArticleLink currentArticle={article} allArticles={Contents} />
       </div>
       <div className="m-auto mt-8 pb-64" >
-         <MenuToggle contents={Contents}/>  
+         <MenuToggle aboutContents={Contents}/>  
       </div>
     </div>
   </>);

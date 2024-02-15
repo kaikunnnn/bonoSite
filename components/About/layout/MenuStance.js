@@ -1,7 +1,25 @@
 import Link from 'next/link';
 import CardStance from '../ui/stance/cardStance';
 
-const MenuToggle = ({ contents }) => {
+const MenuToggle = ({ aboutContents }) => {
+
+  // aboutContentsをseriesOrderの値でソート
+const sortedAboutContents = aboutContents.sort((a, b) => a.seriesorder - b.seriesorder);
+
+// Titleを定義
+const titles = aboutContents
+.filter(content => content.series?.slug === 'about')
+.map(filteredContent => filteredContent.title);
+
+// Titleを定義
+const explains = aboutContents
+.filter(content => content.series?.slug === 'about')
+.map(filteredContent => filteredContent.explain);
+
+// URL(slug)を定義
+const urls = aboutContents
+.filter(content => content.series?.slug === 'about')
+.map(filteredContent => filteredContent.slug);
 
   return (
     <>
@@ -11,35 +29,37 @@ const MenuToggle = ({ contents }) => {
           </div>
        
           <div className='flex flex-col gap-6'>
-          <CardStance
-              
+          <CardStance 
               stanceNumber='スタンス01'
-              mainTitle="あったらいいなをつくる人を増やす"
+              mainTitle={<><span>あったらいいなを<br></br>つくる人を増やす</span></>}
+              chapterDescription="ここにチャプターのいい感じの説明がやってくる"
+              listItems={[
+                { emoji:'✌️',title: titles[0] || 'タイトルがないよ', description: explains[0], url: `/about/${urls[0]}` },
+                { emoji:'✌️',title: titles[1] || 'タイトルがないよ', description: explains[1], url: `/about/${urls[1]}` },
+              ]}
+            />
+             <CardStance 
+              stanceNumber='スタンス02'
+              mainTitle={<>デザインではなく<br></br>
+              クリエイション</>}
               chapterDescription="チャプターの説明"
               listItems={[
-                { title: 'リストアイテム1',emoji:'✌️', description: '説明1', url: `/about/${contents[0].slug}` },
-                { title: 'リストアイテム2', description: '説明2', url: 'https://example.com/2' },
+                { emoji:'✌️',title: titles[2] || 'タイトルがないよ', description: explains[2], url: `/about/${urls[2]}` },
+                { emoji:'✌️',title: titles[3] || 'タイトルがないよ', description: explains[3], url: `/about/${urls[3]}` },
+                { emoji:'✌️',title: titles[4] || 'タイトルがないよ', description: explains[4], url: `/about/${urls[4]}` },
+                { emoji:'✌️',title: titles[5] || 'タイトルがないよ', description: explains[5], url: `/about/${urls[5]}` },
                 // 他のリストアイテム...
               ]}
             />
-            <CardStance
-              stanceNumber='スタンス01'
-              mainTitle="あったらいいなをつくる人を増やす"
+              <CardStance 
+              stanceNumber='スタンス03'
+              mainTitle={<>自分の火を灯す</>}
               chapterDescription="チャプターの説明"
               listItems={[
-                { title: 'リストアイテム1', description: '説明1', url: `/about/${contents[0].slug}` },
-                { title: 'リストアイテム2', description: '説明2', url: 'https://example.com/2' },
-                // 他のリストアイテム...
-              ]}
-            />
-            <CardStance
-              stanceNumber='スタンス01'
-              mainTitle="あったらいいなをつくる人を増やす"
-              chapterDescription="チャプターの説明"
-              listItems={[
-                { title: 'リストアイテム1', description: '説明1', url: `/about/${contents[0].slug}` },
-                { title: 'リストアイテム2', description: '説明2', url: 'https://example.com/2' },
-                // 他のリストアイテム...
+                { emoji:'✌️',title: titles[6] || 'タイトルがないよ', description: explains[6], url: `/about/${urls[6]}` },
+                { emoji:'✌️',title: titles[7] || 'タイトルがないよ', description: explains[7], url: `/about/${urls[7]}` },
+                { emoji:'✌️',title: titles[8] || 'タイトルがないよ', description: explains[8], url: `/about/${urls[8]}` },
+                { emoji:'✌️',title: titles[9] || 'タイトルがないよ', description: explains[9], url: `/about/${urls[9]}` },
               ]}
             />
           </div>
