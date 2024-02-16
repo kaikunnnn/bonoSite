@@ -38,9 +38,9 @@ function NextArticleLink({ currentArticle, allArticles }) {
 
   return (
     <div className="next-article-link py-8">
-      <h2 className='text-base'>次のスタンス</h2>
+      <h2 className='text-base'>次のスタンス👉</h2>
       <ListStance
-        className="m-auto w-full text-center"
+        className="m-auto w-full text-center text-lg"
         title={nextArticle.title} 
         description={nextArticle.explain} 
         url={`/about/${nextArticle.slug}`}

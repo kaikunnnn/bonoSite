@@ -3,9 +3,8 @@ import React from 'react';
 const Story = () => {
     
     const headerText = "BONOとは";
-    const h1Text = "自分自身のアイデアを\n構想し、設計し、構築し、人に届ける\nあなたにとっての\nクリエイションの夜明けを。";
-    const divText = "BONOの看板である「ロードマップ」を、まだ不完全ながらも強化した年と言えます。多くを行うよりも、まずはサービスとしての価値を一つ確固たるものにすることが正しいと判断しました。これ自体自分も正しいと感じています。\nしかし、自信を持って世に出せたという感覚はありません。個人的な問題かもしれませんが、「必要なものを揃える」という点に集中し、自分なりに本当に良いものを作り出す感覚が強まりました。この感覚はサービス開始初期からあり、”とにかく使えるものを作る”にフォーカスしていた結果だと思います。（その証拠に、Twitterで新しく作ったコンテンツを自分からシェアしていません。自信のなさの表れです）\n\n結果的には合理的に選んできたことに対し、『自分の気持ち』が伴わない結果になりました。数字は伸びるかもしれませんが、心は死んでいます。やる人がいなくなれば、サービスは止まります。どれだけ結果が出ていても止まってしまった瞬間、全てが終わりになります。これは合理的に見えて不合理な選択をしてきた結果だと考えています";
-    
+    const h1Text = "クリエイションを\nはじめよう!!";
+    const divText = "BONOを知ってくれた方はUIやUXのデザイン関連で知ってくれたかもしれません。BONO自体はデジタルをベースにしたデザインが学べるコンテンツがメインになるサービスです。まずは未経験者を中心に、次に現場1-2年目の方向けに基礎がリアルに身につくサービス提供を目指しています🙋\n\nただそれは「手段」の話なんです。\nデザインのスキルが身につけられたらそれでいいのか？共感できない方針や事業の歯車として数十年働くためのスキルを身につけるのか？でいうと確実にNOです🧐\n\nBONOでは自分が変だと思うこと、課題だと思うことを少しでも変えられるようなアイデアや具体的な創造物をつくるデジタルスキルとしてのデザインを提供していきたいと考えています。面白がってアイデアを形にする人を増やしたいし、僕もそうありたい🧘\n\n最初のきっかけは転職や足りないスキルを補うことかもしれません。ただ、BONOを通してただ”つくる”以上の創造したもので世の中とか変わっていく楽しさも身につけられる場所になれたらと思っています👋"
     const textStrokeStyle = {
         WebkitTextStroke: "1px #F2FF5F", // 枠線の太さと色
         color: "transparent", // 文字の中身を透明
@@ -16,21 +15,21 @@ const Story = () => {
 
     return (
         <div className="px-8 w-full bg-gray-800 flex-col font-black justify-start items-center inline-flex" style={bgStoryColor}>
-            <div className="text-white flex flex-col w-full md:max-w-[560px]  gap-8  mt-32 text-base font-bold leading-7 tracking-wider ">
+            <div className="text-white flex flex-col w-full md:max-w-[560px]  gap-8  mt-32 md:mt-56 text-base font-bold leading-7 tracking-wider ">
                 <div className='flex gap-4 flex-col md:max-w-[560px] '>
                     <div class="text-base font-bold leading-none tracking-[4px]" style={textStrokeStyle}>CONCEPT</div>
-                    <h1 className="text-white text-2xl lg:text-3xl font-medium leading-[2.8rem] lg:leading-[3.6rem] tracking-wide">
+                    <h1 className="text-white text-4xl font-bold lg:text-5xl leading-[3.2rem] lg:leading-[5rem] tracking-[8px]">
                         {h1Text.split('\n').map((line, i) => <React.Fragment key={i}>{line}<br /></React.Fragment>)}
                     </h1>
                 </div>
                 
-                <div class="text-white text-opacity-80 text-base font-medium leading-[38.40px] tracking-wide">
+                <div class=" text-gray-300 text-base font-medium leading-[38.40px] tracking-wide">
                     {divText.split('\n').map((line, i) => <React.Fragment key={i}>{line}<br /></React.Fragment>)}
                 </div>
 
-                <div class="w-full justify-between items-end inline-flex">
-                    <img class="w-[47px] h-[47px] origin-top-left" src="https://via.placeholder.com/47x47" />
-                    <img class="w-[272px] h-[138px]" src="https://via.placeholder.com/272x138" />
+                <div class="w-full justify-between items-end inline-flex ">
+                    <p className="text-xl leading-none" style={{ transform: 'scaleX(-1)' }}>🚕</p>
+                    <img class="w-[272px] h-[138px]" src="/about/welcomeBono.png" />
                  </div>
             </div>
         </div>

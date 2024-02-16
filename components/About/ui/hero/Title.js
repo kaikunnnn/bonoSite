@@ -16,7 +16,7 @@ function TitleAbout() {
     tracking-wider lg:text-center whitespace-nowrap leading-[166.4px]
      max-md:flex-wrap max-md:text-4xl z-[1]
     ">
-      <h1 className="flex-auto text-left text-8xl w-auto lg:top-auto lg:text-8xl font-bold lg:text-left lg:px-24" style={textStrokeStyle}>ABOUT</h1>
+      <h1 className="flex-auto text-left text-8xl w-auto lg:top-auto lg:text-8xl font-bold lg:text-left lg:px-24" style={textStrokeStyle}>アバウト</h1>
       <h1 className="flex-auto text-center max-md:text-4xl hidden lg:text-8xl lg:block lg:text-right lg:px-24" style={textStrokeStyle}>ボノ</h1>
     </div>
   );

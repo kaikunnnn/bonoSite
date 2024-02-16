@@ -25,7 +25,7 @@ const ArticleAbout = ({ article }) => {
               <Link href='/about/#stance'>
               <h2 className="H2 text-white text-sm lg:text-xl leading-tight lg:leading-snug font-bold tracking-wide" style={textStrokeStyle}>
 スタンス</h2></Link>
-            <h1 className="!leading-normal text-3xl md:text-5xl font-bold ">
+            <h1 className="!leading-normal text-4xl md:text-5xl font-bold ">
               {article.title}
             </h1>
             <h4 className="text-lg leading-relaxed text-gray-500">
@@ -40,8 +40,12 @@ const ArticleAbout = ({ article }) => {
           {/* Article Body */}
           <div className="Article Body
             prose 
-            prose-h1:text-3xl
-            prose-h2:text-2xl
+            prose-h1:text-4xl
+            prose-h2:text-3xl
+            prose-h2:mt-24
+            prose-h2:leading-relaxed
+            prose-h3:text-xl
+            prose-h3:mt-16
             prose-lg 
             prose-p:leading-loose
             md:prose-xl 

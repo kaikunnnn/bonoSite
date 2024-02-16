@@ -9,7 +9,7 @@ function ListStance(props) {
           {emoji}
           </div>
         <div >
-            <a class="self-stretch text-neutral-900 text-lg lg:text-xl font-bold underline leading-relaxed tracking-wide" href={url}>
+            <a class="self-stretch text-neutral-900 text-xl lg:text-xl font-bold underline leading-relaxed tracking-wide" href={url}>
             {title}
              </a>
         </div>

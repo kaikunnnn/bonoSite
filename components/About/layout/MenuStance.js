@@ -32,17 +32,17 @@ const urls = aboutContents
           <CardStance 
               stanceNumber='スタンス01'
               mainTitle={<><span>あったらいいなを<br></br>つくる人を増やす</span></>}
-              chapterDescription="ここにチャプターのいい感じの説明がやってくる"
+              chapterDescription="世の中に楽しいアイデアを解き放つスキルを"
               listItems={[
                 { emoji:'✌️',title: titles[0] || 'タイトルがないよ', description: explains[0], url: `/about/${urls[0]}` },
                 { emoji:'✌️',title: titles[1] || 'タイトルがないよ', description: explains[1], url: `/about/${urls[1]}` },
               ]}
             />
-             <CardStance 
+              <CardStance 
               stanceNumber='スタンス02'
               mainTitle={<>デザインではなく<br></br>
               クリエイション</>}
-              chapterDescription="チャプターの説明"
+              chapterDescription="デザインは手段、人にポジティブな感情を届けよう"
               listItems={[
                 { emoji:'✌️',title: titles[2] || 'タイトルがないよ', description: explains[2], url: `/about/${urls[2]}` },
                 { emoji:'✌️',title: titles[3] || 'タイトルがないよ', description: explains[3], url: `/about/${urls[3]}` },
@@ -53,8 +53,8 @@ const urls = aboutContents
             />
               <CardStance 
               stanceNumber='スタンス03'
-              mainTitle={<>自分の火を灯す</>}
-              chapterDescription="チャプターの説明"
+              mainTitle={<>好奇心で火を灯す</>}
+              chapterDescription="正しいかどうかはどうでも良い。ウェルカム好奇心"
               listItems={[
                 { emoji:'✌️',title: titles[6] || 'タイトルがないよ', description: explains[6], url: `/about/${urls[6]}` },
                 { emoji:'✌️',title: titles[7] || 'タイトルがないよ', description: explains[7], url: `/about/${urls[7]}` },
