@@ -23,16 +23,16 @@ function About({aboutContents}) {
   return (
     <>
     <SEO
-      title={`${article.title} | BONO BLOG`}
-      description={article.description}
-      imgUrl={`${article.emoji.src}`}
-      ogTitle={`${article.title} | BONO BLOG`}
-      ogImage={article.emoji.src}
-      ogDescription={article.description}
-      ogWidth='160'
-      ogHeight="160"
-    ></SEO>
-    <main className="max-h-full  text-slate-900">
+       title="About:運営のスタンス | BONO"
+       description="BONOは”こうあったらいいのでは?”を考えて→形にするスキルを身につけ、クリエイションの夜明けを実現する人たちのためのサービスです。夜明けの意味する“曙”のように新しい自分の創造性と出会える場所へようこそ〜"
+       imgUrl="https://kaikun.bo-no.design/ogp-about.webp"
+       ogTitle="アバウト - 運営するスタンス | BONO"
+       ogImage="/ogp-about.webp"
+       ogDescription="BONOは”こうあったらいいのでは?”を考えて→形にするスキルを身につけ、クリエイションの夜明けを実現する人たちのためのサービスです。夜明けの意味する“曙”のように新しい自分の創造性と出会える場所へようこそ〜"
+       ogWidth='1200'
+       ogHeight="630">
+    </SEO>
+    <main className="max-h-full text-slate-900">
       <Header />
       <div className="w-full">
         <Hero></Hero>

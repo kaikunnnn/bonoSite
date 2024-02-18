@@ -54,14 +54,14 @@ export default function ContentDetail({ article }) {
     <meta name="twitter:image" content={article.emoji.src} />
    </Head>
    <SEO 
-            title="About:運営のスタンス | BONO"
-            description="BONOは”こうあったらいいのでは?”を考えて→形にするスキルを身につけ、クリエイションの夜明けを実現する人たちのためのサービスです。夜明けの意味する“曙”のように新しい自分の創造性と出会える場所へようこそ〜"
-            imgUrl="/ogp-about.webp"
-            ogTitle="アバウト - 運営するスタンス | BONO"
-            ogImage="/ogp-about.webp"
+            title={`${article.title} | BONO BLOG`}
+            description={article.description}
+            imgUrl={`${article.emoji.src}`}
+            ogTitle={`${article.title} | BONO BLOG`}
+            ogImage={article.emoji.src}
             ogDescription={article.description}
-            ogWidth='1200'
-            ogHeight="630">
+            ogWidth='160'
+            ogHeight="160">
         </SEO>
 
     <div className="">
