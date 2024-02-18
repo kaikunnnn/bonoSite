@@ -23,11 +23,11 @@ function About({aboutContents}) {
   return (
     <>
     <SEO
-       title="About:運営のスタンス | BONO"
+       title="About | BONO"
        description="BONOは”こうあったらいいのでは?”を考えて→形にするスキルを身につけ、クリエイションの夜明けを実現する人たちのためのサービスです。夜明けの意味する“曙”のように新しい自分の創造性と出会える場所へようこそ〜"
-       imgUrl="https://kaikun.bo-no.design/ogp-about.webp"
-       ogTitle="アバウト - 運営するスタンス | BONO"
-       ogImage="/ogp-about.webp"
+       imgUrl="https://kaikun.bo-no.design/about/ogp-about.webp"
+       ogTitle="About | BONO"
+       ogImage="https://kaikun.bo-no.design/about/ogp-about.webp"
        ogDescription="BONOは”こうあったらいいのでは?”を考えて→形にするスキルを身につけ、クリエイションの夜明けを実現する人たちのためのサービスです。夜明けの意味する“曙”のように新しい自分の創造性と出会える場所へようこそ〜"
        ogWidth='1200'
        ogHeight="630">
