@@ -11,11 +11,11 @@ function CardInvitation() {
             fontFamily: 'Yellowtail',
       }
   return (
-    <div class=" bg-zinc-100 mt-2 lg:mt-20 border lg:w-[560px] border-black border-opacity-0 flex-col justify-start items-center inline-flex z-[2]">
+    <div class=" bg-zinc-100 mt-2 lg:mt-20 border lg:w-[560px] border-gray-600 1px border-opacity-0 flex-col justify-start items-center inline-flex z-[10] shadow-md">
     <div class="self-stretch pt-4 pb-8 flex-col justify-start items-start gap-2 flex border-b 1px">
         <div class="self-stretch px-4 justify-between items-start inline-flex">
-            <div class="text-neutral-900 text-opacity-80 text-[10px] font-bold font-['Hind'] leading-[11px]">INVITATION</div>
-            <div class="rotate-90 relative  -right-8 top-6 text-neutral-900 text-opacity-80 text-[10px] font-bold font-['Hind'] leading-[11px]">FOR CREATION</div>
+            <div class="text-neutral-600 text-opacity-80 text-[8px] lg:text-[10px] font-['Hind'] tracking-[4px]">INVITATION</div>
+            <div class="rotate-90 relative  -right-12 top-12 text-neutral-600 text-opacity-80 text-[8px] lg:text-[10px] font-['Hind'] tracking-[4px]">FOR CREATION</div>
         </div>
         <div class="self-stretch p-10 pt-16 lg:p-24 lg:pt-32 lg:pb-24 flex-col justify-start items-start gap-4 flex">
             <div class="flex-col justify-start items-start gap-2 lg:gap-4 flex">
@@ -33,7 +33,15 @@ function CardInvitation() {
     <div class="w-full border-neutral-900 border-opacity-10"></div>
     <div class="self-stretch  py-4 flex-col justify-start items-center flex">
         <div class="self-stretch px-10 py-8 lg:p-24 justify-start items-center gap-2.5 inline-flex">
-            <div class="grow shrink basis-0 text-neutral-900 text-sm lg:text-base lg:leading-[3rem] font-medium font-['Zen Kaku Gothic'] leading-[33.60px]  tracking-widest">BONOは日本語で明朝を意味する<br/>”曙”から意味を取りサービス名にしました。<br/>自分のアイデアを構想・設計・実現して、<br/>人に届けるためのあなたにとっての<br/>クリエイションの夜明けを<br/>実現するためのサービスです。</div>
+            <div class="grow shrink basis-0 text-neutral-900 text-sm lg:text-base lg:leading-[3rem] font-medium font-['Zen Kaku Gothic'] leading-[33.60px]  tracking-widest">
+            BONOは”こうあったらいいのでは?”を<br/>
+            考えて→形にするスキルを身につけ、<br/>
+            クリエイションの夜明けを<br/>
+            実現する人たちのためのサービスです<br/><br/>
+            夜明けの意味する“曙”のように<br/>
+            新しい自分の創造性と出会える場所へ<br/>
+            ようこそ〜🙋<br/>
+            </div>
         </div>
         <div class="self-stretch px-8 justify-between items-end  inline-flex">
             <div class="py-4 flex-col justify-start items-start gap-0.5 inline-flex">

@@ -4,10 +4,10 @@ import TitleStance from './titleStance';
 
 function CardStance(props) {
   // listItems propsを使用して、ListStanceコンポーネントを動的に生成
-  const { listItems } = props;
+  const { listItems = [] } = props; // listItemsにデフォルト値を設定
 
   return (
-    <div className='border  mx-4 md:m-auto lg:max-w-[560px]  border-solid border-gray-900 bg-white'>
+    <div className='Card border w-full mx-auto md:m-auto lg:max-w-[560px]  border-solid border-gray-900 bg-white'>
         <TitleStance
             stanceNumber={props.stanceNumber}
             stanceTitle={props.stanceTitle}

@@ -2,6 +2,9 @@ import React from 'react';
 import CardInvitation from '../ui/hero/Card';
 import TitleAbout from '../ui/hero/Title';
 import Gradation from '../ui/hero/Garadation';
+// framer motion
+import { motion } from "framer-motion";
+
 
 const Hero = () => {
     return (<>
@@ -9,12 +12,17 @@ const Hero = () => {
         {/* Title */}
         <TitleAbout></TitleAbout>
         {/* Card */}
-        <CardInvitation></CardInvitation>
+        <motion.div className='z-10'
+                    initial={{ opacity: 0, y: 320 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 2, ease: "backInOut" }}
+                >
+                    <CardInvitation></CardInvitation>
+                </motion.div>
         {/* Gradation */}
         <Gradation></Gradation>
     </div>
     </>
-        
     );
 }
 
