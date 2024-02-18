@@ -23,7 +23,6 @@ const Hero = () => {
         <Gradation></Gradation>
     </div>
     </>
-        
     );
 }
 
