@@ -21,7 +21,7 @@ const Header = (props) => {
     <>
       <div className="Header w-full fixed py-6 px-6 justify-between items-center inline-flex">
         <div className="LogoBono w-20 md:w-28 h-auto relative">
-          <Link href="/">
+          <Link href="https://bo-no.design">
             <Image src="/bono/logo.svg" width={88} height={32} alt="BONO" className=""/>
           </Link>
         </div>
