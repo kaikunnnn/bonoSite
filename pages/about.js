@@ -25,7 +25,7 @@ function About({aboutContents}) {
     <>
     <Head>
       <meta name="twitter:card" content="https://kaikun.bo-no.design/about/ogp-about.webp" />
-      <meta name="twitter:title" content="About|BONO" />
+      <meta name="twitter:title" content="アバウト-運営のスタンス|BONO" />
       <meta name="twitter:description" content="BONOは”こうあったらいいのでは?”を考えて→形にするスキルを身につけ、クリエイションの夜明けを実現する人たちのためのサービスです。夜明けの意味する“曙”のように新しい自分の創造性と出会える場所へようこそ〜" />
       <meta name="twitter:card" content="summary_large_image" />
     </Head>
