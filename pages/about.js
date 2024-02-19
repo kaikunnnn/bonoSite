@@ -7,6 +7,7 @@ import Stance from "@/components/About/layout/Stance";
 import Header from "@/components/common/layout/Navigation/Header";
 import { getContents } from "@/libs/newt"; // getContents関数をインポート
 import SEO from "@/components/common/layout/Navigation/SEO";
+import Head from "next/head";
 
 export async function getStaticProps() {
   const contents = await getContents();
@@ -22,8 +23,13 @@ function About({aboutContents}) {
   
   return (
     <>
+    <Head>
+      <meta name="twitter:card" content="https://kaikun.bo-no.design/about/ogp-about.webp" />
+      <meta name="twitter:title" content="About|BONO" />
+      <meta name="twitter:description" content="BONOは”こうあったらいいのでは?”を考えて→形にするスキルを身につけ、クリエイションの夜明けを実現する人たちのためのサービスです。夜明けの意味する“曙”のように新しい自分の創造性と出会える場所へようこそ〜" />
+    </Head>
     <SEO
-       title="About | BONO"
+       title="About|BONO"
        description="BONOは”こうあったらいいのでは?”を考えて→形にするスキルを身につけ、クリエイションの夜明けを実現する人たちのためのサービスです。夜明けの意味する“曙”のように新しい自分の創造性と出会える場所へようこそ〜"
        imgUrl="https://kaikun.bo-no.design/about/ogp-about.webp"
        ogTitle="About | BONO"
