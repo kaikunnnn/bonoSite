@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import AudioPlayer from './AudioPlayer';
 
 const PodCastStory = () => {
   const textStrokeStyle = {
@@ -22,12 +23,7 @@ const PodCastStory = () => {
             <img className="grow shrink basis-0 self-stretch shadow" src="https://via.placeholder.com/96x96" alt="Podcast Thumbnail" />
           </div>
         </div>
-        <div className='AudioPlayer w-full'>
-          <audio className="w-full" controls >
-              <source src="your-audio-file.mp3" type="audio/mp3" />
-              Your browser does not support the audio element.
-          </audio>
-        </div>
+        <AudioPlayer />
         <div className="self-stretch flex-col justify-start items-start gap-2 flex">
           <div className="self-stretch text-neutral-700 text-opacity-80 text-base font-normal leading-relaxed tracking-wide">
             今回は「リーダーへのシステム思考のすすめ」をテーマに、代表の梅本@dubhunter と取締役の神田が話す回です。システム思考ってなんなの？基本的な定義から、組織やチームなど複雑に絡み合うシステムを、どのようにマネジメントしていくのかなど、事例を交えながら紹介しています。組織のマネージャーや、管理職を目指す方はぜひ聴いてください。
