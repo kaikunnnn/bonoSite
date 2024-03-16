@@ -1,7 +1,9 @@
 import React from "react";
+import { useRouter } from "next/router";
+import { getContents, getContentsBySlug } from "@/libs/newt";
+
 // pages/series.js
 import SEO from "@/components/common/layout/Navigation/SEO";
-import About from "@/components/Series/layout/About";
 
 // Icon - named lucide
 import { ArrowLeft, LogIn } from "lucide-react";
@@ -11,9 +13,31 @@ import Header from "@/components/common/layout/Navigation/Header";
 import SunTop from "@/components/common/layout/SunTop";
 import AudioPlayer from "@/components/Podcast/ui/AudioPlayer";
 import { Button } from "@/components/common/ui/button";
-import PrimaryButton from "@/components/common/ui/buttons/PrimaryButton";
+import Link from "next/link";
 
-export default function PodcastDetail() {
+// Add getStaticPaths
+export async function getStaticPaths() {
+  const contents = await getContents();
+  const paths = contents.map((content) => ({
+    params: { slug: content.slug },
+  }));
+
+  return { paths, fallback: false };
+}
+
+// Modify getStaticProps to fetch data based on slug
+export async function getStaticProps({ params }) {
+  const podcastData = await getContentsBySlug(params.slug);
+  return {
+    props: {
+      podcast: podcastData,
+    },
+  };
+}
+
+export default function PodcastDetail({ podcast }) {
+  console.log(podcast);
+  // Style CSS
   const textStrokeStyle = {
     WebkitTextStroke: "0.75px black", // 枠線の太さと色
     fontFamily: "Hind",
@@ -35,9 +59,11 @@ export default function PodcastDetail() {
         <SunTop />
         <div className="Podcast w-[880px] m-auto py-14 flex justify-center flex-col gap-8">
           <div class="HeaderNavi w-full flex-col justify-start items-start gap-2.5 inline-flex">
-            <Button variant="outline" size="icon">
-              <ArrowLeft className="h-4 w-4 " icon="arrow-left" /> 一覧へ戻る
-            </Button>
+            <Link href="/podcast">
+              <Button variant="outline" size="icon">
+                <ArrowLeft className="h-4 w-4 " icon="arrow-left" /> 一覧へ戻る
+              </Button>
+            </Link>
           </div>
           <div class="Content w-full p-20 bg-white border border-black flex-col justify-center  gap-12 inline-flex">
             <div class="UpperBlock self-stretch  flex-col justify-center items-start gap-12 flex">
@@ -47,11 +73,11 @@ export default function PodcastDetail() {
                     class="Category text-white text-sm font-semibold font-['Noto Sans'] leading-snug tracking-wide text-center"
                     style={textStrokeStyle}
                   >
-                    キャリア
+                    {podcast.category.name}
                   </p>
                 </div>
-                <h1 class="Title grow shrink basis-0 text-slate-900 text-5xl font-bold font-['Hind'] leading-[67.20px] text-center w-10/12">
-                  セブンカフェとファミマのカフェモカの違い
+                <h1 class="Title grow shrink basis-0 text-slate-900 text-5xl font-bold font-['Hind'] leading-[67.20px] text-center w-11/12">
+                  {podcast.title}
                 </h1>
                 <div class="RadioDetail justify-start items-center gap-4 flex">
                   <img
@@ -67,7 +93,7 @@ export default function PodcastDetail() {
                 <p class="text-center  text-black text-opacity-50 text-base font-bold font-['Noto Sans'] leading-none tracking-wider">
                   🎧再生するンゴ！🎧
                 </p>
-                <AudioPlayer />
+                <AudioPlayer src={podcast.mediaurl} />
               </div>
             </div>
             <div class="BottomBlock flex-col justify-start items-start gap-[20px] flex">
