@@ -10,31 +10,31 @@ const PodCastStory = ({ link, title, timestamp, description, audioSrc }) => {
   };
   return (
     <Link href={`/podcast/${link}`} className="hover:opacity-70">
-      <div className="PodcastEpisodeItem w-full p-16 bg-white border border-neutral-900 border-opacity-90 flex-col justify-start items-start gap-4 inline-flex">
-        <div className="self-stretch justify-start items-center gap-5 inline-flex">
-          <div className="grow shrink basis-0 flex-col justify-start items-start gap-2 inline-flex">
+      <div className="PodcastEpisodeItem w-full mg:p-16 p-8 bg-white border border-neutral-900 border-opacity-90 flex-col justify-start items-start gap-4 inline-flex">
+        <div className="self-stretch justify-self-end items-center gap-3 inline-flex flex-col ">
+          <div className="grow shrink basis-0 flex-col justify-center items-start gap-4 inline-flex">
+            <div className="md:w-24 md:h-24 w-16 h-16 m-auto justify-start items-start gap-1.5 flex">
+              <img
+                className="grow shrink basis-0 self-stretch shadow"
+                src="https://via.placeholder.com/96x96"
+                alt="Podcast Thumbnail"
+              />
+            </div>
+            <h1 className="self-stretch text-center text-neutral-900 md:text-2xl text-lg font-bold leading-[160%] tracking-wide">
+              {title}
+            </h1>
             <p
-              className="text-white text-md font-bold font-['Noto Sans'] leading-snug tracking-wide"
+              className="text-white w-full text-center md:text-md text-xs -mt-2 font-bold leading-snug tracking-wide"
               style={textStrokeStyle}
             >
               キャリア
             </p>
-            <h1 className="self-stretch text-neutral-900 text-2xl font-bold font-['Noto Sans JP'] leading-[38.40px] tracking-wide">
-              {title}
-            </h1>
-            <div className="self-stretch justify-start items-start gap-2 inline-flex">
+            {/* <div className="self-stretch justify-start items-start gap-2 inline-flex">
               <span className="text-black text-sm font-normal font-['Noto Sans'] leading-snug tracking-wide">
                 34分56秒
                 {timestamp}
               </span>
-            </div>
-          </div>
-          <div className="w-24 h-24 justify-start items-start gap-1.5 flex">
-            <img
-              className="grow shrink basis-0 self-stretch shadow"
-              src="https://via.placeholder.com/96x96"
-              alt="Podcast Thumbnail"
-            />
+            </div> */}
           </div>
         </div>
         <AudioPlayer src={audioSrc} />

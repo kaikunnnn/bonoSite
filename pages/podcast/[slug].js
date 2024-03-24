@@ -54,10 +54,10 @@ export default function PodcastDetail({ podcast }) {
         ogWidth="1200"
         ogHeight="600"
       ></SEO>
-      <main className="max-h-full bg-Top bg-cover text-slate-900 bg-no-repeat">
+      <main className="max-h-full bg-cover bg-stone-50 text-slate-900 bg-no-repeat">
         <Header />
         <SunTop />
-        <div className="Podcast w-[880px] m-auto py-14 flex justify-center flex-col gap-8">
+        <div className="Podcast w-11/12 md:w-[880px] m-auto py-14 flex justify-center flex-col gap-8">
           <div class="HeaderNavi w-full flex-col justify-start items-start gap-2.5 inline-flex">
             <Link href="/podcast">
               <Button variant="outline" size="icon">
@@ -65,7 +65,7 @@ export default function PodcastDetail({ podcast }) {
               </Button>
             </Link>
           </div>
-          <div class="Content w-full p-20 bg-white border border-black flex-col justify-center  gap-12 inline-flex">
+          <div class="Content w-full p-4 py-8 md:p-20 bg-white border border-black flex-col justify-center  gap-12 inline-flex">
             <div class="UpperBlock self-stretch  flex-col justify-center items-start gap-12 flex">
               <div class="Head w-full flex-col justify-start items-center gap-3 flex">
                 <div class="self-stretch justify-center items-center inline-flex">
@@ -76,24 +76,21 @@ export default function PodcastDetail({ podcast }) {
                     {podcast.category.name}
                   </p>
                 </div>
-                <h1 class="Title grow shrink basis-0 text-slate-900 text-5xl font-bold font-['Hind'] leading-[67.20px] text-center w-11/12">
+                <h1 class="Title grow shrink basis-0 text-slate-900 text-2xl leading-[160%] md:text-5xl md:leading-[160%] font-bold  text-center w-11/12">
                   {podcast.title}
                 </h1>
-                <div class="RadioDetail justify-start items-center gap-4 flex">
+                <div class="RadioDetail pb-4 justify-start items-center gap-4 flex">
                   <img
                     class="w-10 h-10 rounded-[5px] shadow"
                     src="https://via.placeholder.com/40x40"
                   />
-                  <h5 class="text-black text-opacity-50 text-base font-bold font-['Noto Sans'] leading-none tracking-wider">
+                  <h5 class="text-black text-opacity-50 text-sm md:text-base font-bold font-['Noto Sans'] leading-none tracking-wider">
                     BONOラジオ
                   </h5>
                 </div>
-              </div>
-              <div class="Player border border-solid border-gray-200 self-stretch px-6 pt-6 pb-8 rounded-xl shadow flex-col justify-start items-center gap-2.5 flex ">
-                <p class="text-center  text-black text-opacity-50 text-base font-bold font-['Noto Sans'] leading-none tracking-wider">
-                  🎧再生するンゴ！🎧
-                </p>
-                <AudioPlayer src={podcast.mediaurl} />
+                <div class="Player self-stretch flex-col justify-start items-center gap-2.5 flex ">
+                  <AudioPlayer src={podcast.mediaurl} />
+                </div>
               </div>
             </div>
             <div class="BottomBlock flex-col justify-start items-start gap-[20px] flex">
@@ -107,20 +104,20 @@ export default function PodcastDetail({ podcast }) {
                   </div>
                 </div>
               </div>
-              <div class="flex-col justify-start items-start gap-[22px] flex">
-                <div class="justify-start items-center gap-2.5 inline-flex">
-                  <div class="w-full">
-                    <span className="text-black text-xl font-normal font-['Hind'] leading-10">
+              <div class="flex-col w-full  gap-[22px] flex">
+                <div class="w-full gap-2.5">
+                  <div class="w-ful block overflow-auto">
+                    <span className="text-black text-md font-normal leading-10">
                       Uberリデザインの記事を読んで、UI変更について色々考察したメモです！刷新について↓
                     </span>
-                    <span className="text-black text-xl font-normal font-['Hind'] underline leading-10">
+                    <span className="text-black text-md font-normal underline leading-10">
                       https://mashable-com.translate.goog/article/uber-app-redesign-homescreen-live-activities-dynamic-island?x_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp
                     </span>
-                    <span className="text-black text-xl font-normal font-['Hind'] leading-10">
+                    <span className="text-black text-md font-normal  leading-10">
                       今回の刷新について
                       <br />
                     </span>
-                    <span className="text-black text-xl font-normal font-['Hind'] leading-10">
+                    <span className="text-black text-md font-normal  leading-10">
                       目的を予測するに「いろんな利用シーンにすぐにアクセスできる」がありそう。パーソナライズもしつつ（Suggestions)、使いたいものにアクセスして価値に到達しやすくするのを意識した気がするな〜
                       <br />
                       ホーム
@@ -142,11 +139,11 @@ export default function PodcastDetail({ podcast }) {
                       3Dアイコン
                       <br />
                     </span>
-                    <span className="text-black text-xl font-normal font-['Hind'] leading-10">
+                    <span className="text-black text-md font-normal  leading-10">
                       狙い
                       <br />
                     </span>
-                    <span className="text-black text-xl font-normal font-['Hind'] leading-10">
+                    <span className="text-black text-md font-normal  leading-10">
                       いろんなサービスをすでに使っているデータがあって、アクセスしやすくすることでサービスエンゲージが高まるユーザーが実在している場合は刺さりそう
                       <br />
                       マイナスとしては主要な使い方ができなくなる恐れがあること

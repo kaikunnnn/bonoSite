@@ -1,36 +1,41 @@
 /* Font */
-@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tangsa&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Tangsa&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Yellowtail&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+
 /* tailwind */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
 
 html,
 body {
   font-family: "Hind", "Noto Sans JP", sans-serif;
   font-size: 100%;
   font-weight: 500;
-  word-spacing:1px;
-  font-feature-settings: 'palt' 1;
+  word-spacing: 1px;
+  font-feature-settings: "palt" 1;
   -webkit-backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
   text-align: left;
 }
-h1,h2,h3,h4,h5{
+h1,
+h2,
+h3,
+h4,
+h5 {
   text-align: left;
 }
-h2{
+h2 {
   font-size: 2rem;
   font-weight: bold;
   line-height: 1.6;
 }
-h3{
+h3 {
   font-size: 1.5rem;
   font-weight: bold;
   line-height: 1.6;
@@ -40,6 +45,71 @@ h3{
   font-family: var(--custom-font-family);
   box-sizing: border-box;
 }
-.bg-Top{
-  background-image: url('/top-image.svg');
+.bg-Top {
+  background-image: url("/top-image.svg");
+}
+
+/* AudioPlayer.jsのCSS */
+.rhap_controls-section {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+/* PlayerContainer */
+.rhap_container {
+  box-shadow: none !important;
+  background-color: #f6f8f8 !important;
+  border-radius: 12px !important;
+}
+
+@media (min-width: 768px) {
+  /* tablet以上のサイズ */
+  .rhap_play-pause-button {
+    width: 64px !important;
+    height: 64px !important;
+    font-size: 64px !important;
+    color: #ff823b !important;
+  }
+}
+
+@media (max-width: 767px) {
+  /* それ以下のディスプレイサイズ */
+  .rhap_play-pause-button {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 44px !important;
+    color: #ff823b !important;
+  }
+}
+
+.rhap_progress-section {
+  padding: 4px 0 0px 0 !important;
+}
+
+.rhap_progress-indicator {
+  width: 16px !important;
+  height: 16px !important;
+  top: -5px !important;
+}
+.rhap_time {
+  opacity: 64% !important;
+}
+.rhap_progress-container {
+  justify-content: center !important;
+}
+.rhap_progress-bar {
+  width: 80% !important;
+}
+
+.rhap_rewind-button,
+.rhap_forward-button,
+.rhap_volume-controls,
+.rhap_additional-controls {
+  display: none !important;
+}
+.rhap_rewind-button svg,
+.rhap_forward-button svg {
+  display: inline;
+  width: 24px;
+  height: auto;
 }

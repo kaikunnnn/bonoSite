@@ -36,6 +36,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^3.0.5",
+    "react-h5-audio-player": "^3.9.1",
     "react-jss": "^10.10.0",
     "shadcn-ui": "^0.8.0",
     "stripe": "^12.4.0",
