@@ -60,6 +60,7 @@ h3 {
   box-shadow: none !important;
   background-color: #f6f8f8 !important;
   border-radius: 12px !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
 
 @media (min-width: 768px) {

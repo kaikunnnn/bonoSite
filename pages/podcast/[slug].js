@@ -96,10 +96,10 @@ export default function PodcastDetail({ podcast }) {
             <div class="BottomBlock flex-col justify-start items-start gap-[20px] flex">
               <div class="flex-col justify-start items-start gap-[22px] flex">
                 <div class="justify-start items-center gap-2.5 inline-flex">
-                  <div class="text-black text-[28px] font-bold font-['Hind'] leading-[39.20px]">
+                  <div class="text-black text-xl font-bold font-['Hind'] leading-[39.20px]">
                     Think.
                   </div>
-                  <div class="text-black text-2xl font-semibold font-['Hiragino Mincho Pro'] leading-[33.60px]">
+                  <div class="text-black text-xl font-semibold font-['Hiragino Mincho Pro'] leading-[33.60px]">
                     痕跡
                   </div>
                 </div>

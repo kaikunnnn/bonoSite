@@ -44,7 +44,7 @@ function BonoRadio({ radioContents }) {
         ogWidth="1200"
         ogHeight="630"
       ></SEO>
-      <main className="max-h-full text-slate-900 bg-stone-50">
+      <main className="max-h-full text-slate-900 bg-stone-50 pb-80">
         <Header />
         <div className="Radio flex justify-center items-center">
           <div className="Wrapper md:w-[880px] w-11/12 m-auto flex-col justify-start items-center md:gap-6 gap-4 inline-flex">

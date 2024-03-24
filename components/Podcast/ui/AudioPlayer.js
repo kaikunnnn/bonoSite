@@ -33,17 +33,7 @@ const AudioPlayer = ({ src }) => {
 
   return (
     <div className="AudioPlayer w-full">
-      {/* <audio
-        ref={audioRef}
-        className="w-full"
-        controls
-        controlsList="nodownload"
-      >
-        <source src={src} type="audio/mp4" />
-        Your browser does not support the audio element.
-      </audio> */}
-
-      <H5AudioPlayer autoPlay src={src} onPlay={(e) => console.log("onPlay")} />
+      <H5AudioPlayer src={src} onPlay={(e) => console.log("onPlay")} />
     </div>
   );
 };
