@@ -2,6 +2,10 @@ import React, { useRef, useState } from "react";
 import useMemberStatus from "@/libs/memberstack/useMemberStatus";
 import { PLANID } from "@/stripe/planId";
 
+// Import Player
+import H5AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
+
 const AudioPlayer = ({ src }) => {
   const audioRef = useRef(null);
   const member = useMemberStatus();
@@ -29,15 +33,7 @@ const AudioPlayer = ({ src }) => {
 
   return (
     <div className="AudioPlayer w-full">
-      <audio
-        ref={audioRef}
-        className="w-full"
-        controls
-        controlsList="nodownload"
-      >
-        <source src={src} type="audio/mp4" />
-        Your browser does not support the audio element.
-      </audio>
+      <H5AudioPlayer src={src} onPlay={(e) => console.log("onPlay")} />
     </div>
   );
 };

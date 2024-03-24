@@ -2,10 +2,10 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}',
+    "./pages/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./app/**/*.{js,jsx}",
+    "./src/**/*.{js,jsx}",
   ],
   prefix: "",
   theme: {
@@ -18,7 +18,7 @@ module.exports = {
     },
     extend: {
       fontSize: {
-        'xxs': '.65rem', // 例として0.65remをxxsサイズとして定義
+        xxs: ".65rem", // 例として0.65remをxxsサイズとして定義
       },
       keyframes: {
         "accordion-down": {
@@ -34,7 +34,10 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      fontFamily: {
+        dela: ['"Dela Gothic One"', "sans-serif"], // Add this line
+      },
     },
   },
-  plugins: [require("tailwindcss-animate"),require('@tailwindcss/typography'),],
-}
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+};

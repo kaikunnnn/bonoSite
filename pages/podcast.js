@@ -44,18 +44,18 @@ function BonoRadio({ radioContents }) {
         ogWidth="1200"
         ogHeight="630"
       ></SEO>
-      <main className="max-h-full text-slate-900 bg-stone-50">
+      <main className="max-h-full text-slate-900 bg-stone-50 pb-80">
         <Header />
         <div className="Radio flex justify-center items-center">
-          <div className="Wrapper w-[880px] m-auto flex-col justify-start items-center gap-6 inline-flex">
+          <div className="Wrapper md:w-[880px] w-11/12 m-auto flex-col justify-start items-center md:gap-6 gap-4 inline-flex">
             <HeaderPodcastPage />
-            <div className="Episodes w-full flex-col justify-start items-start gap-6 inline-flex">
-              <div className="Title py-4 justify-start items-center gap-2.5 inline-flex">
-                <h2 class="text-black text-2xl font-bold font-['Noto Sans JP'] leading-[38.40px] tracking-wide">
+            <div className="Episodes w-full flex-col justify-start items-start gap-4 inline-flex">
+              <div className="Title py-2 justify-start items-center gap-2.5 inline-flex">
+                <h2 class="text-black text-xl md:text-2xl font-bold font-['Noto Sans JP'] leading-[38.40px] tracking-wide">
                   エピソード
                 </h2>
               </div>
-              <ul className="ListOfEspisode">
+              <ul className="ListOfEspisode flex flex-col gap-6">
                 {radioContents
                   .filter((article) => article.series?.slug === "bonoradio")
                   .map((article, index) => (
