@@ -5,6 +5,7 @@ import { PLANID } from "@/stripe/planId";
 // Import Player
 import H5AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
+import CustomAudioUi from "./CustomAudioUi";
 
 const AudioPlayer = ({ src }) => {
   const audioRef = useRef(null);
@@ -33,7 +34,8 @@ const AudioPlayer = ({ src }) => {
 
   return (
     <div className="AudioPlayer w-full">
-      <H5AudioPlayer src={src} onPlay={(e) => console.log("onPlay")} />
+      <CustomAudioUi src={src} />
+      {/* <H5AudioPlayer src={src} onPlay={(e) => console.log("onPlay")} /> */}
     </div>
   );
 };

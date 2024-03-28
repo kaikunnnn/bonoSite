@@ -4,22 +4,31 @@ import React, { useState } from "react";
 import SEO from "@/components/common/layout/Navigation/SEO";
 import Header from "@/components/common/layout/Navigation/Header";
 import GoogleSignInButton from "@/components/common/ui/buttons/auth/GoogleSignInButton";
-// Memberstack
-import { SignInModal } from "@memberstack/react";
-import memberstackDOM from "@memberstack/dom";
 import { Button } from "@/components/common/ui/button";
-import PrimaryButton from "@/components/common/ui/buttons/PrimaryButton";
+
+// Memberstack
+import memberstackDOM from "@memberstack/dom";
+import { customLogin } from "@/libs/memberstack/customLogin";
+
 const memberstack = memberstackDOM.init({
   publicKey: process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY,
 });
 
 const MemberstackTest = () => {
-
   const openLoginModal = () => {
     memberstack.openModal("LOGIN");
   };
+  // ログインフォーム送信時のイベントハンドラ
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    await customLogin(email, password); // customLogin関数を呼び出し
+  };
+
   return (
     <main className="min-h-screen flex-col bg-bgColor-secondary ">
       <Header />
@@ -34,13 +43,14 @@ const MemberstackTest = () => {
             <div className="Left w-96 h-96 justify-center items-center gap-2.5 inline-flex">
               <div className="Wrapper flex-col justify-start items-start gap-10 inline-flex">
                 <div className="Title text-black text-3xl font-bold leading-10 tracking-wide">
-                  <h2>Memberstackテスト
-                    ログイン</h2>
+                  <h2>Memberstackテスト ログイン</h2>
                 </div>
                 <div className="WrapperLogin self-stretch  flex-col justify-start items-start gap-6 flex">
                   <form
-                  data-ms-form="login" 
-                  className="BlockFormlogin self-stretch flex-col justify-start items-start gap-5 flex">
+                    onSubmit={handleSubmit}
+                    data-ms-form="login"
+                    className="BlockFormlogin self-stretch flex-col justify-start items-start gap-5 flex"
+                  >
                     <div className="BlockInput self-stretch flex-col justify-start items-start gap-5 flex">
                       {/* form Component */}
                       <div className="FormItem self-stretch flex-col justify-start items-start gap-2 flex">
@@ -52,6 +62,8 @@ const MemberstackTest = () => {
                         </label>
                         <input
                           type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
                           id="email"
                           name="email"
                           data-ms-member="email"
@@ -61,7 +73,6 @@ const MemberstackTest = () => {
                         <p className="text-xs text-red-500 leading-normal tracking-wide">
                           {/* エラー時のメッセージを表示　{emailError && <div className="error-message">{emailError}</div>} */}
                         </p>
-                        
                       </div>
                       {/* form Component */}
                       <div className="FormItem self-stretch flex-col justify-start  items-start gap-2 flex">
@@ -73,6 +84,8 @@ const MemberstackTest = () => {
                         </label>
                         <input
                           type="password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
                           id="password"
                           name="password"
                           data-ms-member="password"
@@ -88,7 +101,10 @@ const MemberstackTest = () => {
                       {/*エラー {generalError && <div className="error-message">{generalError}</div>} */}
                     </p>
                     {/* Button */}
-                    <button type="submit" className="Button cursor-pointer self-stretch p-4 bg-blue-500 rounded-lg border-1 border-neutral-200 justify-center items-center gap-2.5 inline-flex">
+                    <button
+                      type="submit"
+                      className="Button cursor-pointer self-stretch p-4 bg-blue-500 rounded-lg border-1 border-neutral-200 justify-center items-center gap-2.5 inline-flex"
+                    >
                       <div className=" text-white text-sm font-bold leading-snug tracking-wide">
                         ログイン
                       </div>
@@ -104,14 +120,15 @@ const MemberstackTest = () => {
                   </div>
                   {/* googlebutton */}
                   <div className="Googlebutton self-stretch justify-start items-center gap-2.5 inline-flex">
-                    
                     {/* <Auth /> */}
                     <GoogleSignInButton />
                   </div>
-                  
+
                   {/* Dom */}
                   <div>
-                    <Button  content="ログイン" onClick={openLoginModal}>Member Stack Modal Login</Button>
+                    <Button content="ログイン" onClick={openLoginModal}>
+                      Member Stack Modal Login
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -119,11 +136,8 @@ const MemberstackTest = () => {
           </div>
         </div>
 
-      <div className="Right hidden md:block md:w-1/2 h-screen relative bg-gradient-to-tl from-indigo-300 via-slate-200 to-amber-100"></div>
-
+        <div className="Right hidden md:block md:w-1/2 h-screen relative bg-gradient-to-tl from-indigo-300 via-slate-200 to-amber-100"></div>
       </div>
-
-      
     </main>
   );
 };
