@@ -26,7 +26,11 @@ const MemberstackTest = () => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
+    console.log("Submitting form with:", email, password); // フォーム送信ログ
+
     await customLogin(email, password); // customLogin関数を呼び出し
+
+    console.log("customLogin function called"); // customLogin関数呼び出し後ログ
   };
 
   return (
