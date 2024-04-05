@@ -17,6 +17,7 @@ import memberstackDOM from "@memberstack/dom";
 import { planIdsString } from "@/libs/memberstack/planIds";
 import useMemberActions from "@/libs/memberstack/hooks/useMemberActions";
 import useMemberInfo from "@/libs/memberstack/hooks/useMemberInfo";
+import LoginButtonMemberstackModal from "@/components/common/ui/buttons/auth/LoginButtonMemeberstack";
 const memberstack = memberstackDOM.init({
   publicKey: process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY,
 });
@@ -56,12 +57,7 @@ function Profile() {
                 <>
                   <div className="not-logged-in m-12">
                     <p>ログインが必要です。</p>
-
-                    {/* Login UI from memberstack */}
-                    <Button variant="secondary" onClick={handleButtonClick}>
-                      ログイン
-                    </Button>
-                    {showModal && <SignInModal />}
+                    <LoginButtonMemberstackModal />
                   </div>
                 </>
               ))

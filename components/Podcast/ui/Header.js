@@ -1,9 +1,42 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+// Component
+import LoginButtonMemberstackModal from "@/components/common/ui/buttons/auth/LoginButtonMemeberstack";
+// Memeberstack
+import useMemberStatus from "@/libs/memberstack/useMemberStatus";
+import { PLANID } from "@/stripe/planId";
 
 const HeaderPodcastPage = () => {
+  // ログイン状況で出し分ける
+  const member = useMemberStatus();
+  const [isLoading, setIsLoading] = useState(true);
+
+  // 特定のプランIDを持つユーザーのみにコンテンツを表示する例
+  // standard と growth のプランIDを取得
+  const allowedPlanIds = [
+    PLANID.standard.onemonth,
+    PLANID.standard.threemonth,
+    PLANID.growth.onemonth,
+    PLANID.growth.threemonth,
+  ];
+  const hasAccess =
+    member &&
+    member.planConnections &&
+    member.planConnections.some((plan) =>
+      allowedPlanIds.includes(plan.payment.priceId)
+    );
+
+  React.useEffect(() => {
+    // 判定が終わったらローディングを非表示にする
+    setIsLoading(false);
+  }, [member]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <li class="Header w-10/12 flex-col justify-start items-center gap-4 inline-flex py-24 pb-16">
+    <div class="Header w-10/12 flex-col justify-start items-center gap-4 inline-flex py-24 pb-16">
       <div class="flex-col justify-start items-center gap-4 flex">
         <div class="self-stretch justify-center items-center gap-[529px] inline-flex relative">
           <div class="flex-col justify-center items-center gap-2 inline-flex">
@@ -31,7 +64,18 @@ const HeaderPodcastPage = () => {
           作業中にエモーションを注入してクリエイションしてください
         </div>
       </div>
-    </li>
+      <div className="LoginOrNot">
+        {hasAccess ? (
+          // ユーザーがアクセス権を持っている場合、コンテンツを表示
+          <div>
+            <p>BONOのメンバーなんだね！最高だね！</p>
+          </div>
+        ) : (
+          // ユーザーがアクセス権を持っていない場合、ログインボタンを表示
+          <LoginButtonMemberstackModal />
+        )}
+      </div>
+    </div>
   );
 };
 
