@@ -36,18 +36,18 @@ const HeaderPodcastPage = () => {
   }
 
   return (
-    <div class="Header w-10/12 flex-col justify-start items-center gap-4 inline-flex py-24 pb-16">
+    <div class="Header w-10/12 flex-col justify-start items-center gap-4 inline-flex py-24 md:pb-16 pb-10">
       <div class="flex-col justify-start items-center gap-4 flex">
         <div class="self-stretch justify-center items-center gap-[529px] inline-flex relative">
           <div class="flex-col justify-center items-center gap-2 inline-flex">
-            <h1 class="text-center text-slate-900 md:text-[80px] text-[64px] font-normal font-dela leading-[88px] tracking-[8px]">
+            <h1 class="text-center text-slate-900 md:text-[120px] text-[64px] font-normal font-dela leading-[140%] md:tracking-[20px] tracking-[8px]">
               RADIO
             </h1>
             <h3 class="text-center text-neutral-900 text-base font-black font-['Noto Sans JP'] leading-none tracking-[6.40px]">
               ボノラジ
             </h3>
           </div>
-          <div class="absolute md:-top-6 top-1/2 md:right-[-164px] right-[-24px] transform -translate-x-1/2 -translate-y-1/2 w-[88px] h-[89.63px]">
+          <div class="absolute md:-top-6 -top-6 md:right-[-164px] right-[-64px] transform -translate-x-1/2 -translate-y-1/2 w-[80px] h-[89.63px]">
             <Image
               className="w-full relative h-[80%] left-[56px] top-[-60px]"
               src="/podcast/bakuhatsu-kikukohasodatu.svg"
@@ -56,7 +56,7 @@ const HeaderPodcastPage = () => {
             />
           </div>
         </div>
-        <div class="w-full md:text-center text-left text-black text-opacity-50 md:text-base text-sm font-bold leading-relaxed tracking-wide">
+        <div class="w-full md:text-center text-center text-black text-opacity-50 md:text-base text-sm font-bold leading-relaxed tracking-wide">
           カイクンが動画作るのは大変なんだけど
           <br />
           なんとなくいい感じのデザイン話をするメンバー限定ポッドキャストです。

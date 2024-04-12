@@ -64,7 +64,7 @@ function BonoRadio({ radioContents }) {
                       link={article.slug}
                       title={article.title}
                       timestamp={article.timestamp}
-                      description={article.description}
+                      description={article.body}
                       audioSrc={article.mediaurl}
                     />
                   ))}
