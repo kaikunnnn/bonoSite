@@ -47,7 +47,7 @@ const HeaderPodcastPage = () => {
               ボノラジ
             </h3>
           </div>
-          <div class="absolute md:-top-6 -top-6 md:right-[-164px] right-[-64px] transform -translate-x-1/2 -translate-y-1/2 w-[80px] h-[89.63px]">
+          <div class="absolute md:-top-6 -top-6 md:right-[-164px] right-[-64px] transform -translate-x-1/2 -translate-y-1/2 md:w-[96px] md:h-[96px]  w-[80px] h-[80px]">
             <Image
               className="w-full relative h-[80%] left-[56px] top-[-60px]"
               src="/podcast/bakuhatsu-kikukohasodatu.svg"

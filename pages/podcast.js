@@ -50,11 +50,6 @@ function BonoRadio({ radioContents }) {
           <div className="Wrapper md:w-[880px] w-11/12 m-auto flex-col justify-start items-center md:gap-6 gap-4 inline-flex">
             <HeaderPodcastPage />
             <div className="Episodes w-full flex-col justify-start items-start gap-4 inline-flex">
-              <div className="Title py-2 justify-start items-center gap-2.5 inline-flex">
-                <h2 class="text-black text-xl md:text-2xl font-bold font-['Noto Sans JP'] leading-[38.40px] tracking-wide">
-                  エピソード
-                </h2>
-              </div>
               <ul className="ListOfEspisode flex flex-col gap-6">
                 {radioContents
                   .filter((article) => article.series?.slug === "bonoradio")

@@ -85,10 +85,10 @@ export default function PodcastDetail({ podcast }) {
                 </div>
               </div>
             </div>
-            <div class="BottomBlock flex-col justify-start items-start gap-[20px] flex">
-              <div class="flex-col justify-start items-start gap-[22px] flex">
+            <div class="BottomBlock flex-col justify-start items-start gap-[12px] flex">
+              <div class="flex-col justify-start items-start gap-[16px] flex">
                 <div class="justify-start items-center gap-2.5 inline-flex">
-                  <div class="text-black text-lg font-bold font-['Hind'] leading-[39.20px]">
+                  <div class="text-gray-500 text-base font-bold font-['Hind'] leading-[39.20px]">
                     音声について
                   </div>
                 </div>
