@@ -1,5 +1,4 @@
 import React from "react";
-import { useRouter } from "next/router";
 import { getContents, getContentsBySlug } from "@/libs/newt";
 
 // pages/series.js
@@ -57,7 +56,7 @@ export default function PodcastDetail({ podcast }) {
       <main className="max-h-full bg-cover bg-stone-50 text-slate-900 bg-no-repeat">
         <Header />
         <SunTop />
-        <div className="Podcast w-11/12 md:w-[880px] m-auto py-14 flex justify-center flex-col gap-8">
+        <div className="Podcast w-11/12 md:w-[880px] m-auto md:py-14 py-20  flex justify-center flex-col gap-8">
           <div class="HeaderNavi w-full flex-col justify-start items-start gap-2.5 inline-flex">
             <Link href="/podcast">
               <Button variant="outline" size="icon">
@@ -69,10 +68,7 @@ export default function PodcastDetail({ podcast }) {
             <div class="UpperBlock self-stretch  flex-col justify-center items-start gap-12 flex">
               <div class="Head w-full flex-col justify-start items-center gap-3 flex">
                 <div class="self-stretch justify-center items-center inline-flex">
-                  <p
-                    class="Category text-white text-sm font-semibold font-['Noto Sans'] leading-snug tracking-wide text-center"
-                    style={textStrokeStyle}
-                  >
+                  <p class="Category text-gray-500 text-sm font-semibold font-['Noto Sans'] leading-snug tracking-wide text-center">
                     {podcast.category.name}
                   </p>
                 </div>
@@ -80,10 +76,6 @@ export default function PodcastDetail({ podcast }) {
                   {podcast.title}
                 </h1>
                 <div class="RadioDetail pb-4 justify-start items-center gap-4 flex">
-                  <img
-                    class="w-10 h-10 rounded-[5px] shadow"
-                    src="https://via.placeholder.com/40x40"
-                  />
                   <h5 class="text-black text-opacity-50 text-sm md:text-base font-bold font-['Noto Sans'] leading-none tracking-wider">
                     BONOラジオ
                   </h5>
@@ -93,66 +85,20 @@ export default function PodcastDetail({ podcast }) {
                 </div>
               </div>
             </div>
-            <div class="BottomBlock flex-col justify-start items-start gap-[20px] flex">
-              <div class="flex-col justify-start items-start gap-[22px] flex">
+            <div class="BottomBlock flex-col justify-start items-start gap-[12px] flex">
+              <div class="flex-col justify-start items-start gap-[16px] flex">
                 <div class="justify-start items-center gap-2.5 inline-flex">
-                  <div class="text-black text-xl font-bold font-['Hind'] leading-[39.20px]">
-                    Think.
-                  </div>
-                  <div class="text-black text-xl font-semibold font-['Hiragino Mincho Pro'] leading-[33.60px]">
-                    痕跡
+                  <div class="text-gray-500 text-base font-bold font-['Hind'] leading-[39.20px]">
+                    音声について
                   </div>
                 </div>
               </div>
               <div class="flex-col w-full  gap-[22px] flex">
                 <div class="w-full gap-2.5">
-                  <div class="w-ful block overflow-auto">
-                    <span className="text-black text-md font-normal leading-10">
-                      Uberリデザインの記事を読んで、UI変更について色々考察したメモです！刷新について↓
-                    </span>
-                    <span className="text-black text-md font-normal underline leading-10">
-                      https://mashable-com.translate.goog/article/uber-app-redesign-homescreen-live-activities-dynamic-island?x_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=wapp
-                    </span>
-                    <span className="text-black text-md font-normal  leading-10">
-                      今回の刷新について
-                      <br />
-                    </span>
-                    <span className="text-black text-md font-normal  leading-10">
-                      目的を予測するに「いろんな利用シーンにすぐにアクセスできる」がありそう。パーソナライズもしつつ（Suggestions)、使いたいものにアクセスして価値に到達しやすくするのを意識した気がするな〜
-                      <br />
-                      ホーム
-                      <br />
-                      配車 / Eatsが見える位置で着替えられる
-                      <br />
-                      上部メインは配車ですぐに呼び出せられる
-                      <br />
-                      Suggesitionsで他サービスにもすぐにアクセス
-                      <br />
-                      Servicesタブ
-                      <br />
-                      能動的に「あれやりたいんだけど」な人が開く場所
-                      <br />
-                      ここで使うものがSuggestionsに並ぶことになるのだろう
-                      <br />
-                      配車関係のグループと、Eats関係のグループで大きく分かれてる
-                      <br />
-                      3Dアイコン
-                      <br />
-                    </span>
-                    <span className="text-black text-md font-normal  leading-10">
-                      狙い
-                      <br />
-                    </span>
-                    <span className="text-black text-md font-normal  leading-10">
-                      いろんなサービスをすでに使っているデータがあって、アクセスしやすくすることでサービスエンゲージが高まるユーザーが実在している場合は刺さりそう
-                      <br />
-                      マイナスとしては主要な使い方ができなくなる恐れがあること
-                      <br />
-                      配車したいだけなのに、色々表示されてうざい。など。
-                      <br />
-                      この辺はサービス機能の認知とか、他要因も絡まりそう
-                    </span>
-                  </div>
+                  <div
+                    class="w-ful block overflow-auto"
+                    dangerouslySetInnerHTML={{ __html: podcast.body }}
+                  ></div>
                 </div>
               </div>
             </div>

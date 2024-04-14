@@ -48,3 +48,16 @@ h3 {
 .bg-Top {
   background-image: url("/top-image.svg");
 }
+
+/* MemeberStackModal */
+.ms-modal__figure {
+  width: 144px;
+  display: block !important;
+  -webkit-box-align: start !important;
+}
+.ms-modal__title {
+  margin-bottom: 16px !important;
+  margin-top: 0px !important;
+  font-size: 14px !important;
+  letter-spacing: 0.75px !important;
+}

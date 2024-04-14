@@ -9,47 +9,30 @@ const PodCastStory = ({ link, title, timestamp, description, audioSrc }) => {
     color: "white", // 文字の中身を透明
   };
   return (
-    <div className="PodcastEpisodeItem w-full mg:p-16 p-8 bg-white border border-neutral-900 border-opacity-90 flex-col justify-start items-start gap-4 inline-flex">
+    <div className="PodcastEpisodeItem w-full md:p-12 p-6 bg-white border border-neutral-900 border-opacity-90 flex-col justify-start items-start gap-4 inline-flex">
       <div className="self-stretch justify-self-end items-center md:items-start gap-3 inline-flex flex-col ">
         <Link
           href={`/podcast/${link}`}
           className="hover:opacity-70 block w-full"
         >
           <div className="grow w-full shrink basis-0 flex-col justify-center md:justify-between md:items-center md:flex-row-reverse gap-4 inline-flex">
-            <div className="md:w-20 md:h-20 w-16 h-16 m-auto justify-start items-start flex">
-              <img
-                className="grow shrink basis-0 self-stretch shadow"
-                src="https://via.placeholder.com/96x96"
-                alt="Podcast Thumbnail"
-              />
-            </div>
             <div className="Title w-full flex flex-col md:items-start md:justify-between  gap-3">
-              <h1 className="self-stretch md:text-start  text-center text-neutral-900 md:text-2xl text-lg font-bold leading-[160%] tracking-wide">
-                {title}
-              </h1>
-              <p
-                className="text-white w-full md:text-start text-center md:text-md text-xs -mt-2 font-bold leading-snug tracking-wide"
-                style={textStrokeStyle}
-              >
+              <p className="text-gray-500 w-full md:text-md text-xs -mt-2 font-bold leading-snug tracking-wide">
                 キャリア
               </p>
-              {/* <div className="self-stretch justify-start items-start gap-2 inline-flex">
-              <span className="text-black text-sm font-normal font-['Noto Sans'] leading-snug tracking-wide">
-                34分56秒
-                {timestamp}
-              </span>
-            </div> */}
+              <h1 className="self-stretch  text-neutral-900 md:text-2xl text-xl font-bold leading-[160%] tracking-wide">
+                {title}
+              </h1>
             </div>
           </div>
         </Link>
       </div>
       <AudioPlayer src={audioSrc} />
-      <div className="self-stretch flex-col justify-start items-start gap-2 flex">
-        <div className="self-stretch text-neutral-700 text-opacity-80 text-base font-normal leading-relaxed tracking-wide">
-          {description}
-          今回は「リーダーへのシステム思考のすすめ」をテーマに、代表の梅本@dubhunter
-          と取締役の神田が話す回です。システム思考ってなんなの？基本的な定義から、組織やチームなど複雑に絡み合うシステムを、どのようにマネジメントしていくのかなど、事例を交えながら紹介しています。組織のマネージャーや、管理職を目指す方はぜひ聴いてください。
-        </div>
+      <div className="self-stretch flex-col justify-start items-start gap-2 flex pt-4">
+        <div
+          className="self-stretch text-neutral-700 text-opacity-80 md:text-base text-sm font-normal leading-relaxed tracking-wide"
+          dangerouslySetInnerHTML={{ __html: description }}
+        ></div>
       </div>
     </div>
   );
