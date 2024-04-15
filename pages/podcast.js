@@ -5,6 +5,7 @@ import HeaderPodcastPage from "@/components/Podcast/ui/Header";
 import PodCastStory from "@/components/Podcast/ui/PodcastStory";
 import Header from "@/components/common/layout/Navigation/Header";
 import SEO from "@/components/common/layout/Navigation/SEO";
+import { SITE_DOMAIN } from "@/src/config/constants";
 
 // Newt
 import { getContents, getContentBySlug } from "@/libs/newt";
@@ -35,12 +36,12 @@ function BonoRadio({ radioContents }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <SEO
-        title="About|BONO"
-        description="BONOは”こうあったらいいのでは?”を考えて→形にするスキルを身につけ、クリエイションの夜明けを実現する人たちのためのサービスです。夜明けの意味する“曙”のように新しい自分の創造性と出会える場所へようこそ〜"
-        imgUrl="https://kaikun.bo-no.design/about/ogp-about.webp"
-        ogTitle="About | BONO"
-        ogImage="https://kaikun.bo-no.design/about/ogp-about.webp"
-        ogDescription="BONOは”こうあったらいいのでは?”を考えて→形にするスキルを身につけ、クリエイションの夜明けを実現する人たちのためのサービスです。夜明けの意味する“曙”のように新しい自分の創造性と出会える場所へようこそ〜"
+        title="BONOラジっ!! | BONO"
+        description="BONOラジはカイクンが適当に実用的ではないけど実用的っぽいデザイン関連の話をするポッドキャスト番組です。何かが燃える音を感じられたら幸いでごわす。"
+        imgUrl={`${SITE_DOMAIN}/podcast/ogp_bonoradio.webp`}
+        ogTitle="BONOラジっ!! | BONO"
+        ogImage={`${SITE_DOMAIN}/podcast/ogp_bonoradio.webp`}
+        ogDescription="BONOラジはカイクンが適当に実用的ではないけど実用的っぽいデザイン関連の話をするポッドキャスト番組です。何かが燃える音を感じられたら幸いでごわす。"
         ogWidth="1200"
         ogHeight="630"
       ></SEO>
@@ -53,6 +54,7 @@ function BonoRadio({ radioContents }) {
               <ul className="ListOfEspisode flex flex-col gap-6">
                 {radioContents
                   .filter((article) => article.series?.slug === "bonoradio")
+                  .sort((a, b) => b.seriesorder - a.seriesorder)
                   .map((article, index) => (
                     <PodCastStory
                       key={index}
