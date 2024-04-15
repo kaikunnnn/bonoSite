@@ -9,7 +9,7 @@ const PodCastStory = ({ link, title, timestamp, description, audioSrc }) => {
     color: "white", // 文字の中身を透明
   };
   return (
-    <div className="PodcastEpisodeItem w-full md:p-12 p-6 bg-white border border-neutral-900 border-opacity-90 flex-col justify-start items-start gap-4 inline-flex">
+    <div className="PodcastEpisodeItem w-full md:p-12 p-6 bg-white border border-neutral-900 border-opacity-90 flex-col justify-start items-start md:gap-4 gap-2 inline-flex">
       <div className="self-stretch justify-self-end items-center md:items-start gap-3 inline-flex flex-col ">
         <Link
           href={`/podcast/${link}`}
@@ -27,7 +27,7 @@ const PodCastStory = ({ link, title, timestamp, description, audioSrc }) => {
           </div>
         </Link>
       </div>
-      <div className="self-stretch flex-col justify-start items-start gap-2 flex pt-4">
+      <div className="self-stretch flex-col justify-start items-start gap-2 flex">
         <div
           className="self-stretch text-neutral-700 text-opacity-80 md:text-base text-sm font-normal leading-relaxed tracking-wide"
           dangerouslySetInnerHTML={{ __html: description }}

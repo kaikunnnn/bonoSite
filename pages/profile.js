@@ -43,6 +43,7 @@ function Profile() {
     [process.env.NEXT_PUBLIC_PLAN_S_3M_PRICE_ID]: "スタンダードプラン（3ヶ月）",
     [process.env.NEXT_PUBLIC_PLAN_G_1M_PRICE_ID]: "グロースプラン（1ヶ月）",
     [process.env.NEXT_PUBLIC_PLAN_G_3M_PRICE_ID]: "グロースプラン（3ヶ月）",
+    [process.env.NEXT_PUBLIC_PLAN_C_PRICE_ID]: "コミュニティプラン",
     // 他のプランIDとプラン名のマッピング
   };
 
