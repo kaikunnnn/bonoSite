@@ -27,13 +27,13 @@ const PodCastStory = ({ link, title, timestamp, description, audioSrc }) => {
           </div>
         </Link>
       </div>
-      <AudioPlayer src={audioSrc} />
       <div className="self-stretch flex-col justify-start items-start gap-2 flex pt-4">
         <div
           className="self-stretch text-neutral-700 text-opacity-80 md:text-base text-sm font-normal leading-relaxed tracking-wide"
           dangerouslySetInnerHTML={{ __html: description }}
         ></div>
       </div>
+      <AudioPlayer src={audioSrc} />
     </div>
   );
 };
