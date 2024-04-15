@@ -21,6 +21,7 @@ const AudioPlayer = ({ src }) => {
     PLANID.standard.threemonth,
     PLANID.growth.onemonth,
     PLANID.growth.threemonth,
+    PLANID.community.all,
   ];
   const hasAccess =
     member &&

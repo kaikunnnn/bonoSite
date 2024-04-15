@@ -3,6 +3,9 @@ import styles from "./CustomAudioUi.module.css"; // CSS Moduleをインポート
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 
+//  再生中の音声を管理するグローバルな状態
+let currentPlayingAudio = null;
+
 const CustomAudioUi = ({ src }) => {
   const audioRef = useRef(new Audio(src));
   const [isPlaying, setIsPlaying] = useState(false);
@@ -22,9 +25,17 @@ const CustomAudioUi = ({ src }) => {
     audio.addEventListener("loadeddata", setAudioData);
     audio.addEventListener("timeupdate", setAudioTime);
 
+    // 他の音声が再生されたときに、現在の音声の isPlaying 状態を更新
+    audio.addEventListener("pause", () => {
+      if (currentPlayingAudio !== audio) {
+        setIsPlaying(false);
+      }
+    });
+
     return () => {
       audio.removeEventListener("loadeddata", setAudioData);
       audio.removeEventListener("timeupdate", setAudioTime);
+      audio.removeEventListener("pause", () => setIsPlaying(false));
     };
   }, [src]);
 
@@ -32,8 +43,13 @@ const CustomAudioUi = ({ src }) => {
     const audio = audioRef.current;
     if (isPlaying) {
       audio.pause();
+      currentPlayingAudio = null;
     } else {
+      if (currentPlayingAudio) {
+        currentPlayingAudio.pause();
+      }
       audio.play();
+      currentPlayingAudio = audio;
     }
     setIsPlaying(!isPlaying);
   };
