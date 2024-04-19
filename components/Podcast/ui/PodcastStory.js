@@ -2,7 +2,14 @@ import Link from "next/link";
 import React from "react";
 import AudioPlayer from "./AudioPlayer";
 
-const PodCastStory = ({ link, title, timestamp, description, audioSrc }) => {
+const PodCastStory = ({
+  link,
+  title,
+  explain,
+  timestamp,
+  description,
+  audioSrc,
+}) => {
   const textStrokeStyle = {
     WebkitTextStroke: "0.75px black", // 枠線の太さと色
     fontFamily: "Hind",
@@ -28,10 +35,9 @@ const PodCastStory = ({ link, title, timestamp, description, audioSrc }) => {
         </Link>
       </div>
       <div className="self-stretch flex-col justify-start items-start gap-2 flex">
-        <div
-          className="self-stretch text-neutral-700 text-opacity-80 md:text-base text-sm font-normal leading-relaxed tracking-wide"
-          dangerouslySetInnerHTML={{ __html: description }}
-        ></div>
+        <div className="self-stretch text-neutral-700 text-opacity-80 md:text-base text-sm font-normal leading-relaxed tracking-wide">
+          {explain}
+        </div>
       </div>
       <AudioPlayer src={audioSrc} />
     </div>
