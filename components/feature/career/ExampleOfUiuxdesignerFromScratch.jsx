@@ -1,82 +1,90 @@
 "use client";
 
+import React, { useRef, useEffect, useState } from "react";
+
 const interviews = [
   {
     id: 1,
     name: "Boi",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=2787&auto=format&fit=crop",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=2787&auto=format&fit=crop",
     title: "広報からUI/UXデザイナーへ未経験転職",
     tags: ["未経験からUI/UX職への転職"],
-    company: "制作会社"
+    company: "制作会社",
   },
   {
     id: 2,
     name: "Tara",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop",
+    avatar:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop",
     title: "働きながら独学！上手に時間を持つ勉強法を聞いた",
     tags: ["未経験からUI/UX職への転職"],
-    company: "UI/UXデザイン会社"
+    company: "UI/UXデザイン会社",
   },
   {
     id: 3,
     name: "りんねる",
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=2788&auto=format&fit=crop",
+    avatar:
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=2788&auto=format&fit=crop",
     title: "広報・PR企業からUI/UXデザイナーに転職した話",
     tags: ["未経験からUI/UX職への転職"],
-    company: "制作会社"
+    company: "制作会社",
   },
   {
     id: 4,
     name: "Kana",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2864&auto=format&fit=crop",
+    avatar:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2864&auto=format&fit=crop",
     title: "子育てしながらUI/UXデザイナーへ未経験転職",
     tags: ["未経験からUI/UX職への転職"],
-    company: "UI/UXデザイン会社"
-  }
+    company: "UI/UXデザイン会社",
+  },
 ];
 
 const duplicatedInterviews = [...interviews, ...interviews];
 
 function InterviewCard({ interview }) {
   return (
-    <a 
+    <a
       href={`/interviews/${interview.id}`}
-      className="group block bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg"
+      className="block w-full max-w-[410px] bg-gray-50 rounded-2xl hover:shadow-lg transition-all duration-300"
     >
-      <div className="aspect-[4/3] relative overflow-hidden">
-        <img
-          src={interview.avatar}
-          alt={interview.name}
-          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        <div className="absolute bottom-4 left-4 right-4">
-          <div className="text-white/80 text-sm mb-2">
-            {interview.company}
-          </div>
-          <div className="flex gap-2">
-            {interview.tags.map((tag, index) => (
-              <span
-                key={index}
-                className="inline-block px-2 py-1 rounded-full bg-white/20 text-white text-xs backdrop-blur-sm"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+      <div className="p-2 pb-[34px] flex flex-col gap-3">
+        <div className="relative w-full aspect-[394/200] rounded-[8.8px] overflow-hidden">
+          <img
+            src={interview.avatar}
+            alt={interview.name}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 shadow-[1px_1px_8px_rgba(0,0,0,0.06)]" />
         </div>
-      </div>
-      <div className="p-6">
-        <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors duration-300">
-          {interview.title}
-        </h3>
-        <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-gray-900">
-            {interview.name}
-          </span>
-          <span className="text-xs text-gray-500">
-            さん
-          </span>
+
+        <div className="px-4 flex flex-col gap-4">
+          <div>
+            <h5>{interview.name}</h5>
+            <h3 className="text-xl text-green-950 leading-normal ">
+              {interview.title}
+            </h3>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <div className="flex gap-[10.52px] pb-1 border-b border-black/5">
+              <span className="text-sm text-green-950">成果</span>
+              <span className="text-sm text-neutral-700">
+                未経験からUI/UX職への転職
+              </span>
+            </div>
+            <div className="flex gap-[10.52px] pb-1 border-b border-black/5">
+              <span className="text-sm text-green-950">就職</span>
+              <span className="text-sm text-neutral-700">
+                シリーズB SaaSベンチャー
+              </span>
+            </div>
+            <div className="flex gap-[10.52px] pb-1 border-b border-black/5">
+              <span className="text-sm text-green-950">経歴</span>
+              <span className="text-sm text-neutral-700">ベンチャー</span>
+            </div>
+          </div>
         </div>
       </div>
     </a>
@@ -85,46 +93,60 @@ function InterviewCard({ interview }) {
 
 export default function InterviewSection() {
   return (
-    <section className="w-full py-16 lg:py-24 bg-gradient-to-b from-white to-gray-50/50">
-      <div className="container px-4 ">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-4 text-sm font-medium text-indigo-600 tracking-wide">
-            BONO利用者の声
+    <section className="w-full py-16 lg:py-24 bg-gradient-to-b bg-[#f5f2f1]">
+      <div className="container p-0">
+        {/* Heading */}
+        <div className="max-w-lg mx-auto flex flex-col justify-start items-center gap-6 relative">
+          <img
+            className="absolute top-0 right-0 w-24 h-24"
+            src="/career/beginner/badge-following.png"
+          />
+          <img
+            className="w-[205px] h-[189px]"
+            src="/career/beginner/voice-main-image.png"
+          />
+          <div className=" flex flex-col justify-center items-center gap-6">
+            <div className="w-full text-center text-[#1e1e1e] text-2xl sm:text-[26px] font-medium font-['Noto Sans JP'] leading-relaxed">
+              未経験から
+              <br />
+              UIUXデザイナーになった人の
+              <br />
+              声を除いてみよう👀
+            </div>
+            <div className="w-9/12 max-w-sm text-center text-[#1e1e1e] text-sm font-medium font-['Noto Sans JP'] leading-snug">
+              "デザインはオリジナリティを発揮するもの。と思い込んではいけません。
+              <br />
+              まずは世の中の良いものに目を向けて"定番"の表現を吸収していくのです"
+            </div>
+            <div className="px-6 py-5 bg-white rounded-full border-2 border-green-950 justify-center items-center gap-2.5 inline-flex overflow-hidden hover:bg-gray-50 transition-colors">
+              <div className="text-green-950 text-sm font-bold leading-snug">
+                インタビューを見る
+              </div>
+            </div>
           </div>
-          
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            未経験からUIUXデザイナーになった人について
-          </h2>
-          
-          <p className="text-lg text-gray-600 mb-6 max-w-3xl">
-            "デザインはオリジナリティを発揮するもの。と思い込んではいけません。
-            まずは世の中の良いものに目を向けて"定番"の表現を吸収していくのです"
-          </p>
-
-          <div className="inline-block">
-            <a 
-              href="/interviews"
-              className="inline-flex items-center px-6 py-3 rounded-full bg-black text-white font-medium hover:bg-gray-900 transition-colors duration-300"
-            >
-              転職者インタビューを見る
-            </a>
-          </div>
-
-          
         </div>
-        <div className="relative w-full overflow-hidden mt-12">
-          <div 
-            className="flex gap-6"
-            style={{
-              animation: 'scroll 30s linear infinite',
-              '@keyframes scroll': {
-                '0%': { transform: 'translateX(0)' },
-                '100%': { transform: 'translateX(-50%)' }
-              }
-            }}
-          >
-            {duplicatedInterviews.map((interview, index) => (
-              <div key={`${interview.id}-${index}`} className="flex-shrink-0 w-full md:w-1/2 lg:w-1/4">
+        {/* Interview List - Added horizontal scroll for mobile */}
+        <div className="mt-12">
+          <div className="md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6">
+            {/* Mobile: Horizontal scroll container */}
+            <div className="relative md:hidden overflow-hidden">
+              <div className="flex gap-4 animate-scroll">
+                {[...interviews, ...interviews, ...interviews].map(
+                  (interview, index) => (
+                    <div
+                      key={`${interview.id}-${index}`}
+                      className="flex-none w-[280px]"
+                    >
+                      <InterviewCard interview={interview} />
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+
+            {/* Tablet and above: Grid layout */}
+            {interviews.map((interview) => (
+              <div key={interview.id} className="hidden md:block">
                 <InterviewCard interview={interview} />
               </div>
             ))}
@@ -133,4 +155,39 @@ export default function InterviewSection() {
       </div>
     </section>
   );
+}
+
+// アニメーションとスクロールバー非表示のスタイルを追加
+const styles = `
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-280px * ${interviews.length}));
+    }
+  }
+  
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+  
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+`;
+
+// スタイルをヘッドに追加
+if (typeof document !== "undefined") {
+  const styleSheet = document.createElement("style");
+  styleSheet.textContent = styles;
+  document.head.appendChild(styleSheet);
 }
