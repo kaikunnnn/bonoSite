@@ -69,7 +69,7 @@ export default function ArticleSection() {
   return (
     <section
       id="section-1"
-      className="w-full md:max-w-5xl md:w-9/12 md:max-w-4xl py-8 lg:py-6 md:mb-12 bg-gradient-to-b  to-gray-50/50"
+      className="w-full md:w-9/12 md:max-w-4xl py-8 lg:py-6 md:mb-12 bg-gradient-to-b  to-gray-50/50"
     >
       <div className="container w-full px-0 mx-auto flex flex-col items-start gap-8">
         {/* Heading */}
