@@ -47,7 +47,7 @@ function InterviewCard({ interview }) {
   return (
     <a
       href={`/interviews/${interview.id}`}
-      className="block w-full max-w-[410px] bg-gray-50 rounded-2xl hover:shadow-lg transition-all duration-300"
+      className="block w-full max-w-[410px] md:max-w-[560px] bg-gray-100 rounded-2xl shadow-sm hover:shadow-lg hover:bg-slate-50 transition-all duration-300 my-2"
     >
       <div className="p-2 pb-[34px] flex flex-col gap-3">
         <div className="relative w-full aspect-[394/200] rounded-[8.8px] overflow-hidden">
@@ -60,29 +60,29 @@ function InterviewCard({ interview }) {
         </div>
 
         <div className="px-4 flex flex-col gap-4">
-          <div>
-            <h5>{interview.name}</h5>
-            <h3 className="text-xl text-green-950 leading-normal ">
+          <div className="flex flex-col gap-1">
+            <h5 className="text-sm">{interview.name}</h5>
+            <h3 className="text-lg font-medium text-green-950 leading-normal ">
               {interview.title}
             </h3>
           </div>
 
           <div className="flex flex-col gap-2">
             <div className="flex gap-[10.52px] pb-1 border-b border-black/5">
-              <span className="text-sm text-green-950">成果</span>
-              <span className="text-sm text-neutral-700">
+              <span className="text-sm text-slate-600">成果</span>
+              <span className="text-sm text-neutral-500">
                 未経験からUI/UX職への転職
               </span>
             </div>
             <div className="flex gap-[10.52px] pb-1 border-b border-black/5">
-              <span className="text-sm text-green-950">就職</span>
-              <span className="text-sm text-neutral-700">
+              <span className="text-sm text-slate-600">就職</span>
+              <span className="text-sm text-neutral-500">
                 シリーズB SaaSベンチャー
               </span>
             </div>
             <div className="flex gap-[10.52px] pb-1 border-b border-black/5">
-              <span className="text-sm text-green-950">経歴</span>
-              <span className="text-sm text-neutral-700">ベンチャー</span>
+              <span className="text-sm text-slate-600">経歴</span>
+              <span className="text-sm text-neutral-500">ベンチャー</span>
             </div>
           </div>
         </div>
@@ -96,60 +96,50 @@ export default function InterviewSection() {
     <section className="w-full py-16 lg:py-24 bg-gradient-to-b bg-[#f5f2f1]">
       <div className="container p-0">
         {/* Heading */}
-        <div className="max-w-lg mx-auto flex flex-col justify-start items-center gap-6 relative">
+        <div className="max-w-lg  mx-auto flex flex-col justify-start items-center gap-2 relative">
           <img
-            className="absolute top-0 right-0 w-24 h-24"
+            className="absolute -top-10 right-2 md:-top-16 md:-right-10 w-24 h-24 md:w-32 md:h-32"
             src="/career/beginner/badge-following.png"
           />
           <img
             className="w-[205px] h-[189px]"
             src="/career/beginner/voice-main-image.png"
           />
-          <div className=" flex flex-col justify-center items-center gap-6">
-            <div className="w-full text-center text-[#1e1e1e] text-2xl sm:text-[26px] font-medium font-['Noto Sans JP'] leading-relaxed">
+          <div className=" flex flex-col justify-center items-center gap-5">
+            <div className="w-full text-center text-[#1e1e1e] text-2xl sm:text-[26px] font-medium leading-relaxed">
               未経験から
               <br />
               UIUXデザイナーになった人の
               <br />
               声を除いてみよう👀
             </div>
-            <div className="w-9/12 max-w-sm text-center text-[#1e1e1e] text-sm font-medium font-['Noto Sans JP'] leading-snug">
+            <div className="w-8/12 md:w-full max-w-sm md:max-w-none text-center text-[#1e1e1e] text-sm md:text-base md:leading-8 font-medium font-['Noto Sans JP'] leading-7">
               "デザインはオリジナリティを発揮するもの。と思い込んではいけません。
               <br />
               まずは世の中の良いものに目を向けて"定番"の表現を吸収していくのです"
             </div>
-            <div className="px-6 py-5 bg-white rounded-full border-2 border-green-950 justify-center items-center gap-2.5 inline-flex overflow-hidden hover:bg-gray-50 transition-colors">
+            <div className="px-6 py-4 bg-white rounded-full border-2 border-green-950 justify-center items-center gap-2.5 inline-flex overflow-hidden hover:bg-gray-50 transition-colors">
               <div className="text-green-950 text-sm font-bold leading-snug">
                 インタビューを見る
               </div>
             </div>
           </div>
         </div>
-        {/* Interview List - Added horizontal scroll for mobile */}
+        {/* Interview List - Horizontal scroll for all viewport sizes */}
         <div className="mt-12">
-          <div className="md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6">
-            {/* Mobile: Horizontal scroll container */}
-            <div className="relative md:hidden overflow-hidden">
-              <div className="flex gap-4 animate-scroll">
-                {[...interviews, ...interviews, ...interviews].map(
-                  (interview, index) => (
-                    <div
-                      key={`${interview.id}-${index}`}
-                      className="flex-none w-[280px]"
-                    >
-                      <InterviewCard interview={interview} />
-                    </div>
-                  )
-                )}
-              </div>
+          <div className="relative overflow-hidden">
+            <div className="flex gap-4 animate-scroll">
+              {[...interviews, ...interviews, ...interviews].map(
+                (interview, index) => (
+                  <div
+                    key={`${interview.id}-${index}`}
+                    className="flex-none w-[280px] md:w-[410px]"
+                  >
+                    <InterviewCard interview={interview} />
+                  </div>
+                )
+              )}
             </div>
-
-            {/* Tablet and above: Grid layout */}
-            {interviews.map((interview) => (
-              <div key={interview.id} className="hidden md:block">
-                <InterviewCard interview={interview} />
-              </div>
-            ))}
           </div>
         </div>
       </div>

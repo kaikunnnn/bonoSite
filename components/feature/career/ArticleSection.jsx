@@ -36,9 +36,9 @@ const articles = [
 function ArticleListItem({ article }) {
   return (
     <a href={`/articles/${article.slug}`} className="block">
-      <div className="flex-col justify-start items-start -mt-[1px]">
-        <div className="self-stretch border-t border-b border-green-950 justify-start items-center flex group">
-          <div className="w-[40%] relative aspect-[16/9] bg-zinc-200 flex-col justify-center items-center overflow-hidden">
+      <div className="flex-col justify-start items-start -mt-[2px]">
+        <div className="self-stretch border-t border-b border-green-950 justify-start items-center flex group md:gap-8">
+          <div className="w-[40%] md:w-[30%] relative aspect-[16/9] bg-zinc-200 flex-col justify-center items-center overflow-hidden">
             <img
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               src={article.thumbnail}
@@ -47,12 +47,12 @@ function ArticleListItem({ article }) {
           </div>
           <div className="flex-1 px-3 sm:px-4 flex flex-col justify-center items-start gap-2">
             <div className="w-full flex flex-col justify-start items-start gap-1">
-              <div className="w-full">
+              <div className="w-full flex flex-row  gap-2">
                 <div className="text-green-950 text-sm sm:text-base font-['Roboto Mono'] leading-relaxed group-hover:text-indigo-600 transition-colors duration-300">
                   {article.title}
                 </div>
                 {article.isFree && (
-                  <div className="inline-block px-2 text-xs sm:text-sm bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-md å">
+                  <div className="inline-block px-2 text-xxs bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-md å">
                     無料
                   </div>
                 )}
@@ -67,20 +67,25 @@ function ArticleListItem({ article }) {
 
 export default function ArticleSection() {
   return (
-    <section className="w-full py-8 lg:py-24 bg-gradient-to-b  to-gray-50/50">
-      <div className="container px-0 mx-auto flex flex-col items-start gap-8">
+    <section
+      id="section-1"
+      className="w-full md:max-w-5xl md:w-9/12 md:max-w-4xl py-8 lg:py-6 md:mb-12 bg-gradient-to-b  to-gray-50/50"
+    >
+      <div className="container w-full px-0 mx-auto flex flex-col items-start gap-8">
         {/* Heading */}
-        <div className="w-full max-w-lg flex flex-col items-start gap-2 px-4">
-          <div className="px-4 py-1.5 bg-white rounded-full justify-center items-center gap-2.5 inline-flex">
-            <div className="text-green-950 text-xs sm:text-sm font-semibold">
+        <div className="w-full flex flex-col items-start  gap-3 px-4 md:p-0">
+          <div className="px-3 py-1 bg-white rounded-full  justify-center items-center gap-2.5 inline-flex">
+            <div className="text-green-950 text-xxs md:text-xs font-semibold">
               ステップ1
             </div>
           </div>
-          <div className="w-full text-green-950 text-lg sm:text-xl md:text-2xl font-medium font-['Noto Sans JP'] leading-relaxed">
-            未経験からUIUXデザイナーになれるの？
-          </div>
-          <div className="w-full text-slate-500 text-sm sm:text-base font-normal font-['Noto Sans JP'] leading-normal">
-            顧客中心のデザインを身につける流れです
+          <div className="w-full flex flex-col justify-start items-start md:flex-row md:justify-between md:items-center gap-0">
+            <div className="w-fit text-green-950 text-lg sm:text-xl md:text-xl font-medium font-['Noto Sans JP'] leading-relaxed">
+              未経験からUIUXデザイナーになれるの？
+            </div>
+            <div className="w-fit text-slate-500 md:text-sm sm:text-base font-normal font-['Noto Sans JP'] leading-normal md:text-right">
+              顧客中心のデザインを身につける流れです
+            </div>
           </div>
         </div>
         {/* Article List */}

@@ -35,6 +35,9 @@ module.exports = {
         dongle: ["var(--font-dongle)"],
         "noto-sans": ["var(--font-noto-sans-jp)"],
       },
+      fontSize: {
+        xxs: "10px",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
