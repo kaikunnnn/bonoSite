@@ -1,8 +1,26 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { MapIcon } from "lucide-react";
 import Image from "next/image";
+import { Dongle, Noto_Sans_JP } from "next/font/google";
+import TitleSection from "./components/TitleSection";
+import DecorationSection from "./components/DecorationSection";
+import TableOfContents from "./components/TableOfContents";
+
+// Dongleフォントの設定
+const dongle = Dongle({
+  weight: ["300", "400", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-dongle",
+});
+
+// Noto Sans JPフォントの設定
+const notoSansJP = Noto_Sans_JP({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-noto-sans-jp",
+});
 
 // カテゴリーリストの定義
 const categories = [
@@ -55,97 +73,13 @@ const iconVariants = {
 
 export default function HeroSection() {
   return (
-    <div className="max-w-5xl mx-auto px-4 py-12 md:py-24">
-      <div className="space-y-8">
-        {/* パンくずリスト */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          className="text-sm text-gray-600"
-        >
-          キャリアガイド / UIUXデザイナー転職攻略
-        </motion.div>
+    <div className="md:w-full mx-auto px-4 py-12 md:py-24 md:-mb-4 flex flex-col justify-start items-center relative w-full z-10">
+      <div className="w-full md:w-full mx-auto flex items-center flex-col">
+        <h1 className="sr-only">未経験からのUIUXデザイナー転職ガイド</h1>
 
-        {/* アイコン */}
-        <motion.div
-          variants={iconVariants}
-          initial="hidden"
-          animate="visible"
-          className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center"
-        >
-          <MapIcon className="w-8 h-8 text-blue-600" />
-        </motion.div>
-
-        {/* タイトルと説明文 */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="space-y-4"
-        >
-          <motion.h1
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-bold"
-          >
-            UIUXデザイナー転職攻略ガイド
-          </motion.h1>
-          <motion.p variants={fadeInUp} className="text-xl text-gray-600">
-            未経験からUIUXデザイナーに
-            <br />
-            なりたいひとの不安をとりのぞく
-          </motion.p>
-        </motion.div>
-
-        {/* 著者情報 */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex items-center space-x-3"
-        >
-          <motion.div variants={fadeInUp}>
-            <Image
-              src=""
-              alt="Author"
-              width={40}
-              height={40}
-              className="rounded-full"
-            />
-          </motion.div>
-          <motion.div variants={fadeInUp} className="text-sm">
-            <p className="text-gray-500">Written by</p>
-            <p className="font-medium">カイタンってんが使いてるよ</p>
-          </motion.div>
-        </motion.div>
-
-        {/* カテゴリー一覧 */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="space-y-4"
-        >
-          <motion.h2 variants={fadeInUp} className="text-lg font-semibold">
-            カテゴリ
-          </motion.h2>
-          <motion.div
-            variants={fadeInUp}
-            className="grid grid-cols-1 md:grid-cols-2 gap-4"
-          >
-            {categories.map((category, index) => (
-              <motion.div
-                key={category.id}
-                variants={fadeInUp}
-                custom={index}
-                className="p-4 border rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
-              >
-                <span className="text-gray-400 mr-2">{category.id}</span>
-                {category.title}
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
+        <TitleSection />
+        <DecorationSection />
+        <TableOfContents />
       </div>
     </div>
   );
