@@ -6,8 +6,8 @@ import ListBlock from "./ListBlock";
 
 export default function AboutBono() {
   return (
-    <section className="w-full  px-5 py-20 lg:py-24 bg-gradient-to-b from-[#252739] to-[#383B55]">
-      <div className="container max-w-7xl md:w-10/12 md:max-w-6xl  px-4 mx-auto">
+    <section className="w-full px-5 py-20 lg:py-24 bg-gradient-to-b from-[#252739] to-[#383B55]">
+      <div className="container max-w-7xl  md:w-9/12 md:max-w-4xl  px-4 mx-auto">
         <div className="max-w-8xl mx-auto">
           {/* Course Introduction */}
           <div className="flex-col justify-start items-start gap-9 inline-flex">
@@ -87,8 +87,8 @@ export default function AboutBono() {
             {/* List-Services */}
             <div className="flex flex-col gap-4">
               <ListBlock
-                title="サービスについて知る"
-                description="BONOについて知ろう"
+                title="BONOサービスを見る"
+                description="何が得られるかチェック"
                 buttonText="→"
                 href="https://bo-no.design"
               />
@@ -96,13 +96,13 @@ export default function AboutBono() {
                 title="コース一覧を見る"
                 description="BONOで提供するコースをチェックしよう"
                 buttonText="→"
-                href="/courses"
+                href="https://www.bo-no.design/rdm/lists"
               />
               <ListBlock
                 title="料金について"
                 description="利用にかかる費用を知る"
                 buttonText="→"
-                href="/courses"
+                href="https://www.bo-no.design/plan"
               />
             </div>
           </div>

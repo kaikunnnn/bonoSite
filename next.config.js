@@ -2,12 +2,21 @@
 const nextConfig = {
   reactStrictMode: true,
   appDir: true,
-}
-
-module.exports = nextConfig
-
-module.exports = {
   images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.prod.website-files.com',
+        pathname: '/**',
+      }
+    ],
     domains: ['images.ctfassets.net', 'bono.assets.newt.so'],
   },
 }
+
+module.exports = nextConfig

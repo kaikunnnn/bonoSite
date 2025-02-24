@@ -2,7 +2,11 @@
 
 function ArticleListItem({ article }) {
   return (
-    <a href={article.slug} target="_blank" className="block">
+    <a
+      href={article.slug}
+      target="_blank"
+      className="block transition-colors duration-200 hover:bg-gray-50"
+    >
       <div className="flex-col justify-start items-start -mt-[2px]">
         <div className="self-stretch border-t border-b border-green-950 justify-start items-center flex group md:gap-8">
           <div className="w-[40%] md:w-[30%] relative aspect-[16/9] bg-zinc-200 flex-col justify-center items-center overflow-hidden">
@@ -14,9 +18,10 @@ function ArticleListItem({ article }) {
           </div>
           <div className="flex-1 px-3 sm:px-4 flex flex-col justify-center items-start gap-2">
             <div className="w-full flex flex-col justify-start items-start gap-1">
-              <div className="w-full flex flex-row  gap-2">
-                <div className="text-green-950 text-sm sm:text-base leading-relaxed group-hover:text-indigo-600 transition-colors duration-300">
+              <div className="w-full flex flex-row gap-2">
+                <div className="text-green-950 text-sm sm:text-base leading-relaxed group-hover:text-indigo-600 transition-colors duration-300 relative">
                   {article.title}
+                  <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 group-hover:w-full"></span>
                 </div>
                 {!article.isFree && (
                   <div className="inline-flex items-center justify-center px-2 text-xxs bg-pink-50 text-pink-600 border border-pink-100 rounded-md leading-none">
