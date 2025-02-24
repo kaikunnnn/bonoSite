@@ -11,6 +11,7 @@ const interviews = [
     title: "広報からUI/UXデザイナーへ未経験転職",
     tags: ["未経験からUI/UX職への転職"],
     company: "制作会社",
+    url: "https://bo-no.design/interview/boi-story",
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ const interviews = [
     title: "働きながら独学！上手に時間を持つ勉強法を聞いた",
     tags: ["未経験からUI/UX職への転職"],
     company: "UI/UXデザイン会社",
+    url: "https://bo-no.design/interview/tara-story",
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ const interviews = [
     title: "広報・PR企業からUI/UXデザイナーに転職した話",
     tags: ["未経験からUI/UX職への転職"],
     company: "制作会社",
+    url: "https://bo-no.design/interview/tara-story",
   },
   {
     id: 4,
@@ -38,6 +41,7 @@ const interviews = [
     title: "子育てしながらUI/UXデザイナーへ未経験転職",
     tags: ["未経験からUI/UX職への転職"],
     company: "UI/UXデザイン会社",
+    url: "https://bo-no.design/interview/tara-story",
   },
 ];
 
@@ -46,8 +50,10 @@ const duplicatedInterviews = [...interviews, ...interviews];
 function InterviewCard({ interview }) {
   return (
     <a
-      href={`/interviews/${interview.id}`}
-      className="block w-full max-w-[410px] md:max-w-[560px] bg-gray-100 rounded-2xl shadow-sm hover:shadow-lg hover:bg-slate-50 transition-all duration-300 my-2"
+      href={interview.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block w-full max-w-[400px] md:max-w-[560px] bg-gray-100 rounded-2xl shadow-sm hover:shadow-lg hover:bg-slate-50 transition-all duration-300 my-2"
     >
       <div className="p-2 pb-[34px] flex flex-col gap-3">
         <div className="relative w-full aspect-[394/200] rounded-[8.8px] overflow-hidden">

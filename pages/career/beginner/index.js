@@ -4,8 +4,11 @@ import ArticleSection from "@/components/feature/career/ArticleSection";
 import ExampleOfUiuxdesignerFromScratch from "@/components/feature/career/ExampleOfUiuxdesignerFromScratch";
 import AboutBono from "@/components/feature/career/AboutBono";
 import {
+  interviewArticles,
   portfolioArticles,
+  roadmapArticles,
   sectionData,
+  uiuxportfolioArticles,
 } from "@/components/feature/career/data/articles";
 export default function HomePage() {
   return (
@@ -16,6 +19,18 @@ export default function HomePage() {
         <ArticleSection
           sectionData={sectionData.portfolio}
           articles={portfolioArticles}
+        />
+        <ArticleSection
+          sectionData={sectionData.roadmap}
+          articles={roadmapArticles}
+        />
+        <ArticleSection
+          sectionData={sectionData.uiuxportfolio}
+          articles={uiuxportfolioArticles}
+        />
+        <ArticleSection
+          sectionData={sectionData.interview}
+          articles={interviewArticles}
         />
       </div>
       <ExampleOfUiuxdesignerFromScratch />

@@ -4,7 +4,7 @@ export default function ListBlock({
   title = "サービスについて知る",
   description = "BONOでUIUXデザインを学んで創造して楽しむ旅をスタートしよう",
   buttonText = "はじめる",
-  href = "/service",
+  href = "https://bo-no.design/service",
 }) {
   return (
     <Link href={href} className="block">

@@ -10,7 +10,7 @@ export default function TableOfContents() {
     {
       id: "section-2",
       number: "2",
-      title: "スキルと学習ロードマップ",
+      title: "習得スキル＆ロードマップ",
     },
     {
       id: "section-3",
@@ -20,7 +20,7 @@ export default function TableOfContents() {
     {
       id: "section-4",
       number: "4",
-      title: "会社えらびと面接",
+      title: "会社選び＆採用面接",
     },
     // 必要に応じて追加のセクションを定義
   ];

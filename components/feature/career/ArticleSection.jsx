@@ -1,41 +1,8 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
-// import { Badge } from "@/components/ui/badge";
-
-const articles = [
-  {
-    id: 1,
-    title: "ポートフォリオのつくり方解説",
-    description: "SNSで微妙な情報が溢れる世の中です。対策しようぜ。",
-    thumbnail:
-      "https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=2072&auto=format&fit=crop",
-    isFree: true,
-    slug: "how-to-create-portfolio",
-  },
-  {
-    id: 2,
-    title: "プロセス説明が大切な理由",
-    description: "SNSで微妙な情報が溢れる世の中です。対策しようぜ。",
-    thumbnail:
-      "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop",
-    isFree: true,
-    slug: "importance-of-process",
-  },
-  {
-    id: 3,
-    title: "ポートフォリオに掲載するアウトプットの数は？",
-    description: "SNSで微妙な情報が溢れる世の中です。対策しようぜ。",
-    thumbnail:
-      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2070&auto=format&fit=crop",
-    isFree: false,
-    slug: "portfolio-output-count",
-  },
-];
-
 function ArticleListItem({ article }) {
   return (
-    <a href={`/articles/${article.slug}`} className="block">
+    <a href={article.slug} target="_blank" className="block">
       <div className="flex-col justify-start items-start -mt-[2px]">
         <div className="self-stretch border-t border-b border-green-950 justify-start items-center flex group md:gap-8">
           <div className="w-[40%] md:w-[30%] relative aspect-[16/9] bg-zinc-200 flex-col justify-center items-center overflow-hidden">
@@ -48,12 +15,12 @@ function ArticleListItem({ article }) {
           <div className="flex-1 px-3 sm:px-4 flex flex-col justify-center items-start gap-2">
             <div className="w-full flex flex-col justify-start items-start gap-1">
               <div className="w-full flex flex-row  gap-2">
-                <div className="text-green-950 text-sm sm:text-base font-['Roboto Mono'] leading-relaxed group-hover:text-indigo-600 transition-colors duration-300">
+                <div className="text-green-950 text-sm sm:text-base leading-relaxed group-hover:text-indigo-600 transition-colors duration-300">
                   {article.title}
                 </div>
-                {article.isFree && (
-                  <div className="inline-block px-2 text-xxs bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-md å">
-                    無料
+                {!article.isFree && (
+                  <div className="inline-flex items-center justify-center px-2 text-xxs bg-pink-50 text-pink-600 border border-pink-100 rounded-md leading-none">
+                    メンバー限定
                   </div>
                 )}
               </div>
@@ -70,11 +37,12 @@ export default function ArticleSection({ sectionData, articles = [] }) {
     stepNumber = "ステップ1",
     title = "未経験からUIUXデザイナーになれるの？",
     description = "顧客中心のデザインを身につける流れです",
+    id = "section-1",
   } = sectionData || {};
 
   return (
     <section
-      id="section-1"
+      id={id}
       className="w-full md:w-9/12 md:max-w-4xl py-8 lg:py-6 md:mb-12 bg-gradient-to-b to-gray-50/50"
     >
       <div className="container w-full px-0 mx-auto flex flex-col items-start gap-8">
@@ -85,10 +53,10 @@ export default function ArticleSection({ sectionData, articles = [] }) {
               {stepNumber}
             </div>
           </div>
-          <div className="w-full flex flex-col justify-start items-start md:flex-row md:justify-between md:items-center gap-0">
-            <div className="w-fit text-green-950 text-lg sm:text-xl md:text-xl font-medium font-['Noto Sans JP'] leading-relaxed">
+          <div className="w-full flex flex-col justify-start items-start md:justify-between gap-2">
+            <h3 className="w-fit text-green-950 text-lg sm:text-xl md:text-xl font-medium font-['Noto Sans JP'] leading-relaxed">
               {title}
-            </div>
+            </h3>
             <div className="w-fit text-slate-500 md:text-sm sm:text-base font-normal font-['Noto Sans JP'] leading-normal md:text-right">
               {description}
             </div>

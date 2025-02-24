@@ -90,7 +90,7 @@ export default function AboutBono() {
                 title="サービスについて知る"
                 description="BONOについて知ろう"
                 buttonText="→"
-                href="/courses"
+                href="https://bo-no.design"
               />
               <ListBlock
                 title="コース一覧を見る"
