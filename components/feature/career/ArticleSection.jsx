@@ -65,26 +65,32 @@ function ArticleListItem({ article }) {
   );
 }
 
-export default function ArticleSection() {
+export default function ArticleSection({ sectionData, articles = [] }) {
+  const {
+    stepNumber = "ステップ1",
+    title = "未経験からUIUXデザイナーになれるの？",
+    description = "顧客中心のデザインを身につける流れです",
+  } = sectionData || {};
+
   return (
     <section
       id="section-1"
-      className="w-full md:w-9/12 md:max-w-4xl py-8 lg:py-6 md:mb-12 bg-gradient-to-b  to-gray-50/50"
+      className="w-full md:w-9/12 md:max-w-4xl py-8 lg:py-6 md:mb-12 bg-gradient-to-b to-gray-50/50"
     >
       <div className="container w-full px-0 mx-auto flex flex-col items-start gap-8">
         {/* Heading */}
         <div className="w-full flex flex-col items-start  gap-3 px-4 md:p-0">
           <div className="px-3 py-1 bg-white rounded-full  justify-center items-center gap-2.5 inline-flex">
             <div className="text-green-950 text-xxs md:text-xs font-semibold">
-              ステップ1
+              {stepNumber}
             </div>
           </div>
           <div className="w-full flex flex-col justify-start items-start md:flex-row md:justify-between md:items-center gap-0">
             <div className="w-fit text-green-950 text-lg sm:text-xl md:text-xl font-medium font-['Noto Sans JP'] leading-relaxed">
-              未経験からUIUXデザイナーになれるの？
+              {title}
             </div>
             <div className="w-fit text-slate-500 md:text-sm sm:text-base font-normal font-['Noto Sans JP'] leading-normal md:text-right">
-              顧客中心のデザインを身につける流れです
+              {description}
             </div>
           </div>
         </div>
