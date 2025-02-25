@@ -40,8 +40,8 @@ export default function AboutBono() {
               </div>
               <div className="block md:hidden" data-svg-wrapper>
                 <svg
-                  width="120"
-                  height="36"
+                  width="160"
+                  height="48"
                   viewBox="0 0 175 53"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -68,12 +68,14 @@ export default function AboutBono() {
                 とは
               </div>
             </div>
-            <div className="self-stretch text-white text-lg font-medium leading-relaxed md:leading-loose">
-              BONO(ボノ)とはUI/UXデザインが学べる
+            <div className="self-stretch text-white text-lg font-medium leading-loose md:leading-loose">
+              BONO(ボノ)とはUI/UXデザインが学び
               <br />
-              動画コンテンツとコミュニティを提供する
+              価値をつくり出すスキルを学びます
               <br />
-              クリエイションスキルサービスです。
+              動画コンテンツとコミュニティで
+              <br />
+              実践的な学びを提供します
             </div>
           </div>
 

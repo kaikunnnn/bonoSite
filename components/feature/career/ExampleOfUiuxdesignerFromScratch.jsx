@@ -37,7 +37,6 @@ const interviews = [
     company: "事業会社",
     history: "飲料メーカー",
     url: "https://youtu.be/XLq01yuJ1UA",
-
   },
   {
     id: 4,
@@ -74,7 +73,7 @@ function InterviewCard({ interview }) {
       className="block w-full max-w-[400px] md:max-w-[560px] bg-gray-100 rounded-2xl shadow-sm hover:shadow-lg hover:bg-slate-50 transition-all duration-300 my-2"
     >
       <div className="p-2 pb-[34px] flex flex-col gap-3">
-        <div className="relative w-full aspect-[394/224] rounded-[8.8px] overflow-hidden shadow-[1px_1px_8px_rgba(0,0,0,0.06)]" >
+        <div className="relative w-full aspect-[394/224] rounded-[8.8px] overflow-hidden shadow-[1px_1px_8px_rgba(0,0,0,0.06)]">
           <Image
             src={interview.avatar}
             alt={interview.name}
@@ -95,9 +94,7 @@ function InterviewCard({ interview }) {
           <div className="flex flex-col gap-2">
             <div className="flex gap-[10.52px] pb-1 border-b border-black/5">
               <span className="text-sm text-slate-600">成果</span>
-              <span className="text-sm text-neutral-500">
-                {interview.tags}
-              </span>
+              <span className="text-sm text-neutral-500">{interview.tags}</span>
             </div>
             <div className="flex gap-[10.52px] pb-1 border-b border-black/5">
               <span className="text-sm text-slate-600">就職</span>
@@ -107,7 +104,9 @@ function InterviewCard({ interview }) {
             </div>
             <div className="flex gap-[10.52px] pb-1 border-b border-black/5">
               <span className="text-sm text-slate-600">経歴</span>
-              <span className="text-sm text-neutral-500">{interview.history}</span>
+              <span className="text-sm text-neutral-500">
+                {interview.history}
+              </span>
             </div>
           </div>
         </div>
@@ -130,7 +129,7 @@ export default function InterviewSection() {
             height={128}
           />
           <Image
-            className="w-[205px] h-[189px]"
+            className="w-[205px] h-[189px] mb-5"
             src="/career/beginner/voice-main-image.png"
             alt="Voice Main Image"
             width={205}
@@ -149,7 +148,11 @@ export default function InterviewSection() {
               <br />
               まずは世の中の良いものに目を向けて&ldquo;定番&rdquo;の表現を吸収していくのです&rdquo;
             </div>
-            <Link href="https://www.bo-no.design/rdm/users/all" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://www.bo-no.design/rdm/users/all"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div className="px-6 py-4 bg-white rounded-full border-2 border-green-950 justify-center items-center gap-2.5 inline-flex overflow-hidden hover:bg-gray-50 transition-colors">
                 <div className="text-green-950 text-sm font-bold leading-snug">
                   インタビューを見る

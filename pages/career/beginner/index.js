@@ -10,9 +10,12 @@ import {
   sectionData,
   uiuxportfolioArticles,
 } from "@/components/feature/career/data/articles";
+import CareerHeader from "@/components/feature/career/CareerHeader";
+
 export default function HomePage() {
   return (
     <div className="bg-stone-100">
+      <CareerHeader />
       <CareerHeroSection />
       <div className="Articles-Section flex flex-col justify-center items-center">
         <div className="Articles-Section-Title"></div>
