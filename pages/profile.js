@@ -1,7 +1,28 @@
 "use client";
 
+import React from "react";
+import Header from "@/components/common/layout/Navigation/Header";
+
+function Profile() {
+  return (
+    <>
+      <main className="max-h-full bg-Top bg-cover text-slate-900 bg-no-repeat">
+        <Header />
+        <div className="Profile m-auto w-12/12 md:w-4/12 grid text-center lg:mb-0 lg:text-left p-8">
+          <h2>メンテナンス中</h2>
+          <p>このページは現在メンテナンス中です。しばらくお待ちください。</p>
+        </div>
+      </main>
+    </>
+  );
+}
+
+export default Profile;
+
+/* 元のコード - 後で復元用
+"use client";
+
 import React, { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
 
 // Component
 import Header from "@/components/common/layout/Navigation/Header";
@@ -21,66 +42,24 @@ import { planIdsString } from "@/libs/memberstack/planIds";
 import useMemberActions from "@/libs/memberstack/hooks/useMemberActions";
 import useMemberInfo from "@/libs/memberstack/hooks/useMemberInfo";
 import LoginButtonMemberstackModal from "@/components/common/ui/buttons/auth/LoginButtonMemeberstack";
-
-// MemberstackProviderをクライアントサイドでのみ読み込む
-const MemberstackProvider = dynamic(
-  () => import("@memberstack/react").then((mod) => mod.MemberstackProvider),
-  { ssr: false }
-);
+const memberstack = memberstackDOM.init({
+  publicKey: process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY,
+});
 
 function Profile() {
-  const [isClient, setIsClient] = useState(false);
+  // Memberstack Custome hook
+  const { launchStripePortal, launchDirectPlanUpdate, launchBilling } =
+    useMemberActions();
+  const { isLoading, member, plans } = useMemberInfo();
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) {
-    return <div>Loading...</div>;
-  }
-
-  return (
-    <MemberstackProvider
-      config={{
-        publicKey: process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY,
-      }}
-    >
-      <ProfileContent />
-    </MemberstackProvider>
-  );
-}
-
-function ProfileContent() {
-  const [memberData, setMemberData] = useState({
-    isLoading: true,
-    member: null,
-    plans: [],
-  });
-
-  const memberstack = useMemberstack();
-
-  useEffect(() => {
-    const fetchMemberData = async () => {
-      try {
-        const { data: member } = await memberstack.getCurrentMember();
-        setMemberData({
-          isLoading: false,
-          member,
-          plans: member?.planConnections || [],
-        });
-      } catch (error) {
-        console.error("Error fetching member data:", error);
-        setMemberData((prev) => ({ ...prev, isLoading: false }));
-      }
-    };
-
-    fetchMemberData();
-  }, [memberstack]);
-
-  const { isLoading, member, plans } = memberData;
+  // Memberstack - LoginModal
+  const [showModal, setShowModal] = useState(false);
+  const handleButtonClick = () => {
+    setShowModal(true);
+  };
 
   if (isLoading) {
-    return <div>ローディング中...</div>;
+    return <div>ローディング中...</div>; // ローディング中の表示
   }
 
   const planNames = {
@@ -113,7 +92,6 @@ function ProfileContent() {
                   <h2>マイページ</h2>
                   <UserInfo />
 
-                  {/* ユーザー情報の表示 */}
                   {plans.length > 0
                     ? (console.log(
                         "このユーザーは以下のプランに属しています:",
@@ -150,7 +128,6 @@ function ProfileContent() {
                     onUnauthorized={
                       <div>
                         <h3>
-                          {" "}
                           あなたは<b>メンバーではありません</b>
                         </h3>
                         <div className="UpGrade-Growth">
@@ -186,7 +163,7 @@ function ProfileContent() {
                       <h3>Only the BONO Memeber</h3>
                       <div>
                         <p>Plan Name</p>
-                        <Button variant="default" onClick={handleStripePortal}>
+                        <Button variant="default" onClick={launchStripePortal}>
                           プランを管理
                         </Button>
                         <Button
@@ -205,11 +182,9 @@ function ProfileContent() {
                   <SignOutButton />
                 </>
               ))}
-        </div>{" "}
-        {/* This closing div tag seems to be what was missing */}
+        </div>
       </main>
     </>
   );
 }
-
-export default Profile;
+*/
