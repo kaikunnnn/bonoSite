@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 
 // Component
@@ -18,11 +20,18 @@ import { planIdsString } from "@/libs/memberstack/planIds";
 import useMemberActions from "@/libs/memberstack/hooks/useMemberActions";
 import useMemberInfo from "@/libs/memberstack/hooks/useMemberInfo";
 import LoginButtonMemberstackModal from "@/components/common/ui/buttons/auth/LoginButtonMemeberstack";
-const memberstack = memberstackDOM.init({
-  publicKey: process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY,
-});
 
-function Profile() {
+const Profile = () => {
+  useEffect(() => {
+    // Memberstackの初期化をクライアントサイドでのみ実行
+    const initMemberstack = async () => {
+      const memberstack = memberstackDOM.init({
+        publicKey: process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY,
+      });
+    };
+    initMemberstack();
+  }, []);
+
   // Memberstack Custome hook
   const { launchStripePortal, launchDirectPlanUpdate, launchBilling } =
     useMemberActions();
@@ -165,6 +174,6 @@ function Profile() {
       </main>
     </>
   );
-}
+};
 
 export default Profile;
