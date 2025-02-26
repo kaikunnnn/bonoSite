@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function DecorationSection() {
   return (
-    <div className="Decoration w-11/12 md:w-8/12 mb-6 md:-mt-32 md:mb-16 h-auto gap-auto justify-between inline-flex items-end">
+    <div className="Decoration w-11/12 md:w-12/12 lg:w-8/12 mb-6 md:-mt-16 lg:-mt-32 md:mb-4 lg:mb-16 h-auto gap-auto justify-between inline-flex items-end">
       <div className="py-3 pt-4 px-5 origin-top-left -rotate-6 bg-white rounded-full border border-black/20 justify-between items-center gap-2.5 flex h-fit w-auto">
         <div className="text-[#131212] text-xs font-bold leading-relaxed tracking-wide">
           &ldquo;人に寄り添うインターネットの
@@ -20,13 +21,15 @@ export default function DecorationSection() {
         </div>
       </div>
       <div className="relative z-10">
-        <Image
-          className="h-1/2 z-10 "
-          src="/career/beginner/bokennosyo.png"
-          alt="冒険の書のイメージ"
-          width={100}
-          height={130}
-        />
+        <Link href="https://www.bo-no.design/" className="cursor-pointer">
+          <Image
+            className="h-1/2 z-10"
+            src="/career/beginner/bokennosyo.png"
+            alt="冒険の書のイメージ"
+            width={100}
+            height={130}
+          />
+        </Link>
         <Image
           className="absolute -z-10 -bottom-5 left-4"
           src="/sun.svg"

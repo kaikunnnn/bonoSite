@@ -1,3 +1,27 @@
+"use client";
+
+import React from "react";
+import Header from "@/components/common/layout/Navigation/Header";
+
+function Profile() {
+  return (
+    <>
+      <main className="max-h-full bg-Top bg-cover text-slate-900 bg-no-repeat">
+        <Header />
+        <div className="Profile m-auto w-12/12 md:w-4/12 grid text-center lg:mb-0 lg:text-left p-8">
+          <h2>メンテナンス中</h2>
+          <p>このページは現在メンテナンス中です。しばらくお待ちください。</p>
+        </div>
+      </main>
+    </>
+  );
+}
+
+export default Profile;
+
+/* 元のコード - 後で復元用
+"use client";
+
 import React, { useEffect, useState } from "react";
 
 // Component
@@ -68,7 +92,6 @@ function Profile() {
                   <h2>マイページ</h2>
                   <UserInfo />
 
-                  {/* ユーザー情報の表示 */}
                   {plans.length > 0
                     ? (console.log(
                         "このユーザーは以下のプランに属しています:",
@@ -105,7 +128,6 @@ function Profile() {
                     onUnauthorized={
                       <div>
                         <h3>
-                          {" "}
                           あなたは<b>メンバーではありません</b>
                         </h3>
                         <div className="UpGrade-Growth">
@@ -160,11 +182,9 @@ function Profile() {
                   <SignOutButton />
                 </>
               ))}
-        </div>{" "}
-        {/* This closing div tag seems to be what was missing */}
+        </div>
       </main>
     </>
   );
 }
-
-export default Profile;
+*/
