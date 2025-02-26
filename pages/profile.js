@@ -22,29 +22,67 @@ import useMemberInfo from "@/libs/memberstack/hooks/useMemberInfo";
 import LoginButtonMemberstackModal from "@/components/common/ui/buttons/auth/LoginButtonMemeberstack";
 
 const Profile = () => {
+  const [memberstackClient, setMemberstackClient] = useState(null);
+  const [isInitialized, setIsInitialized] = useState(false);
+  const [memberData, setMemberData] = useState({
+    isLoading: true,
+    member: null,
+    plans: [],
+  });
+
+  // Memberstackの初期化
   useEffect(() => {
-    // Memberstackの初期化をクライアントサイドでのみ実行
-    const initMemberstack = async () => {
-      const memberstack = memberstackDOM.init({
+    if (typeof window !== "undefined") {
+      const ms = memberstackDOM.init({
         publicKey: process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY,
       });
-    };
-    initMemberstack();
+      setMemberstackClient(ms);
+      setIsInitialized(true);
+    }
   }, []);
 
-  // Memberstack Custome hook
-  const { launchStripePortal, launchDirectPlanUpdate, launchBilling } =
-    useMemberActions();
-  const { isLoading, member, plans } = useMemberInfo();
+  // メンバー情報の取得
+  useEffect(() => {
+    if (!isInitialized || !memberstackClient) return;
 
-  // Memberstack - LoginModal
-  const [showModal, setShowModal] = useState(false);
-  const handleButtonClick = () => {
-    setShowModal(true);
+    const fetchMemberData = async () => {
+      try {
+        const { data: member } = await memberstackClient.getCurrentMember();
+        setMemberData({
+          isLoading: false,
+          member,
+          plans: member?.planConnections || [],
+        });
+      } catch (error) {
+        console.error("Error fetching member data:", error);
+        setMemberData((prev) => ({ ...prev, isLoading: false }));
+      }
+    };
+
+    fetchMemberData();
+  }, [isInitialized, memberstackClient]);
+
+  // Memberstack actions
+  const handleStripePortal = async () => {
+    if (!memberstackClient) return;
+    try {
+      await memberstackClient.launchStripeCustomerPortal({
+        priceIds: [
+          process.env.NEXT_PUBLIC_PLAN_S_3M_PRICE_ID,
+          process.env.NEXT_PUBLIC_PLAN_G_3M_PRICE_ID,
+        ],
+        returnUrl: window.location.href,
+        autoRedirect: true,
+      });
+    } catch (error) {
+      console.error("Stripe Portal error:", error);
+    }
   };
 
+  const { isLoading, member, plans } = memberData;
+
   if (isLoading) {
-    return <div>ローディング中...</div>; // ローディング中の表示
+    return <div>ローディング中...</div>;
   }
 
   const planNames = {
@@ -150,7 +188,7 @@ const Profile = () => {
                       <h3>Only the BONO Memeber</h3>
                       <div>
                         <p>Plan Name</p>
-                        <Button variant="default" onClick={launchStripePortal}>
+                        <Button variant="default" onClick={handleStripePortal}>
                           プランを管理
                         </Button>
                         <Button
