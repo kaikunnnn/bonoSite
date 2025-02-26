@@ -3,8 +3,21 @@
 import CourseSectionUIUX from "@/components/feature/career/CourseSectionUiuxcourse";
 import ExplainHeading from "./ExplainHeading";
 import ListBlock from "./ListBlock";
+import { useEffect } from "react";
 
 export default function AboutBono() {
+  useEffect(() => {
+    // localStorageの操作をここに移動
+    // 例: localStorage.getItem('key')
+  }, []);
+
+  const getLocalStorage = (key) => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem(key);
+    }
+    return null;
+  };
+
   return (
     <section className="w-full px-5 py-20 pb-96 lg:py-24 bg-gradient-to-b from-[#252739] to-[#383B55]">
       <div className="container max-w-7xl  md:w-9/12 md:max-w-4xl  px-4 mx-auto">

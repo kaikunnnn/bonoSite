@@ -1,3 +1,5 @@
+"use client";
+
 import CareerHeroSection from "@/components/feature/career/career-hero-section";
 import CourseSectionUIUX from "@/components/feature/career/CourseSectionUiuxcourse";
 import ArticleSection from "@/components/feature/career/ArticleSection";
