@@ -1,11 +1,17 @@
+import Link from "next/link";
+
 export default function CareerHeader() {
   return (
-    <header className="h-14 p-4 justify-between items-center inline-flex overflow-hidden">
-      <div data-svg-wrapper className="relative">
-        <div className="block " data-svg-wrapper>
+    <header className="h-14 p-4 w-full justify-between items-center inline-flex overflow-hidden fixed top-0 z-50">
+      <Link
+        href="/"
+        className="relative transition-opacity duration-300 hover:opacity-60"
+        data-svg-wrapper
+      >
+        <div className="block" data-svg-wrapper>
           <svg
-            width="160"
-            height="48"
+            width="92"
+            height="28"
             viewBox="0 0 175 53"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -28,14 +34,22 @@ export default function CareerHeader() {
             />
           </svg>
         </div>
-      </div>
-      <div className="px-3.5 justify-center items-center gap-6 flex overflow-hidden">
-        <div className="text-black text-xs font-normal font-['Noto Sans'] leading-tight tracking-wide">
-          ブログ
-        </div>
-        <div className="text-black text-xs font-normal font-['Noto Sans'] leading-tight tracking-wide">
-          アバウト
-        </div>
+      </Link>
+      <div className="px-3.5 justify-center items-end gap-6 flex overflow-hidden">
+        <Link
+          href="https://www.bo-no.design/rdm/users/all"
+          target="_blank"
+          className="text-black mt-1 text-xs font-normal leading-tight tracking-wide relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-black after:transform after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100"
+        >
+          転職者の事例↗️
+        </Link>
+        <Link
+          href="https://www.bo-no.design/rdm/roadmap-uiuxdesigner"
+          target="_blank"
+          className="text-blac mt-1 text-xs font-normal leading-tight tracking-wide relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-black after:transform after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100"
+        >
+          UI/UXコースへ↗️
+        </Link>
       </div>
     </header>
   );

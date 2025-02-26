@@ -6,7 +6,7 @@ module.exports = {
     "./components/**/*.{js,jsx}",
     "./app/**/*.{js,jsx}",
     "./src/**/*.{js,jsx}",
-    "./styles/globals.css" //
+    "./styles/globals.css", //
   ],
   prefix: "",
   theme: {
@@ -27,10 +27,15 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        scrollLeft: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-500%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        scrollLeft: "scrollLeft 120s linear infinite",
       },
       fontFamily: {
         dongle: ["var(--font-dongle)"],

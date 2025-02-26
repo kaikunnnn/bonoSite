@@ -129,7 +129,7 @@ export default function InterviewSection() {
             height={128}
           />
           <Image
-            className="w-[205px] h-[189px] mb-5"
+            className="w-[143.5px] h-[132.3px] md:w-[205px] md:h-[189px] mb-5"
             src="/career/beginner/voice-main-image.png"
             alt="Voice Main Image"
             width={205}

@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function CourseContent() {
   return (
     <>
-      <Link href="/career/courses/uiux">
+      <Link href="https://www.bo-no.design/rdm/roadmap-uiuxdesigner">
         <div
           className="flex flex-col lg:flex-row lg:items-center bg-[#FFF5F2] rounded-3xl overflow-hidden hover:opacity-95 transition-all duration-300 
           shadow-sm hover:shadow-lg hover:shadow-orange-100/50 transition-shadow duration-300 ease-in-out"

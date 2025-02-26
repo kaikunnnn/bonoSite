@@ -6,7 +6,7 @@ import ListBlock from "./ListBlock";
 
 export default function AboutBono() {
   return (
-    <section className="w-full px-5 py-20 lg:py-24 bg-gradient-to-b from-[#252739] to-[#383B55]">
+    <section className="w-full px-5 py-20 pb-96 lg:py-24 bg-gradient-to-b from-[#252739] to-[#383B55]">
       <div className="container max-w-7xl  md:w-9/12 md:max-w-4xl  px-4 mx-auto">
         <div className="max-w-8xl mx-auto">
           {/* Course Introduction */}
