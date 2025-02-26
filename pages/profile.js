@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 
 // Component
 import Header from "@/components/common/layout/Navigation/Header";
@@ -21,33 +22,47 @@ import useMemberActions from "@/libs/memberstack/hooks/useMemberActions";
 import useMemberInfo from "@/libs/memberstack/hooks/useMemberInfo";
 import LoginButtonMemberstackModal from "@/components/common/ui/buttons/auth/LoginButtonMemeberstack";
 
-const Profile = () => {
-  const [memberstackClient, setMemberstackClient] = useState(null);
-  const [isInitialized, setIsInitialized] = useState(false);
+// MemberstackProviderをクライアントサイドでのみ読み込む
+const MemberstackProvider = dynamic(
+  () => import("@memberstack/react").then((mod) => mod.MemberstackProvider),
+  { ssr: false }
+);
+
+function Profile() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <MemberstackProvider
+      config={{
+        publicKey: process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY,
+      }}
+    >
+      <ProfileContent />
+    </MemberstackProvider>
+  );
+}
+
+function ProfileContent() {
   const [memberData, setMemberData] = useState({
     isLoading: true,
     member: null,
     plans: [],
   });
 
-  // Memberstackの初期化
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const ms = memberstackDOM.init({
-        publicKey: process.env.NEXT_PUBLIC_MEMBERSTACK_PUBLIC_KEY,
-      });
-      setMemberstackClient(ms);
-      setIsInitialized(true);
-    }
-  }, []);
+  const memberstack = useMemberstack();
 
-  // メンバー情報の取得
   useEffect(() => {
-    if (!isInitialized || !memberstackClient) return;
-
     const fetchMemberData = async () => {
       try {
-        const { data: member } = await memberstackClient.getCurrentMember();
+        const { data: member } = await memberstack.getCurrentMember();
         setMemberData({
           isLoading: false,
           member,
@@ -60,24 +75,7 @@ const Profile = () => {
     };
 
     fetchMemberData();
-  }, [isInitialized, memberstackClient]);
-
-  // Memberstack actions
-  const handleStripePortal = async () => {
-    if (!memberstackClient) return;
-    try {
-      await memberstackClient.launchStripeCustomerPortal({
-        priceIds: [
-          process.env.NEXT_PUBLIC_PLAN_S_3M_PRICE_ID,
-          process.env.NEXT_PUBLIC_PLAN_G_3M_PRICE_ID,
-        ],
-        returnUrl: window.location.href,
-        autoRedirect: true,
-      });
-    } catch (error) {
-      console.error("Stripe Portal error:", error);
-    }
-  };
+  }, [memberstack]);
 
   const { isLoading, member, plans } = memberData;
 
@@ -212,6 +210,6 @@ const Profile = () => {
       </main>
     </>
   );
-};
+}
 
 export default Profile;
