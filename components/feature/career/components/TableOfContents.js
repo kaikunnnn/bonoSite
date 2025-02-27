@@ -1,6 +1,9 @@
 import Image from "next/image";
+import { useState } from "react";
 
 export default function TableOfContents() {
+  const [showAlert, setShowAlert] = useState(false);
+
   const sections = [
     {
       id: "section-1",
@@ -25,15 +28,23 @@ export default function TableOfContents() {
     // 必要に応じて追加のセクションを定義
   ];
 
+  const handleBreadClick = () => {
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 3000); // 3秒後に自動的に閉じる
+  };
+
   return (
     <div className="TableOfCoontens w-full md:w-6/12 px-6 py-6 bg-white rounded-[40px] border border-black flex-col justify-start items-start gap-6 inline-flex z-10">
       <div className="self-stretch justify-center items-center gap-3 inline-flex">
         <Image
-          className="w-[22px] h-[22px] animate-float"
+          className="w-[22px] h-[22px] animate-float cursor-pointer"
           src="/career/beginner/food-drink-bread.svg"
-          alt="太陽アイコン"
+          alt="パンアイコン"
           width={20}
           height={20}
+          onClick={handleBreadClick}
         />
         <div className="text-black text-base font-normal font-['DotGothic16'] leading-relaxed tracking-wide">
           気になるトピックはあるかな？
@@ -92,6 +103,29 @@ export default function TableOfContents() {
           (誰?)
         </a>
       </div>
+
+      {/* アラートUI */}
+      {showAlert && (
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-white border border-gray-300 rounded-lg shadow-lg p-4 z-50 animate-fadeIn">
+          <div className="flex items-center gap-3">
+            <Image
+              src="/career/beginner/food-drink-bread.svg"
+              alt="パンアイコン"
+              width={24}
+              height={24}
+            />
+            <p className="text-gray-800 font-medium">
+              パンだよ？コーヒーと相性がいいんだ。なんだと思ったの？
+            </p>
+            <button
+              onClick={() => setShowAlert(false)}
+              className="ml-2 text-gray-500 hover:text-gray-700"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
