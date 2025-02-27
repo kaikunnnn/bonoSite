@@ -34,7 +34,7 @@ export default function TitleSection() {
         {/* CAREER */}
         <div className="text-center text-orange-500">
           <Image
-            src="/career/beginner/type/career.svg"
+            src="/career/beginner/type/type-career.svg"
             alt="CAREER"
             className="h-[40px] md:h-[100px] lg:h-[110px] w-auto"
             width={110}
@@ -48,7 +48,7 @@ export default function TitleSection() {
         {/* GUIDE */}
         <div className="text-center text-orange-500">
           <Image
-            src="/career/beginner/type/guide.svg"
+            src="/career/beginner/type/type-guide.svg"
             alt="GUIDE"
             className="h-[40px] md:h-[100px] lg:h-[110px] w-auto"
             width={110}
