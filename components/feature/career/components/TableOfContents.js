@@ -95,7 +95,7 @@ export default function TableOfContents() {
           Written by : カイクン
         </div>
         <a
-          href="https://takumikai.notion.site/profile-kaikun4"
+          href="https://takumikai.notion.site/profile-kaikun"
           target="_blank"
           rel="noopener noreferrer"
           className="block text-[#4f4f4f] text-[10px] font-medium font-['Noto Sans JP'] underline leading-none tracking-wide hover:text-black transition-colors duration-200"
