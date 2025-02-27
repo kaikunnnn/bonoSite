@@ -83,9 +83,14 @@ export default function TableOfContents() {
         <div className="text-xxs font-['DotGothic16'] font-medium font-['Noto Sans JP'] leading-none tracking-wide">
           Written by : カイクン
         </div>
-        <div className="text-[#4f4f4f] text-[10px] font-medium font-['Noto Sans JP'] underline leading-none tracking-wide">
+        <a
+          href="https://takumikai.notion.site/profile-kaikun4"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block text-[#4f4f4f] text-[10px] font-medium font-['Noto Sans JP'] underline leading-none tracking-wide hover:text-black transition-colors duration-200"
+        >
           (誰?)
-        </div>
+        </a>
       </div>
     </div>
   );
