@@ -1,6 +1,13 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function TitleSection() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
     <div className="CopyArea mt-16 md:-mt-8 w-full flex-col justify-start items-center inline-flex relative ">
       <div
@@ -17,7 +24,12 @@ export default function TitleSection() {
           </div>
         </div>
         {/* UI/UX */}
-        <div className="text-center text-orange-500">
+        <div
+          className={`text-center text-orange-500 transition-all duration-700 transform ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: "100ms" }}
+        >
           <Image
             src="/career/beginner/type/uiux.svg"
             alt="UI/UX"
@@ -27,12 +39,22 @@ export default function TitleSection() {
           />
         </div>
 
-        <div className="text-center text-orange-500 text-base md:text-2xl font-bold font-noto-sans leading-snug tracking-[4px]">
+        <div
+          className={`text-center text-orange-500 text-base md:text-2xl font-bold font-noto-sans leading-snug tracking-[4px] transition-all duration-700 transform ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: "300ms" }}
+        >
           未経験からの
         </div>
 
         {/* CAREER */}
-        <div className="text-center text-orange-500">
+        <div
+          className={`text-center text-orange-500 transition-all duration-700 transform ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: "500ms" }}
+        >
           <Image
             src="/career/beginner/type/type-career.svg"
             alt="CAREER"
@@ -41,12 +63,22 @@ export default function TitleSection() {
             height={40}
           />
         </div>
-        <div className="text-center text-orange-500 text-base md:text-2xl font-bold font-noto-sans leading-snug tracking-[4px]">
+        <div
+          className={`text-center text-orange-500 text-base md:text-2xl font-bold font-noto-sans leading-snug tracking-[4px] transition-all duration-700 transform ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: "700ms" }}
+        >
           UI/UXデザイナー
         </div>
 
         {/* GUIDE */}
-        <div className="text-center text-orange-500">
+        <div
+          className={`text-center text-orange-500 transition-all duration-700 transform ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: "900ms" }}
+        >
           <Image
             src="/career/beginner/type/type-guide.svg"
             alt="GUIDE"
@@ -55,7 +87,12 @@ export default function TitleSection() {
             height={40}
           />
         </div>
-        <div className="text-center text-orange-500 ttext-base md:text-2xlfont-bold font-noto-sans leading-snug tracking-[4px]">
+        <div
+          className={`text-center text-orange-500 text-base md:text-2xl font-bold font-noto-sans leading-snug tracking-[4px] transition-all duration-700 transform ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ transitionDelay: "1100ms" }}
+        >
           転職ガイド
         </div>
       </div>
