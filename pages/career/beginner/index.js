@@ -38,7 +38,9 @@ export default function CareerBeginnerPage() {
         />
         <meta
           property="og:image"
-          content="/images/ogp/career/thumbnail_uiuxcareerguide.jpg"
+          content={`${
+            process.env.NEXT_PUBLIC_SITE_URL || ""
+          }/images/ogp/career/thumbnail_uiuxcareerguide.jpg`}
         />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -61,7 +63,9 @@ export default function CareerBeginnerPage() {
         />
         <meta
           name="twitter:image"
-          content="/images/ogp/career/thumbnail_uiuxcareerguide.jpg"
+          content={`${
+            process.env.NEXT_PUBLIC_SITE_URL || ""
+          }/images/ogp/career/thumbnail_uiuxcareerguide.jpg`}
         />
       </Head>
 
