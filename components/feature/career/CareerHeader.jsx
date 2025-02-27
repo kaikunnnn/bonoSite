@@ -4,7 +4,7 @@ export default function CareerHeader() {
   return (
     <header className="h-14 p-4 w-full justify-between items-center inline-flex overflow-hidden fixed top-0 z-50">
       <Link
-        href="/"
+        href="https://bo-no.design"
         className="relative transition-opacity duration-300 hover:opacity-60"
         data-svg-wrapper
       >
