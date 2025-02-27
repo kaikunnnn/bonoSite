@@ -29,8 +29,8 @@ export default function TableOfContents() {
     <div className="TableOfCoontens w-full md:w-6/12 px-6 py-6 bg-white rounded-[40px] border border-black flex-col justify-start items-start gap-6 inline-flex z-10">
       <div className="self-stretch justify-center items-center gap-3 inline-flex">
         <Image
-          className="w-[22px] h-[22px]"
-          src="/sun.svg"
+          className="w-[22px] h-[22px] animate-float"
+          src="/career/beginner/food-drink-bread.svg"
           alt="太陽アイコン"
           width={20}
           height={20}

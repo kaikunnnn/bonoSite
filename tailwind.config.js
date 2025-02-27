@@ -31,11 +31,16 @@ module.exports = {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-500%)" },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-4px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         scrollLeft: "scrollLeft 120s linear infinite",
+        float: "float 4s ease-in-out infinite",
       },
       fontFamily: {
         dongle: ["var(--font-dongle)"],
